@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 
 @Component({
@@ -8,15 +8,33 @@ import { HttpClient} from '@angular/common/http';
   styleUrls: ['./acceuil.component.css']
 })
 export class AcceuilComponent implements OnInit {
-data:any;
-  constructor(private http: HttpClient) { }
+res:any;
+header : HttpHeaders;
+//body vide
+body:[{
+  'name':'angularCategorie'
+}];
+
+
+  constructor(private http: HttpClient,  ) { 
+    this.header = new HttpHeaders({
+      'Access-Control-Allow-Origin': 'http://localhost:4200', // -->Add this line
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS',
+      'Access-Control-Allow-Headers': '*',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    });
+  }
 
   ngOnInit() {
-    this.http.get('http://127.0.0.1:8000/get-data').subscribe(data => {
-      this.data = data;
-      console.log("Data is coming.");
+
+
+    this.http.post('http://127.0.0.1:8000/post-data', JSON.stringify(this.body), {headers: this.header}).subscribe(res => {
+    this.res = res;
+      console.log("categorie : "+res);
      
-      }, error => console.error(error));
+    }, error => console.error(error));
   }
+  
 
 }

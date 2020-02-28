@@ -9,11 +9,16 @@ class CategorieController extends Controller
 {
     public function index(){
         $categories = Categories::all();
-        return response($categories);
+        return response()->json(['status' => 'Hooray']);;
     }
     public function add(Request $request){
-        $categorie = new Categories();
-        $categorie->name = $request->input('name');
+        $bodys=json_decode($request->body);
+        
+        //$name=json_decode($request->name);
+        // $categorie = new Categories();
+        // $categorie->nom = $request->name;
+        // $categorie->save();
+        // return response()->json(['name' => 'cat']);
     }
     public function destroy($id){
         $categorie = Categories::find($id);

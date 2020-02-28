@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SweetNessFront": {
+    "SweetNessFront": { 
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -63,7 +63,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SweetNessFront:build"
+            "browserTarget": "SweetNessFront:build",
+            "proxyConfig": "src/proxy.conf.json"
+
           },
           "configurations": {
             "production": {

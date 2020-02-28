@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/get-data','CategorieController@index')->middleware("cors");
-
+Route::post('/post-data','CategorieController@add')->middleware("cors");

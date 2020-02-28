@@ -12,7 +12,7 @@ class ArticleController extends Controller
         $articles = Article::orderBy('id', 'DESC');
         return response($articles);
     }
-    public function add(Request $request){
+    public function store (Request $request){
         $article = new Article();
         $article->titre = $request->input('titre');
         $article->prix_courrant = $request->input('prix_courrant');
