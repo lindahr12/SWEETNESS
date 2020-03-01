@@ -11,9 +11,9 @@ export class AcceuilComponent implements OnInit {
 res:any;
 header : HttpHeaders;
 //body vide
-body:[{
+body={
   'name':'angularCategorie'
-}];
+}
 
 
   constructor(private http: HttpClient,  ) { 
@@ -31,7 +31,7 @@ body:[{
 
     this.http.post('http://127.0.0.1:8000/post-data', JSON.stringify(this.body), {headers: this.header}).subscribe(res => {
     this.res = res;
-      console.log("categorie : "+res);
+      console.log("categorie : "+(res));
      
     }, error => console.error(error));
   }

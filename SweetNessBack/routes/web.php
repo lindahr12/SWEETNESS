@@ -11,8 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'CategorieController@add');
+
+Route::group(['middleware' => ['cors']], function () {
+    
+    Route::resource('/article','ArticleController');
+        
+    Route::get('/get-data','CategorieController@index');
+    Route::post('/post-data','CategorieController@add');
+    
 });
-Route::get('/get-data','CategorieController@index')->middleware("cors");
-Route::post('/post-data','CategorieController@add')->middleware("cors");
