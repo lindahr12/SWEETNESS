@@ -5,11 +5,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AcceuilComponent
+    AcceuilComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
