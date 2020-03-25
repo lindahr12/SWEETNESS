@@ -15,12 +15,18 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('titre');
-            $table->float('prix_courrant');
-            $table->float('prix_ancient')->nullable();
-            $table->integer('quantite');
+            $table->string('nom');
             $table->string('description');
-            $table->bigInteger('user_id');
+            $table->integer('limite_stock_alert');
+            $table->integer('total_stock');
+            $table->double('note');
+            $table->integer('nbr_noted');
+            $table->double('tva');
+            $table->double('prix_ht');
+            $table->double('prix_ttc');
+            $table->double('marge');
+            $table->boolean('is_active');
+            $table->double('reduction');
             $table->bigInteger('image_id');
 
             $table->timestamps();
