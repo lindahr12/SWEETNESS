@@ -18,6 +18,7 @@ class AdresseTable extends Migration
             $table->string('rue');
             $table->string('region');
             $table->integer('code_postale');
+            $table->bigInteger('users_id');
             $table->timestamps();
         });
     }
