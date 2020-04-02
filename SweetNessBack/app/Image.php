@@ -3,6 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
+
+Relation::morphMap([
+    'categorie' => Categories::class ,
+    'article' => Article::class,
+]);
 
 class Image extends Model
 {
@@ -10,7 +16,9 @@ class Image extends Model
     protected $fillable=[
         'url'
     ];
-    public function article(){
-        return $this->hasMany(Article::class);
+    public function owner()
+    {
+        return $this->morphTo();
     }
+   
 }

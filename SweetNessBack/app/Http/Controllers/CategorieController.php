@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Categories;
+use App\Image;
 use Illuminate\Http\Request;
-use Symfony\Component\Console\Input\Input;
 
 class CategorieController extends Controller
 {
@@ -13,12 +13,24 @@ class CategorieController extends Controller
         return response()->json($categories);;
     }
     public function add(Request $request){
-        
-        $name=json_decode($request->name);
+        //dd($request->all());
+        /** Save categorie */
         $categorie = new Categories();
-         $categorie->nom = $request->name;
+        $categorie->nom = $request->name;
+        $categorie->parent_id = $request->parent_id;
         $categorie->save();
-        return response()->json('done ');
+        /** Save image */
+        $image = new Image();
+        if($request->file){
+            $image->url = $request->file;
+    
+            $categorie->images()->save($image);
+            $image->save();
+        }
+            
+        
+        return response()->json('done');
+
       
     }
     public function destroy($id){
