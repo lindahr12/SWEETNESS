@@ -1,4 +1,3 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,17 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-myform:FormGroup
-  constructor(private fb:FormBuilder) { }
+
+  constructor() { }
 
   ngOnInit() {
-    this.myform = this.fb.group({
-      search:'',
-      categorie:''
-    });
-  }
-  update(){
-    console.log(this.myform.value);
   }
 
 }

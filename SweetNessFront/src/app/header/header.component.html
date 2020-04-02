@@ -1,161 +1,204 @@
-<div class="header">
+<header id="header">
+  <div id="header-top">
     <div class="container">
-      <ul>
-        <li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Free and Fast Delivery</li>
-        <li><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Free shipping On all orders</li>
-        <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:info@example.com">info@example.com</a></li>
-      </ul>
-    </div>
-  </div>
-  <!-- //header -->
-  <!-- header-bot -->
-  <div class="header-bot">
-    <div class="container">
-      <div class="col-md-3 header-left">
-        <h1><a href="index.html"><img src="assets/images/logo3.jpg"></a></h1>
-      </div>
-      <div class="col-md-6 header-middle">
-        <form [formGroup]="myform" (ngSubmit)="update()" >
-          <div class="search">
-            <input type="search" value="Search" formControlName="search" required>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="header-top-left">
+            <ul id="top-links" class="clearfix">
+              <li><a href="#" title="My Wishlist">
+                <span class="top-icon top-icon-pencil"></span>
+                <span class="hide-for-xs">My Wishlist</span>
+              </a>
+              </li>
+              <li>
+                <a href="#" title="My Account">
+                  <span class="top-icon top-icon-user"></span>
+                  <span class="hide-for-xs">My Account</span>
+                </a>
+              </li>
+              <li>
+                <a href="cart.html" title="My Cart">
+<span class="top-icon top-icon-cart">
+
+    </span>
+                  <span class="hide-for-xs">My Cart</span>
+                </a>
+              </li>
+              <li><a href="checkout.html" title="Checkout">
+                <span class="top-icon top-icon-check"></span>
+                <span class="hide-for-xs">Checkout</span>
+              </a>
+              </li>
+            </ul>
           </div>
-          <div class="section_room">
-            <select id="country" formControlName="categorie" class="frm-field required">
-              <option value="null">All categories</option>
-              <option value="null">Electronics</option>
-              <option value="AX">kids Wear</option>
-              <option value="AX">Men's Wear</option>
-              <option value="AX">Women's Wear</option>
-              <option value="AX">Watches</option>
-            </select>
-          </div>
-          <div class="sear-sub">
-            <input type="submit">
-          </div>
-          <div class="clearfix"></div>
-        </form>
-      </div>
-      <div class="col-md-3 header-right footer-bottom">
-        <ul>
-          <li><a href="#" class="use1" data-toggle="modal" data-target="#myModal4"><span>Login</span></a>
-  
-          </li>
-          <li><a class="fb" href="#"></a></li>
-          <li><a class="twi" href="#"></a></li>
-          <li><a class="insta" href="#"></a></li>
-          <li><a class="you" href="#"></a></li>
-        </ul>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-  </div>
-  <!-- //header-bot -->
-  <!-- banner -->
-  <div class="ban-top">
-    <div class="container">
-      <div class="top_nav_left">
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+          <div class="header-top-right">
+            <div class="header-top-dropdowns pull-right">
+              <div class="btn-group dropdown-money">
+                <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
+                  <span class="hide-for-xs">US Dollar</span><span class="hide-for-lg">$</span>
+                </button>
+                <ul class="dropdown-menu pull-right" role="menu"><li><a href="#">
+                  <span class="hide-for-xs">Euro</span><span class="hide-for-lg">&euro;</span>
+                </a></li><li><a href="#"><span class="hide-for-xs">Pound</span><span class="hide-for-lg">&pound;
+    </span>
+                </a>
+                </li></ul></div><div class="btn-group dropdown-language">
+              <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
+                <span class="flag-container"><img src="assets\images\england-flag.png" alt="flag of england"></span>
+                <span class="hide-for-xs">English</span>
               </button>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav menu__list">
-                <li class="active menu__item menu__item--current"><a class="menu__link" href="index.html">Home <span class="sr-only">(current)</span></a></li>
-                <li class="dropdown menu__item">
-                  <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">men's wear <span class="caret"></span></a>
-                  <ul class="dropdown-menu multi-column columns-3">
-                    <div class="row">
-                      <div class="col-sm-6 multi-gd-img1 multi-gd-text ">
-                        <a href="mens.html"><img src="assets/images/woo1.jpg" alt=" "/></a>
-                      </div>
-                      <div class="col-sm-3 multi-gd-img">
-                        <ul class="multi-column-dropdown">
-                          <li><a href="mens.html">Clothing</a></li>
-                          <li><a href="mens.html">Wallets</a></li>
-                          <li><a href="mens.html">Footwear</a></li>
-                          <li><a href="mens.html">Watches</a></li>
-                          <li><a href="mens.html">Accessories</a></li>
-                          <li><a href="mens.html">Bags</a></li>
-                          <li><a href="mens.html">Caps & Hats</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-sm-3 multi-gd-img">
-                        <ul class="multi-column-dropdown">
-                          <li><a href="mens.html">Jewellery</a></li>
-                          <li><a href="mens.html">Sunglasses</a></li>
-                          <li><a href="mens.html">Perfumes</a></li>
-                          <li><a href="mens.html">Beauty</a></li>
-                          <li><a href="mens.html">Shirts</a></li>
-                          <li><a href="mens.html">Sunglasses</a></li>
-                          <li><a href="mens.html">Swimwear</a></li>
-                        </ul>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                  </ul>
+              <ul class="dropdown-menu pull-right" role="menu">
+                <li><a href="#"><span class="flag-container">
+<img src="assets\images\italy-flag.png" alt="flag of england">
+    </span>
+                  <span class="hide-for-xs">Italian</span>
+                </a>
                 </li>
-                <li class="dropdown menu__item">
-                  <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">women's wear <span class="caret"></span></a>
-                  <ul class="dropdown-menu multi-column columns-3">
-                    <div class="row">
-                      <div class="col-sm-3 multi-gd-img">
-                        <ul class="multi-column-dropdown">
-                          <li><a href="womens.html">Clothing</a></li>
-                          <li><a href="womens.html">Wallets</a></li>
-                          <li><a href="womens.html">Footwear</a></li>
-                          <li><a href="womens.html">Watches</a></li>
-                          <li><a href="womens.html">Accessories</a></li>
-                          <li><a href="womens.html">Bags</a></li>
-                          <li><a href="womens.html">Caps & Hats</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-sm-3 multi-gd-img">
-                        <ul class="multi-column-dropdown">
-                          <li><a href="womens.html">Jewellery</a></li>
-                          <li><a href="womens.html">Sunglasses</a></li>
-                          <li><a href="womens.html">Perfumes</a></li>
-                          <li><a href="womens.html">Beauty</a></li>
-                          <li><a href="womens.html">Shirts</a></li>
-                          <li><a href="womens.html">Sunglasses</a></li>
-                          <li><a href="womens.html">Swimwear</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-sm-6 multi-gd-img multi-gd-text ">
-                        <a href="womens.html"><img src="assets/images/woo.jpg" alt=" "/></a>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                  </ul>
+                <li>
+                  <a href="#">
+<span class="flag-container">
+<img src="assets\images\spain-flag.png" alt="flag of italy">
+    </span>
+                    <span class="hide-for-xs">Spanish</span>
+                  </a>
                 </li>
-                <li class=" menu__item"><a class="menu__link" href="electronics.html">Electronics</a></li>
-                <li class=" menu__item"><a class="menu__link" href="codes.html">Short Codes</a></li>
-                <li class=" menu__item"><a class="menu__link" href="contact.html">contact</a></li>
+                <li>
+                  <a href="#">
+<span class="flag-container">
+<img src="assets\images\france-flag.png" alt="flag of france">
+    </span><span class="hide-for-xs">French</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+<span class="sm-separator">
+<img src="assets\images\germany-flag.png" alt="flag of germany">
+    </span>
+                    <span class="hide-for-xs">German</span>
+                  </a>
+                </li>
               </ul>
             </div>
+            </div>
+            <div class="header-text-container pull-right"><p class="header-text">Welcome to Sweetness</p>
+              <p class="header-link"><a href="#">login</a>&nbsp;or&nbsp;<a href="#">create an account</a>
+              </p>
+            </div>
           </div>
-        </nav>
-      </div>
-      <div class="top_nav_right">
-        <div class="cart box_1">
-          <a href="checkout.html">
-            <h3> <div class="total">
-              <i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
-              <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-  
-            </h3>
-          </a>
-          <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-  
         </div>
       </div>
-      <div class="clearfix"></div>
     </div>
   </div>
+  <div id="inner-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 col-sm-5 col-xs-12 logo-container">
+          <h1 class="logo clearfix">
+            <span>Responsive eCommerce Template</span>
+            <a href="index.html" title="Venedor eCommerce Template">
+              <img src="assets\images\logo.png" alt="Venedor Commerce Template" width="238" height="76"></a>
+          </h1>
+        </div>
+        <div class="col-md-7 col-sm-7 col-xs-12 header-inner-right">
+          <div class="header-box contact-infos pull-right">
+            <ul>
+              <li>
+                <span class="header-box-icon header-box-icon-skype"></span>
+                venedor_support
+              </li>
+              <li>
+                <span class="header-box-icon header-box-icon-email"></span>
+                <a href="mailto:venedor@gmail.com">venedor@gmail.com</a>
+              </li>
+            </ul>
+          </div>
+          <div class="header-box contact-phones pull-right clearfix">
+            <span class="header-box-icon header-box-icon-earphones"></span>
+            <ul class="pull-left">
+              <li>+(404) 158 14 25 78</li>
+              <li>+(404) 851 21 48 15</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main-nav-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 clearfix">
+            <nav id="main-nav">
+              <div id="responsive-nav">
+                <div id="responsive-nav-button">Menu
+                  <span id="responsive-nav-button-icon">
+
+    </span>
+                </div>
+              </div>
+              <ul class="menu clearfix">
+                <li>
+                  <a class="active" href="index.html">HOME</a>
+                  <ul><li><a href="index.html">Home 1</a></li><li><a href="../blue/index.html">Home 2</a></li><li><a href="../orange/index.html">Home 3</a></li><li><a href="../pink/index.html">Home 4</a></li><li><a href="../brown/index.html">Home 5</a></li><li><a href="../green2/index.html">Home 6</a></li><li><a href="../blueorange/index.html">Home 7</a></li><li><a href="../blueorange2/index.html">Home 8</a></li><li><a href="../browngreen/index.html">Home 9</a></li></ul>
+                </li>
+                <li class="mega-menu-container">
+                  <a href="#">SHOP</a>
+                  <div class="mega-menu clearfix"><div class="col-5"><a href="category.html" class="mega-menu-title">Clothing</a><ul class="mega-menu-list clearfix"><li><a href="#">Dresses</a></li><li><a href="#">Jeans &amp; Trousers</a></li><li><a href="#">Blouses &amp; Shirts</a></li><li><a href="#">Tops &amp; T-Shirts</a></li><li><a href="#">Jackets &amp; Coats</a></li><li><a href="#">Skirts</a></li></ul></div><div class="col-5"><a href="category.html" class="mega-menu-title">Shoes</a><ul class="mega-menu-list clearfix"><li><a href="#">Formal Shoes</a></li><li><a href="#">Casual Shoes</a></li><li><a href="#">Sandals</a></li><li><a href="#">Boots</a></li><li><a href="#">Wide Fit</a></li><li><a href="#">Slippers</a></li></ul></div><div class="col-5"><a href="category.html" class="mega-menu-title">Accessories</a><ul class="mega-menu-list clearfix"><li><a href="#">Bags &amp; Purses</a></li><li><a href="#">Belts</a></li><li><a href="#">Gloves</a></li><li><a href="#">Jewellery</a></li><li><a href="#">Sunglasses</a></li><li><a href="#">Hair Accessories</a></li></ul></div><div class="col-5"><a href="category.html" class="mega-menu-title">Sports</a><ul class="mega-menu-list clearfix"><li><a href="#">Sport Tops &amp; Vests</a></li><li><a href="#">Swimwear</a></li><li><a href="#">Footwear</a></li><li><a href="#">Sports Underwear</a></li><li><a href="#">Bags</a></li></ul></div><div class="col-5"><a href="category.html" class="mega-menu-title">Maternity</a><ul class="mega-menu-list clearfix"><li><a href="#">Tops &amp; Skirts</a></li><li><a href="#">Dresses</a></li><li><a href="#">Trousers &amp; Shorts</a></li><li><a href="#">Knitwear</a></li><li><a href="#">Jackets &amp; Coats</a></li></ul></div></div></li>
+                <li><a href="#">Portfolio</a><ul><li><a href="#">Classic</a><ul><li><a href="portfolio-2.html">Two Columns</a></li><li><a href="portfolio-3.html">Three Columns</a></li><li><a href="portfolio-4.html">Four Columns</a></li></ul></li><li><a href="#">Masonry</a><ul><li><a href="portfolio-masonry-2.html">Two Columns</a></li><li><a href="portfolio-masonry-3.html">Three Columns</a></li><li><a href="portfolio-masonry-4.html">Four Columns</a></li></ul></li><li><a href="#">Portfolio Posts</a><ul><li><a href="single-portfolio.html">Image Post</a></li><li><a href="single-portfolio-gallery.html">Gallery Post</a></li><li><a href="single-portfolio-video.html">Video Post</a></li></ul></li></ul></li>
+                <li><a href="#">Elements</a><ul><li><a href="elements\tabs.html">Tabs</a></li><li><a href="elements\titles.html">Titles</a></li><li><a href="elements\typography.html">Typography</a></li><li><a href="elements\collapses.html">collapses</a></li><li><a href="elements\animations.html">animations</a></li><li><a href="elements\grids.html">Grid System</a></li><li><a href="elements\alerts.html">Alert Boxes</a></li><li><a href="elements\buttons.html">Buttons</a></li><li><a href="elements\medias.html">Media</a></li><li><a href="elements\forms.html">Forms</a></li><li><a href="elements\icons.html">Icons</a></li><li><a href="elements\lists.html">Lists</a></li><li><a href="elements\more.html">More</a></li></ul></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </nav>
+            <div id="quick-access">
+              <div class="dropdown-cart-menu-container pull-right">
+                <div class="btn-group dropdown-cart">
+                  <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
+                    <span class="cart-menu-icon"></span> 0 item(s) <span class="drop-price">- $0.00</span>
+                  </button><div class="dropdown-menu dropdown-cart-menu pull-right clearfix" role="menu">
+                  <p class="dropdown-cart-description">Recently added item(s).</p>
+                  <ul class="dropdown-cart-product-list"><li class="item clearfix">
+                    <a href="#" title="Delete item" class="delete-item"><i class="fa fa-times"></i></a>
+                    <a href="#" title="Edit item" class="edit-item"><i class="fa fa-pencil"></i></a>
+                    <figure><a href="product.html"><img src="assets\images\products\thumbnails\item12.jpg" alt="phone 4"></a></figure>
+                    <div class="dropdown-cart-details">
+                      <p class="item-name">
+                        <a href="product.html">Cam Optia AF Webcam</a>
+                      </p>
+                      <p>1x <span class="item-price">$499</span></p>
+                    </div>
+                  </li>
+                    <li class="item clearfix">
+                      <a href="#" title="Delete item" class="delete-item">
+                        <i class="fa fa-times"></i></a> <a href="#" title="Edit item" class="edit-item">
+                      <i class="fa fa-pencil"></i></a><figure><a href="product.html">
+                      <img src="assets\images\products\thumbnails\item13.jpg" alt="phone 2"></a></figure><div class="dropdown-cart-details">
+                      <p class="item-name">
+                        <a href="product.html">Iphone Case Cover Original</a>
+                      </p>
+                      <p>1x
+                        <span class="item-price">$499<span class="sub-price">.99</span></span>
+                      </p>
+                    </div>
+                    </li>
+                  </ul>
+                  <ul class="dropdown-cart-total"><li><span class="dropdown-cart-total-title">Shipping:</span>$7</li>
+                    <li><span class="dropdown-cart-total-title">Total:</span>$1005<span class="sub-price">.99</span></li>
+                  </ul>
+                  <div class="dropdown-cart-action">
+                    <p><a href="cart.html" class="btn btn-custom-2 btn-block">Cart</a></p>
+                    <p><a href="checkout.html" class="btn btn-custom btn-block">Checkout</a></p>
+                  </div>
+                </div>
+                </div>
+              </div>
+              <form class="form-inline quick-search-form" role="form" action="#">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search here">
+                </div>
+                <button type="submit" id="quick-search" class="btn btn-custom"></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
