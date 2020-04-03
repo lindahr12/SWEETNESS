@@ -21,10 +21,13 @@ class CategorieController extends Controller
         $categorie->save();
         /** Save image */
         $image = new Image();
-        if($request->file){
-            $image->url = $request->file;
-    
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $exten = $file->getClientOriginalExtension();
+            $name = time().'.'.$exten;
+            $file->move('image_posts',$name);
             $categorie->images()->save($image);
+            $image->url = $name;
             $image->save();
         }
             
