@@ -13,6 +13,16 @@ class CategorieController extends Controller
         return response()->json($categories);;
     }
     public function add(Request $request){
+<<<<<<< HEAD
+
+        $name=json_decode($request->name);
+        $categorie = new Categories();
+        $categorie->nom = $request->name;
+        $categorie->save();
+      return response()->json('done ');
+
+       }
+=======
         //dd($request->all());
         /** Save categorie */
         $categorie = new Categories();
@@ -36,9 +46,10 @@ class CategorieController extends Controller
 
       
     }
+>>>>>>> 5d5194d640573fb456276a69bfeac5c416ab7c05
     public function destroy($id){
-        $categorie = Categories::find($id);
-        $categorie->destroy();
-        return response('done');
-    }
+       $categorie = Categories::find($id);
+       $categorie->destroy();
+      return response('done');
+   }
 }

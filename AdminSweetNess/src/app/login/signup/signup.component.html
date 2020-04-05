@@ -5,38 +5,66 @@
     <div class="app-login-box">
       <div class="app-login-box-title padding-top-30">
         <div class="title">Sign Up</div>
-        <div class="subtitle">Join our community with email</div>
+
       </div>
+
       <div class="app-login-box-container margin-top-20">
-        <button class="btn btn-facebook btn-block">Connect With Facebook</button>
-        <button class="btn btn-twitter btn-block">Connect With Twitter</button>
-      </div>
-      <div class="app-login-box-container margin-top-20">
-        <div class="title">Sign in with email</div>
-        <form action="index.html" method="post">
+
+        <form [formGroup]="signForm" (ngSubmit)="onSubmit()" >
           <div class="form-group">
             <div class="row">
               <div class="col-md-6">
-                <input type="text" class="form-control" name="name" placeholder="Name">
+                <input type="text" placeholder="Nom" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && m.nom.errors }"  />
+                <div *ngIf="submitted && m.nom.errors" class="invalid-feedback">
+                  <div *ngIf="m.nom.errors.required">Le nom est requis</div>
+                </div>
               </div>
               <div class="col-md-6">
-                <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+                <input type="text" placeholder="Prenom" formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && m.prenom.errors }" />
+                <div *ngIf="submitted && m.prenom.errors" class="invalid-feedback">
+                  <div *ngIf="m.prenom.errors.required">Le prenom est requis</div>
+                </div>
               </div>
             </div>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="login" placeholder="Email Address">
+<!--            <input type="text" class="form-control" name="login" placeholder="Email Address">-->
+            <input type="email"  placeholder="Email Address" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && m.email.errors }" />
+            <div *ngIf="submitted && m.email.errors" class="invalid-feedback">
+              <div *ngIf="m.email.errors.required">L'email est requis</div>
+            </div>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password">
+<!--            <input type="password" class="form-control" name="password" placeholder="Password">-->
+            <input type="password" placeholder="Password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && m.password.errors }" />
+            <div *ngIf="submitted && m.password.errors" class="invalid-feedback">
+              <div *ngIf="m.password.errors.required">Le mot de passe est requis</div>
+            </div>
           </div>
           <div class="form-group">
-            <button class="btn btn-success btn-block">Create Account</button>
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" placeholder="Numéro Telephone" formControlName="num_tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && m.num_tel.errors }" />
+                <div *ngIf="submitted && m.num_tel.errors" class="invalid-feedback">
+                  <div *ngIf="m.num_tel.errors.required">Le numéro de telephone  est requis</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <input type="text" placeholder="Numéro Fax" formControlName="num_fax" class="form-control" [ngClass]="{ 'is-invalid': submitted && m.num_fax.errors }" />
+                <div *ngIf="submitted && m.num_fax.errors" class="invalid-feedback">
+                  <div *ngIf="m.num_tel.errors.required">Le numéro de fax  est requis</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success btn-block">
+              S'inscrire</button>
           </div>
         </form>
       </div>
       <div class="app-login-box-footer">
-        &copy; Boooya 2017. All rights reserved.
+        &copy; Sweetness 2020
       </div>
     </div>
   </div>
