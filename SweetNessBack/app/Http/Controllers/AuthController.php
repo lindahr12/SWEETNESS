@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\User;
 
 class AuthController extends Controller
 {
@@ -31,6 +32,15 @@ class AuthController extends Controller
         }
 
         return $this->respondWithToken($token);
+    }
+      /**
+     * Get the authenticated User.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function signup(Request $request){
+        User::create($request->all());
+        return $this->login($request);
     }
 
     /**
@@ -81,4 +91,5 @@ class AuthController extends Controller
             'user' => auth()->user()->name
         ]);
     }
+
 }
