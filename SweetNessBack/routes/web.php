@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', 'CategorieController@add');
 
 Route::group(['middleware' => ['cors']], function () {
     
+    Auth::routes();
+
     Route::resource('/article','ArticleController');
         
     Route::get('/get-data','CategorieController@index');

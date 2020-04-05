@@ -16,8 +16,8 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('url');
-           // $table->integer('owner_id')->unsigned()->index()->nullable();
-           // $table->string('owner_type')->nullable();
+            $table->integer('owner_id')->unsigned()->index();
+            $table->string('owner_type');
             $table->timestamps();
         });
     }

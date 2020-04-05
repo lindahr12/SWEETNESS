@@ -11,7 +11,8 @@ class Article extends Model
     protected $fillable=[
         'title','description','quantite','prix_courrant','prix_ancient','image_id','user_id'
     ];
-    public function image(){
-        return $this->belongsTo(Image::class);
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'owner');
     }
 }
