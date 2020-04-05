@@ -13,17 +13,17 @@ class CategorieController extends Controller
         return response()->json($categories);;
     }
     public function add(Request $request){
-        
+
         $name=json_decode($request->name);
         $categorie = new Categories();
-         $categorie->nom = $request->name;
+        $categorie->nom = $request->name;
         $categorie->save();
-        return response()->json('done ');
-      
-    }
+      return response()->json('done ');
+
+       }
     public function destroy($id){
-        $categorie = Categories::find($id);
-        $categorie->destroy();
-        return response('done');
-    }
+       $categorie = Categories::find($id);
+       $categorie->destroy();
+      return response('done');
+   }
 }
