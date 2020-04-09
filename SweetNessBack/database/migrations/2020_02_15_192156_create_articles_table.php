@@ -25,9 +25,9 @@ class CreateArticlesTable extends Migration
             $table->double('prix_ht');
             $table->double('prix_ttc');
             $table->double('marge');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->double('reduction');
-            $table->bigInteger('image_id');
+            $table->bigInteger('marque_id');
 
             $table->timestamps();
         });

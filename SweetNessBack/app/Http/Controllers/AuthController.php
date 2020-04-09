@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SignupRequest;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function signup(Request $request){
+    public function signup(SignupRequest $request){
        $user = new User();
        $user->nom = $request->nom;
        $user->prenom = $request->prenom;

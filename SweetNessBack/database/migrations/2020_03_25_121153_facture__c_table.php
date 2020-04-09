@@ -17,6 +17,7 @@ class FactureCTable extends Migration
             $table->bigIncrements('id');
             $table->date('date');
             $table->double('totalTTC');
+            $table->bigInteger('commandes_id');
             $table->timestamps();
         });
     }
