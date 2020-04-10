@@ -14,12 +14,18 @@ class ArticleController extends Controller
     }
     public function store (Request $request){
         $article = new Article();
-        $article->titre = $request->input('titre');
-        $article->prix_courrant = $request->input('prix_courrant');
-        $article->prix_ancient = $request->input('prix_ancient');
-        $article->quantite = $request->input('quantite');
-        $article->description = $request->input('description');
-        $article->user_id = $request->input('user_id');
+        $article->nom = $request->nom;
+        $article->limite_stock_alert = $request->limite_stock_alert;
+        $article->total_stock = $request->total_stock;
+        $article->note = $request->note;
+        $article->description = $request->description;
+        $article->nbr_noted = $request->nbr_noted;
+        $article->tva = $request->tva;
+        $article->prix_ht = $request->prix_ht;
+        $article->prix_ttc = $request->prix_ttc;
+        $article->marge = $request->marge;
+        $article->reduction = $request->reduction;
+        $article->marque_id = $request->marque_id;
         if($request->hasfile('image')){
             $image= new Image();
             $file = $request->file('image');
@@ -30,7 +36,6 @@ class ArticleController extends Controller
             $image->save();
 
         }
-        $article->image_id = $image->id;
         $article->save();
         return response('article saved');
     }
@@ -41,12 +46,18 @@ class ArticleController extends Controller
     public function update(Request $request,$id){
         $article = Article::find($id);
 
-        $article->titre = $request->input('titre');
-        $article->prix_courrant = $request->input('prix_courrant');
-        $article->prix_ancient = $request->input('prix_ancient');
-        $article->quantite = $request->input('quantite');
-        $article->description = $request->input('description');
-        $article->user_id = $request->input('user_id');
+        $article->nom = $request->nom;
+        $article->limite_stock_alert = $request->limite_stock_alert;
+        $article->total_stock = $request->total_stock;
+        $article->note = $request->note;
+        $article->description = $request->description;
+        $article->nbr_noted = $request->nbr_noted;
+        $article->tva = $request->tva;
+        $article->prix_ht = $request->prix_ht;
+        $article->prix_ttc = $request->prix_ttc;
+        $article->marge = $request->marge;
+        $article->reduction = $request->reduction;
+        $article->marque_id = $request->marque_id;
         if($request->hasfile('image')){
             $image= new Image();
             $file = $request->file('image');
@@ -57,7 +68,6 @@ class ArticleController extends Controller
             $image->save();
 
         }
-        $article->image_id = $image->id;
         $article->save();
         return response('article Updated');
 
