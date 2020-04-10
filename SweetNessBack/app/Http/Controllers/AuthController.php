@@ -40,7 +40,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function signup(SignupRequest $request){
+    public function signup(Request $request){
        $user = new User();
        $user->nom = $request->nom;
        $user->prenom = $request->prenom;
@@ -48,6 +48,7 @@ class AuthController extends Controller
        $user->password = bcrypt($request->password);
        $user->num_tel = $request->num_tel;
        $user->num_fax = $request->num_fax;
+       //$user->societe_id = 0;
        $user->save();
         return $this->login($request);
     }

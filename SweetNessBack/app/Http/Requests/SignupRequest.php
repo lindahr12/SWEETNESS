@@ -29,7 +29,11 @@ class SignupRequest extends FormRequest
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'num_tel'=>'required|numeric',
-            'num_fax'=>'required|numeric'
+            'num_fax'=>'required|numeric',
+            'is_actif' => 'required',
+            'role_id'=> 'required',
+            'societe_id'=> 'required',
+
         ];
     }
     /**
