@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -12,11 +13,27 @@ export class LoginComponent implements OnInit {
   loginForm: any;
   submitted = false;
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Methods': 'PUT, GET, POST, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+      'Content-Type':'application/json',
+      'Accept':'application/json'
+    })
+  };
+  private data: Object;
+  private token: any;
+  constructor(private formbuilder: FormBuilder, private http: HttpClient,private router: Router) {
 
-  constructor(private formbuilder: FormBuilder, private http: HttpClient) {
   }
 
   ngOnInit() {
+    this.http.get('http://127.0.0.1:8000/api/get-data').subscribe(data => {
+
+      console.log("Data is coming.",this.data = data);
+
+    }, error => console.error(error));
     this.loginForm = this.formbuilder.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -46,12 +63,21 @@ export class LoginComponent implements OnInit {
     Params = Params.append('firstParameter', this.loginForm.value.password);
 
 
-    return this.http.post('http://127.0.01:8000/user'
+    return this.http.post('http://127.0.0.1:8000/api/auth/login'
       , {
         params: {params: Params}
       }).subscribe((res: Response) => {
-      alert(res);
-      //this.registerForm.reset();
-    });
+       // console.log(res.token);
+
+        this.token = res['token'];
+        localStorage.removeItem('token');
+        localStorage.setItem('token', this.token);
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        localStorage.removeItem('token');
+
+      }
+    );
   }
 }

@@ -10,7 +10,7 @@ import { error } from 'util';
 })
 export class SignupComponent implements OnInit {
    httpOptions = {
-    headers: new HttpHeaders({ 
+    headers: new HttpHeaders({
       'Access-Control-Allow-Origin':'*',
       'Access-Control-Allow-Methods': 'PUT, GET, POST, DELETE, OPTIONS',
       'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept, Authorization",
@@ -76,7 +76,7 @@ data;
     },
     error=>console.log(error)
 
-    
+
     );
   }
 }
