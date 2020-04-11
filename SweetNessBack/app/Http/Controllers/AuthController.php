@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SignupRequest;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
@@ -47,6 +48,7 @@ class AuthController extends Controller
        $user->password = bcrypt($request->password);
        $user->num_tel = $request->num_tel;
        $user->num_fax = $request->num_fax;
+       //$user->societe_id = 0;
        $user->save();
         return $this->login($request);
     }

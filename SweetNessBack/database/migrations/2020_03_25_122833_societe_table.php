@@ -24,7 +24,6 @@ class SocieteTable extends Migration
             $table->string('logo');
             $table->string('statue');
             $table->string('matriculation_fiscal');
-            $table->bigInteger('user_id');
 
 
             $table->timestamps();
