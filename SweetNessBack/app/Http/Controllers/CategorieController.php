@@ -16,18 +16,21 @@ class CategorieController extends Controller
         //dd($request->all());
         /** Save categorie */
         $categorie = new Categories();
-        $categorie->nom = $request->name;
+        $categorie->nom = $request->nom;
         $categorie->parent_id = $request->parent_id;
         $categorie->save();
         /** Save image */
-        $image = new Image();
+
         if($request->hasFile('image')){
-            $file = $request->file('image');
-            $exten = $file->getClientOriginalExtension();
-            $name = time().'.'.$exten;
-            $file->move('image_posts',$name);
+            $image = new Image();
+            $file      = $request->file('image');
+            $filename  = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $picture   = date('His').'-'.$filename;
+            $file->move(public_path('img'), $picture);
+            $image->url = $picture;
             $categorie->images()->save($image);
-            $image->url = $name;
+
             $image->save();
         }
             
