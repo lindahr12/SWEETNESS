@@ -27,7 +27,7 @@ class CategorieController extends Controller
             $filename  = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension();
             $picture   = date('His').'-'.$filename;
-            $file->move(public_path('img'), $picture);
+            $file->move(public_path('img_categorie'), $picture);
             $image->url = $picture;
             $categorie->images()->save($image);
 
