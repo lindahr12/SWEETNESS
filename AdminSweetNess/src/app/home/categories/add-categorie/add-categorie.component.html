@@ -1,1 +1,35 @@
-<p>add-categorie works!</p>
+<!-- START PAGE CONTAINER -->
+<div class="container">
+  <!-- BASIC EXAMPLE -->
+  <div class="block">
+    <div class="app-heading app-heading-small">
+      <div class="title"><h2>Ajouter une Categorie</h2>
+        <p>categorie</p>
+      </div>
+    </div>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="form-group">
+        <label class="col-md-2 control-label">Nom</label>
+        <div class="col-md-5">
+          <input type="text" class="mask_date form-control" name="nom" >
+          <span class="help-block">Nom de la categorie au moins 4 caractére</span>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+
+        <label class="col-md-2 control-label">Image</label>
+        <div class="col-md-10">
+          <input type="file" class="mask_phone form-control" #fileupload [(ngModel)]="myFile" name="myFile" (change)="fileEvent($event)">
+          <span class="help-block">Image de la categorie</span>
+        </div>
+      </div>
+      <div class="form-group margin-top-20"><button class="btn btn-default" type="submit">Submit & Validate</button></div>
+
+
+    </form>
+
+
+  </div>
+</div>
