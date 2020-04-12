@@ -23,9 +23,11 @@ export class AddCategorieComponent implements OnInit {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
-    myFormData.append('url', this.filedata);
+    console.log(f.value.nom);
     myFormData.append('name',f.value.nom);
     myFormData.append('parent_id','14522');
+    myFormData.append('url', this.filedata);
+
     this.http.post('http://127.0.0.1:8000/api/post-data', myFormData, {
       headers: headers
     }).subscribe(data => {
