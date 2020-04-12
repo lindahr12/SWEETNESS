@@ -58,13 +58,17 @@ class ArticleController extends Controller
         $article->marge = $request->marge;
         $article->reduction = $request->reduction;
         $article->marque_id = $request->marque_id;
+        /** Save image */
+        $image= new Image();
+        //foreach 
         if($request->hasfile('image')){
-            $image= new Image();
-            $file = $request->file('image');
-            $exten = $file->getClientOriginalExtension();
-            $name = time().'.'.$exten;
-            $file->move('images_articles',$name);
-            $image->url = $name;
+            $file      = $request->file('image');
+            $filename  = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $picture   = date('His').'-'.$filename;
+            $file->move(public_path('img_categorie'), $picture);
+            $image->url = $picture;
+            $article->images()->save($image);
             $image->save();
 
         }

@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 class CategorieController extends Controller
 {
     public function index(){
-        $categories = Categories::all();
+        $categories = Categories::orderBy('id', 'DESC')
+        ->with('images')
+        ->get();
         return response()->json($categories);;
     }
     public function add(Request $request){
