@@ -58,23 +58,26 @@ class ArticleController extends Controller
         $article->marge = $request->marge;
         $article->reduction = $request->reduction;
         $article->marque_id = $request->marque_id;
+        $article->save();
         /** Save image */
-        $image= new Image();
-        //foreach 
-        if($request->hasfile('image')){
-            $file      = $request->file('image');
-            $filename  = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
+        if($request->hasFile('image')){
+            foreach($request->file('image') as $img)
+            {
+
+            $filename  = $img->getClientOriginalName();
             $picture   = date('His').'-'.$filename;
-            $file->move(public_path('img_categorie'), $picture);
-            $image->url = $picture;
-            $article->images()->save($image);
-            $image->save();
+            $img->move(public_path('img_article'), $picture);
+            $data[] =$filename;
+
+            }
 
         }
-        $article->save();
-        return response('article Updated');
-
+        
+        $image = new Image();
+        $image->url = json_encode($data);
+        $article->images()->save($image);
+        $image->save();
+        return response()->json('done');
 
     }
     public function destroy($id){
