@@ -4,142 +4,41 @@
   <div class="block block-condensed">
     <div class="app-heading">
       <div class="title">
-        <h2>Latest Transactions</h2>
-        <p>Quick information</p>
-      </div>
-      <div class="heading-elements">
-        <button class="btn btn-default btn-icon-fixed">
-          <span class="icon-file-add"></span> All Transactions
-        </button>
+        <h2>Les categories </h2>
+        <p>Information rapide</p>
       </div>
     </div>
     <div class="block-content">
       <div class="table-responsive">
         <table class="table table-clean-paddings margin-bottom-0">
           <thead>
-          <tr><th>Customer</th>
-            <th width="150">Order</th>
-            <th width="150">Status</th>
+          <tr><th>Categorie</th>
+            <th width="150">mis à jour à</th>
+            <th width="20">Actions</th>
             <th width="55"></th>
           </tr>
           </thead>
           <tbody>
-          <tr>
+          <tr *ngFor="let i of data">
             <td>
-              <div class="contact contact-rounded contact-bordered contact-lg">
-                <img src="asstes\assets\images\users\user_2.jpg">
-                <div class="contact-container"><a href="#">John Doe</a>
-                  <span>on July 13, 2017</span>
+              <div class="contact contact-rounded contact-bordered contact-lg" *ngFor="let k of i.images">
+                  <img src='{{getSantizeUrl(k.url)}}' >
+                <div class="contact-container"><a href="#">{{i.nom}}</a>
+                  <span>{{i.created_at| date}} </span>
                 </div>
               </div>
             </td>
-            <td>SPW-955-21</td>
-            <td><span class="label label-success label-bordered">Confirmed</span></td>
-            <td><div class="dropdown">
-              <button class="btn btn-default btn-icon btn-clean dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <td>{{i.created_at|date}}</td>
+
+            <td><button type="submit" (click)="Update()" class="btn btn-default btn-icon btn-clean dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="icon-cog"></span>
-              </button>
-              <ul class="dropdown-menu dropdown-left">
-                <li><a href="#"><span class="icon-question-circle text-info"></span> More information</a></li>
-                <li><a href="#"><span class="icon-arrow-up-circle text-warning"></span> Promote to top</a></li>
-                <li class="divider"></li>
-                <li><a href="#"><span class="icon-cross-circle text-danger"></span> Delete transactions</a></li>
-              </ul>
-            </div>
+            </button></td>
+            <td>
+
+
+              <button type="submit" (click)="delete(i.id)" class="btn btn-default btn-icon"><span class="icon-cross-circle"></span></button>
+
             </td>
           </tr>
-          <tr>
-            <td>
-              <div class="contact contact-rounded contact-bordered contact-lg">
-                <img src="assets\images\users\user_3.jpg"><div class="contact-container"><a href="#">Juan Obrien</a>
-                <span>on July 12, 2017</span>
-              </div>
-              </div>
-            </td>
-            <td>SPW-955-20</td>
-            <td><span class="label label-warning label-bordered">Waiting payment</span></td>
-            <td><div class="dropdown">
-              <button class="btn btn-default btn-icon btn-clean dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="icon-cog"></span>
-              </button>
-              <ul class="dropdown-menu dropdown-left">
-                <li><a href="#"><span class="icon-question-circle text-info"></span> More information</a></li>
-                <li><a href="#"><span class="icon-arrow-up-circle text-warning"></span> Promote to top</a></li>
-                <li class="divider"></li>
-                <li><a href="#"><span class="icon-cross-circle text-danger"></span> Delete transactions</a></li>
-              </ul>
-            </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="contact contact-rounded contact-bordered contact-lg">
-                <img src="assets\images\users\user_4.jpg">
-                <div class="contact-container"><a href="#">Erin Stewart</a>
-                  <span>on July 12, 2017</span>
-                </div>
-              </div>
-            </td>
-            <td>SPW-955-18</td>
-            <td><span class="label label-success label-bordered">Confirmed</span></td>
-            <td>
-              <div class="dropdown">
-                <button class="btn btn-default btn-icon btn-clean dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="icon-cog"></span>
-                </button>
-                <ul class="dropdown-menu dropdown-left">
-                  <li><a href="#"><span class="icon-question-circle text-info"></span> More information</a></li>
-                  <li><a href="#"><span class="icon-arrow-up-circle text-warning"></span> Promote to top</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">
-                    <span class="icon-cross-circle text-danger"></span> Delete transactions</a>
-                  </li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="contact contact-rounded contact-bordered contact-lg">
-                <img src="assets\images\users\user_5.jpg"><div class="contact-container">
-                <a href="#">Jeff Kuhn</a>
-                <span>on July 11, 2017</span>
-              </div>
-              </div>
-            </td>
-            <td>SPW-955-17</td>
-            <td><span class="label label-danger label-bordered">Payment expired</span></td>
-            <td>
-              <div class="dropdown">
-                <button class="btn btn-default btn-icon btn-clean dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="icon-cog"></span>
-                </button>
-                <ul class="dropdown-menu dropdown-left">
-                  <li>
-                    <a href="#"><span class="icon-question-circle text-info"></span> More information</a></li>
-                  <li><a href="#"><span class="icon-arrow-up-circle text-warning"></span> Promote to top</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#"><span class="icon-cross-circle text-danger"></span> Delete transactions</a></li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="contact contact-rounded contact-bordered contact-lg">
-                <img src="assets\assets\images\users\user_6.jpg">
-                <div class="contact-container">
-                  <a href="#">Jared Stevens</a>
-                  <span>on July 11, 2017</span>
-                </div>
-              </div>
-            </td>
-            <td>SPW-955-14</td>
-            <td>
-              <span class="label label-primary label-bordered">Delivered</span>
-            </td>
-            <td>
-              <div class="dropdown">
-                <button class="btn btn-default btn-icon btn-clean dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="icon-cog"></span></button><ul class="dropdown-menu dropdown-left"><li><a href="#"><span class="icon-question-circle text-info"></span> More information</a></li><li><a href="#"><span class="icon-arrow-up-circle text-warning"></span> Promote to top</a></li><li class="divider"></li><li><a href="#"><span class="icon-cross-circle text-danger"></span> Delete transactions</a></li></ul></div></td></tr></tbody></table></div></div></div><!-- END LATEST TRANSACTIONS --></div>
+          </tbody></table></div></div></div><!-- END LATEST TRANSACTIONS --></div>
 </div>

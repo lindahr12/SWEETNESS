@@ -35,14 +35,14 @@ class CategorieController extends Controller
 
             $image->save();
         }
-            
-        
+
+
         return response()->json('done');
 
-      
+
     }
     public function destroy($id){
-       $categorie = Categories::find($id);
+       $categorie = Categories::findOrFail($id);
        $categorie->destroy();
       return response('done');
    }
