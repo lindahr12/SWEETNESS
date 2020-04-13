@@ -88,7 +88,7 @@ class MarqueController extends Controller
     public function destroy($id)
     {
         $Marque = Marque::find($id);
-        $Marque->destroy();
+        $Marque->delete();
        return response('done');
     }
 }

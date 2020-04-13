@@ -43,7 +43,7 @@ class CategorieController extends Controller
     }
     public function destroy($id){
        $categorie = Categories::findOrFail($id);
-       $categorie->destroy();
+       $categorie->delete();
       return response('done');
    }
 }
