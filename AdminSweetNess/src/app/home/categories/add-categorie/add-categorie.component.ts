@@ -13,6 +13,9 @@ export class AddCategorieComponent implements OnInit {
   filedata:any;
   myFile: any;
   private data: Object;
+  parent_id: any;
+  private categorie: Object;
+  private i: any;
   fileEvent(e){
     this.filedata = e.target.files[0];
   }
@@ -26,6 +29,8 @@ export class AddCategorieComponent implements OnInit {
     }, error => console.error(error));
 
   }
+
+
   onSubmit(f: NgForm) {
 
     var myFormData = new FormData();
@@ -33,8 +38,11 @@ export class AddCategorieComponent implements OnInit {
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
     console.log(f.value.nom);
+    console.log(f.value.parent_id);
     myFormData.append('nom',f.value.nom);
-    myFormData.append('parent_id','14522');
+    if(f.value.parent_id) {
+      myFormData.append('parent_id', f.value.parent_id);
+    }
     myFormData.append('image', this.filedata);
     const endpoint = '/assets';
 

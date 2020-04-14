@@ -8,6 +8,7 @@ Route::resource('/marque','MarqueController');
 Route::get('/get-data','CategorieController@index');
 Route::post('/post-data','CategorieController@add');
 Route::delete('/delete-categorie/{id}','CategorieController@destroy');
+Route::get('/search/{id}','CategorieController@search');
 /** Auth Route */
 Route::group([
 
