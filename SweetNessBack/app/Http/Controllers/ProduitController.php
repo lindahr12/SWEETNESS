@@ -67,7 +67,7 @@ class ProduitController extends Controller
             $filename  = $img->getClientOriginalName();
             $picture   = date('His').'-'.$filename;
             $img->move(public_path('img_article'), $picture);
-            $data[] =$picture;
+            $data[] =$filename;
 
             }
 

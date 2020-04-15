@@ -39,7 +39,7 @@ export class ShowAllComponent implements OnInit {
   }
   public getall_categorie()
   {
-    this.http.get('http://127.0.0.1:8000/api/get-data').subscribe(data => {
+    this.http.get('http://127.0.0.1:8000/api/categorie').subscribe(data => {
 
       console.log("Data is coming.",this.data = data);
 
