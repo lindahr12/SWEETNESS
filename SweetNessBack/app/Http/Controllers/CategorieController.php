@@ -99,4 +99,19 @@ class CategorieController extends Controller
        $categorie->delete();
       return response('done');
    }
+   public function search($id)
+   {
+         $categorie = Categories::with('images')->findOrFail($id);
+        //  $categorie->get();
+        return response()->json($categorie);
+
+   }
+    public function search_nom($q)
+      {     ///search with nom of categorie
+            $categorie = Categories::with('images')-> where( 'nom','LIKE',$q )->get();
+           //  $categorie->get();
+           return response()->json($categorie);
+
+      }
+
 }

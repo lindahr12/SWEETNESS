@@ -21,19 +21,28 @@
 
         <label class="col-md-2 control-label">Image</label>
         <div class="col-md-10">
+          <div class="upload-btn-wrapper">
+          <button class="btn btn-default">Upload a file</button>
           <input type="file" class="mask_phone form-control" #fileupload [(ngModel)]="myFile" name="myFile" (change)="fileEvent($event)">
           <span class="help-block">Image de la categorie</span>
         </div>
+        </div>
       </div>
-      <div class="col-md-6">
-        <label>Default</label>
-        <select class="bs-select" data-live-search="true">
-          <option>Hot Dog, Fries and a Soda</option>
-          <option>Burger, Shake and a Smile</option>
-          <option>Sugar, Spice and all things nice</option>
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1" class="col-md-2 control-label">Categorie disponible</label>
+        <div class="col-md-10">
+        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="parent_id"ngValue="parent_id"  name="parent_id" >
+          <option></option>
+          <option *ngFor="let i of data" ngValue="{{i.id}}">{{i.nom}} </option>
+
         </select>
-        <span class="help-block">Default search example</span>
+        </div>
       </div>
+
+
+
+
       <div class="form-group margin-top-20"><button class="btn btn-default" type="submit">Submit & Validate</button></div>
 
 
@@ -43,3 +52,26 @@
   </div>
 </div>
 
+<!-- IMPORTANT SCRIPTS -->
+<script type="text/javascript" src="assets\js\vendor\jquery\jquery.min.js"></script>
+<script type="text/javascript" src="assets\js\vendor\jquery\jquery-migrate.min.js">
+</script>
+<script type="text/javascript" src="assets\js\vendor\jquery\jquery-ui.min.js"></script>
+<script type="text/javascript" src="assets\js\vendor\bootstrap\bootstrap.min.js"></script>
+<script type="text/javascript" src="assets\js\vendor\moment\moment.min.js"></script>
+<script type="text/javascript" src="assets\js\vendor\customscrollbar\jquery.mCustomScrollbar.min.js"></script>
+<!-- END IMPORTANT SCRIPTS -->
+<!-- THIS PAGE SCRIPTS -->
+<script type="text/javascript" src="assets\js\vendor\nestable\jquery.nestable.js"></script>
+<script type="text/javascript" src="assets\js\vendor\bootstrap-tagsinput\bootstrap-tagsinput.js"></script>
+<script type="text/javascript" src="assets\js\vendor\bootstrap-colorpicker\bootstrap-colorpicker.min.js"></script>
+<!-- END THIS PAGE SCRIPTS -->
+<!-- APP SCRIPTS -->
+<script type="text/javascript" src="assets\js\app.js"></script>
+<script type="text/javascript" src="assets\js\app_plugins.js"></script>
+<script type="text/javascript" src="assets\js\app_demo.js"></script>
+<!-- END APP SCRIPTS -->
+<script type="text/javascript">$(document).ready(function(){
+    $("#nestable").nestable({group: 1});
+    $("#nestable2").nestable({group: 1});
+});</script>

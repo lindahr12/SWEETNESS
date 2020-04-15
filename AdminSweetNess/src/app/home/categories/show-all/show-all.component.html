@@ -30,8 +30,8 @@
             </td>
             <td>{{i.created_at|date}}</td>
 
-            <td><button type="submit" (click)="Update()" class="btn btn-default btn-icon btn-clean dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="icon-cog"></span>
+            <td><button type="submit" (click)="recuperer(i.id,i.nom,i.images.url,i.parent_id)" class="btn btn-default btn-icon btn-clean dropdown-toggle"  data-toggle="modal" data-target="#id" aria-haspopup="true" aria-expanded="false">
+              <span  class="fa fa-pencil"></span>
             </button></td>
             <td>
 
@@ -41,4 +41,65 @@
             </td>
           </tr>
           </tbody></table></div></div></div><!-- END LATEST TRANSACTIONS --></div>
+</div>
+
+
+<!--Modal-->
+<div class="modal fade" id="id" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="title" id="defaultModalLabel">Update Teacher</h4>
+      </div>
+      <div class="modal-body">
+
+
+
+        <div class="col-lg-12 col-md-6 col-sm-6">
+
+
+          <div class="body">
+            <form [formGroup]="categorieedit"  (ngSubmit)="edit()" >
+
+              <div class="form-group col-sm-8">
+                <label>Nom</label>
+                <input type="text"  formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && E.nom.errors }"  />
+                <div *ngIf="submitted && E.nom.errors" class="invalid-feedback">
+                  <div *ngIf="E.nom.errors.required">
+                    Le nom est obligatoire</div>
+                </div>
+              </div>
+              <div class="form-group col-sm-8">
+                <label>Image</label>
+                <input type="file"  formControlName="image" class="form-control" [ngClass]="{ 'is-invalid': submitted && E.image.errors }"  />
+                <div *ngIf="submitted && E.image.errors" class="invalid-feedback">
+                  <div *ngIf="E.image.errors.required">First Name is required</div>
+                </div>
+              </div>
+              <div class="form-group col-sm-8">
+                <label>Categorie</label>
+                <select class="form-control" formControlName="parent_id" id="exampleFormControlSelect1" [(ngModel)]="parent_id"ngValue="parent_id"  name="parent_id" [ngClass]="{ 'is-invalid': submitted && E.parent_id.errors }" >
+                  <option></option>
+                  <option *ngFor="let k of data" ngValue="{{k.id}}">{{k.nom}}</option>
+
+                </select>
+                <div *ngIf="submitted && E.parent_id.errors" class="invalid-feedback">
+                  <div *ngIf="E.parent_id.errors.required"></div>
+                </div>
+              </div>
+
+              <div class="form-group col-sm">
+                <button  type="submit" class="btn btn-primary"  data-dismiss="modal"  >Update</button>
+                <button type="button" class="btn btn-simple" data-dismiss="modal">CLOSE</button>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
 </div>
