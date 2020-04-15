@@ -20,7 +20,7 @@ class CategorieController extends Controller
         $categorie = new Categories();
         $categorie->nom = $request->nom;
         $categorie->parent_id = $request->parent_id;
-        $categorie->produits_id = 1;//$request->produits_id;
+        $categorie->produits_id = $request->produits_id;
 
         $categorie->save();
         /** Save image */

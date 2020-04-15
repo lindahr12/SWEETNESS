@@ -49,7 +49,7 @@ export class ShowAllComponent implements OnInit {
   public getSantizeUrl(url : string): SafeHtml{
      //this.sanitizer.bypassSecurityTrustUrl("C:/wamp64/www/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url);
     //return this.domSanitizer.sanitizer(SecurityContext.HTML,this.domSanitizer.bypassSecurityTrustHtml("C:/wamp64/www/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url));
-      return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://localhost/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url));
+      return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_categorie/"+url));
     }
  _id: any;
   private browserRefresh: boolean;
