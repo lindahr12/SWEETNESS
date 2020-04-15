@@ -1,14 +1,15 @@
 <?php
 /** Article Route */
-Route::resource('/article','ArticleController');
+Route::resource('/article','ProduitController');
 
 /** Marque Route */
 Route::resource('/marque','MarqueController');
+
 /** Categorie Route  */
-Route::get('/get-data','CategorieController@index');
-Route::post('/post-data','CategorieController@add');
-Route::delete('/delete-categorie/{id}','CategorieController@destroy');
-/** Auth Route */
+Route::resource('/categorie','CategorieController');
+
+/** Auth Route  */
+
 Route::group([
 
     'middleware' => 'api',

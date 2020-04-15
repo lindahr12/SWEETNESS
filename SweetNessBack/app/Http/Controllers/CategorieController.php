@@ -12,14 +12,16 @@ class CategorieController extends Controller
         $categories = Categories::orderBy('id', 'DESC')
         ->with('images')
         ->get();
-        return response()->json($categories);;
+        return response()->json($categories);
     }
-    public function add(Request $request){
+    public function store(Request $request){
         //dd($request->all());
         /** Save categorie */
         $categorie = new Categories();
         $categorie->nom = $request->nom;
         $categorie->parent_id = $request->parent_id;
+        $categorie->produits_id = $request->produits_id;
+
         $categorie->save();
         /** Save image */
 
@@ -37,10 +39,61 @@ class CategorieController extends Controller
         }
 
 
-        return response()->json('done');
+        return response()->json('categorie saved');
 
 
     }
+
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $categorie = Categories::find($id)
+        ->with('images')->get();
+        return response()->json($categorie);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {   
+        //return response($request);
+        $categorie = Categories::find($id);
+        $categorie->nom = $request->nom;
+        $categorie->parent_id = $request->parent_id;
+        $categorie->produits_id = $request->produits_id;
+
+        $categorie->save();
+        /** Save image */
+
+        if($request->hasFile('image')){
+            $image = Image::where('owner_id',$id)->get();
+            $file      = $request->file('image');
+            $filename  = $file->getClientOriginalName();
+            $picture   = date('His').'-'.$filename;
+            $file->move(public_path('img_categorie'), $picture);
+            $image->url = $picture;        
+            $image->save();
+        }
+        
+        
+        return response()->json('Categorie updated');
+        
+        
+        
+    }
+
+
+
     public function destroy($id){
        $categorie = Categories::findOrFail($id);
        $categorie->delete();

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArticlesTable extends Migration
+class CreateproduitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('produits', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom');
             $table->string('description');
@@ -27,7 +27,6 @@ class CreateArticlesTable extends Migration
             $table->double('marge');
             $table->boolean('is_active')->default(true);
             $table->double('reduction');
-            $table->bigInteger('marque_id');
 
             $table->timestamps();
         });

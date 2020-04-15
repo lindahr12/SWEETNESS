@@ -23,7 +23,7 @@ class CreateLotTable extends Migration
             $table->boolean('is_active')->default(true);
             $table->string('note');
             $table->integer('priorite_de_vente');
-            $table->bigInteger('articles_id');
+            $table->bigInteger('produits_id');
             $table->timestamps();
         });
     }

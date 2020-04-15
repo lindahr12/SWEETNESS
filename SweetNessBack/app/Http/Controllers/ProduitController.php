@@ -6,14 +6,14 @@ use App\Article;
 use App\Image;
 use Illuminate\Http\Request;
 
-class ArticleController extends Controller
+class ProduitController extends Controller
 {
     public function index(){
         $articles = Article::orderBy('id', 'DESC');
         return response($articles);
     }
     public function store (Request $request){
-        $article = new Article();
+        $article = new Produit();
         $article->nom = $request->nom;
         $article->limite_stock_alert = $request->limite_stock_alert;
         $article->total_stock = $request->total_stock;
@@ -40,11 +40,11 @@ class ArticleController extends Controller
         return response('article saved');
     }
     public function edit($id){
-        $article = Article::find($id);
+        $article = Produit::find($id);
         return response($article);
     }
     public function update(Request $request,$id){
-        $article = Article::find($id);
+        $article = Produit::find($id);
 
         $article->nom = $request->nom;
         $article->limite_stock_alert = $request->limite_stock_alert;
@@ -67,7 +67,7 @@ class ArticleController extends Controller
             $filename  = $img->getClientOriginalName();
             $picture   = date('His').'-'.$filename;
             $img->move(public_path('img_article'), $picture);
-            $data[] =$filename;
+            $data[] =$picture;
 
             }
 
@@ -81,7 +81,7 @@ class ArticleController extends Controller
 
     }
     public function destroy($id){
-        $article = Article::find($id);
+        $article = Produit::find($id);
         $article->delete();
         return response('article deleted');
 

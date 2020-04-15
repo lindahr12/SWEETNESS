@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class MarqueTable extends Migration
+class CreateProprieteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class MarqueTable extends Migration
      */
     public function up()
     {
-        Schema::create('marque', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nom');
-            $table->string('ref');
-            $table->bigInteger('produits_id');
+        Schema::create('propriete', function (Blueprint $table) {
+            $table->id();
+            $table->string('lib');
+            $table->string('unite');
+            $table->bigInteger('id_categorie');
 
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class MarqueTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marque');
+        Schema::dropIfExists('propriete');
     }
 }

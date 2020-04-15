@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class Produit extends Model
 {
     
-    protected $table='articles';
+    protected $table='produits';
     protected $fillable=[
         'title','description','quantite','prix_courrant','prix_ancient','image_id','user_id'
     ];
