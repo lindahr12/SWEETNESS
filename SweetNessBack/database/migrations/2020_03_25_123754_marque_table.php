@@ -17,7 +17,7 @@ class MarqueTable extends Migration
             $table->bigIncrements('id');
             $table->string('nom');
             $table->string('ref');
-            $table->bigInteger('produits_id');
+            $table->bigInteger('produits_id')->nullable();
 
             $table->timestamps();
         });
