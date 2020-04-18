@@ -13,7 +13,7 @@ import {MainComponent} from "./home/dashboard/main/main.component";
 const routes: Routes = [
 
   {
-    path:'home',
+    path:'',
     component: HomeComponent, children :[
        {path: 'categories',
          loadChildren: './home/categories/categories.module#CategoriesModule'
@@ -22,6 +22,17 @@ const routes: Routes = [
         path:'users',
         loadChildren: './home/users/users.module#UsersModule'
       },
+      {
+        path:'dashboard',
+        loadChildren: './home/dashboard/dashboard.module#DashboardModule'
+
+      },
+      {
+        path:'product',
+        loadChildren: './home/product/product.module#ProductModule'
+
+      }
+
 
     ]
 

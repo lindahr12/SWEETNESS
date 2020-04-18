@@ -44,6 +44,8 @@ export class AddCategorieComponent implements OnInit {
       myFormData.append('parent_id', f.value.parent_id);
     }
     myFormData.append('image', this.filedata);
+    myFormData.append('produits_id', "12");
+
     const endpoint = '/assets';
 
     this.http.post('http://127.0.0.1:8000/api/categorie', myFormData, {
