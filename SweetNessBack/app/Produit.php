@@ -15,4 +15,8 @@ class Produit extends Model
     {
         return $this->morphMany(Image::class, 'owner');
     }
+
+    public function lot(){
+        return $this->belongsTo(lot::class);
+    }
 }
