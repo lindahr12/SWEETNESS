@@ -9,7 +9,7 @@ class Produit extends Model
     
     protected $table='produits';
     protected $fillable=[
-        'title','description','quantite','prix_courrant','prix_ancient','image_id','user_id'
+        'title','description','limite_stock_alert','total_stock','note','nbr_noted','tva','prix_ht','prix_ttc','marge','is_active','reduction'
     ];
     public function images()
     {

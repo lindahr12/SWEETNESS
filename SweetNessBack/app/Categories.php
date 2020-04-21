@@ -8,7 +8,7 @@ class Categories extends Model
 {
     protected $table='categories';
     protected $fillable=[
-        'nom','parent_id'
+        'nom','parent_id','produits_id'
     ];
     public function images()
     {   
@@ -18,4 +18,5 @@ class Categories extends Model
     {
       return $this->hasMany('App\Categories', 'parent_id');
     }
+  
 }

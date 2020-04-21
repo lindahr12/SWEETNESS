@@ -17,7 +17,7 @@ class CreateValuePropTable extends Migration
             $table->id();
             $table->string('value');
             $table->bigInteger('id_propriete')->nullable();
-            $table->bigInteger('produits_id')->nullable();
+            $table->string('produits_id')->nullable();
 
             $table->timestamps();
         });
