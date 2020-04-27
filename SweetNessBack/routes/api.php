@@ -5,6 +5,9 @@ Route::resource('/article','ProduitController');
 /** Marque Route */
 Route::resource('/marque','MarqueController');
 
+Route::resource('/product','ProduitController');
+
+
 /** Categorie Route  */
 Route::resource('/categorie','CategorieController');
 Route::get('/search/{id}','CategorieController@search');

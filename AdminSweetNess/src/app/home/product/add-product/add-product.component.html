@@ -30,7 +30,7 @@
         </div>
         <label class="col-md-2 control-label">Réduction</label>
         <div class="col-md-4">
-          <input type="text" class="mask_date form-control" name="description" ngModel>
+          <input type="text" class="mask_date form-control" name="reduction" ngModel>
           <span class="help-block"></span>
         </div>
 
@@ -38,7 +38,7 @@
       <div class="form-group">
         <label class="col-md-2 control-label">Prix TTC</label>
         <div class="col-md-4">
-          <input type="text" class="mask_date form-control" name="nom" ngModel>
+          <input type="text" class="mask_date form-control" name="prix_ttc" ngModel>
 
         </div>
         <label class="col-md-2 control-label">image</label>
@@ -50,7 +50,6 @@
         </div>
 
       </div>
-
       <div class="form-group">
         <label class="col-md-2 control-label">Lot :</label>
         <div class="col-md-10">
@@ -85,33 +84,63 @@
               <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                 <div class="panel-body">
 
-                  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
                     <div class="form-group">
                       <label class="col-md-2 control-label">Nom</label>
-                      <div class="col-md-5">
-                        <input type="text" class="mask_date form-control" name="nom" ngModel>
+                      <div class="col-md-4">
+                        <input type="text" class="mask_date form-control" name="nom_lot" ngModel>
                       </div>
-
-                    </div>
-                    <div class="form-group">
-                      <label class="col-md-2 control-label">Description</label>
-                      <div class="col-md-5">
-                        <input type="text" class="mask_date form-control" name="description" ngModel>
+                      <label class="col-md-2 control-label">description</label>
+                      <div class="col-md-4">
+                        <input type="text" class="mask_date form-control" name="description_lot" ngModel>
                         <span class="help-block"></span>
                       </div>
 
                     </div>
-                  </form>
+                    <div class="form-group">
+                      <label class="col-md-2 control-label">Prix achat</label>
+                      <div class="col-md-4">
+                        <input type="text" class="mask_date form-control" name="prix_achat" ngModel>
+                      </div>
+                      <label class="col-md-2 control-label">Prix vente</label>
+                      <div class="col-md-4">
+                        <input type="text" class="mask_date form-control" name="prix_vente" ngModel>
+                        <span class="help-block"></span>
+                      </div>
+
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-2 control-label">Date Achat</label>
+                      <div class="col-md-4">
+                        <input type="date" class="mask_date form-control" name="nom" ngModel>
+                      </div>
+                      <label class="col-md-2 control-label">Date Expiration</label>
+                      <div class="col-md-4">
+                        <input type="date" class="mask_date form-control" name="description" ngModel>
+                        <span class="help-block"></span>
+                      </div>
+
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-2 control-label">Note</label>
+                      <div class="col-md-4">
+                        <input type="text" class="mask_date form-control" name="note" ngModel>
+                      </div>
+                      <label class="col-md-2 control-label">Preorite de Vente</label>
+                      <div class="col-md-4">
+                        <input type="text" class="mask_date form-control" name="preorite_de_vente" ngModel>
+                        <span class="help-block"></span>
+                      </div>
+
+                    </div>
+
+
+
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-
         </div>
-
-
       <div class="form-group">
         <label for="exampleFormControlSelect1" class="col-md-2 control-label">Marque</label>
         <div class="col-md-10">
@@ -151,14 +180,14 @@
                     <div class="form-group">
                       <label class="col-md-2 control-label">Nom</label>
                       <div class="col-md-5">
-                        <input type="text" class="mask_date form-control" name="nom" ngModel>
+                        <input type="text" class="mask_date form-control" name="nom_marque" ngModel>
                       </div>
 
                     </div>
                     <div class="form-group">
-                      <label class="col-md-2 control-label">Description</label>
+                      <label class="col-md-2 control-label">Réference </label>
                       <div class="col-md-5">
-                        <input type="text" class="mask_date form-control" name="description" ngModel>
+                        <input type="text" class="mask_date form-control" name="reference" ngModel>
                         <span class="help-block"></span>
                       </div>
 
