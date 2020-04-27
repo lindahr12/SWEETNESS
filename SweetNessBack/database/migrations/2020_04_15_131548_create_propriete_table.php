@@ -17,7 +17,7 @@ class CreateProprieteTable extends Migration
             $table->id();
             $table->string('lib');
             $table->string('unite');
-            $table->bigInteger('id_categorie')->nullable();
+            $table->string('id_categorie')->nullable();
 
             $table->timestamps();
         });

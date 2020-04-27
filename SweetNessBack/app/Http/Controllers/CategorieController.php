@@ -6,6 +6,8 @@ use App\Categories;
 use App\Image;
 use Illuminate\Http\Request;
 
+use function GuzzleHttp\json_decode;
+
 class CategorieController extends Controller
 {
     public function index(){
@@ -15,12 +17,13 @@ class CategorieController extends Controller
         return response()->json($categories);
     }
     public function store(Request $request){
-        //dd($request->all());
+        //return response()->json($request->all());
         /** Save categorie */
         $categorie = new Categories();
         $categorie->nom = $request->nom;
         $categorie->parent_id = $request->parent_id;
-        $categorie->produits_id = $request->produits_id;
+        $dataprod [] = $request->produits_id;
+        $categorie->produits_id = json_encode($dataprod);
 
         $categorie->save();
         /** Save image */
@@ -29,7 +32,6 @@ class CategorieController extends Controller
             $image = new Image();
             $file      = $request->file('image');
             $filename  = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
             $picture   = date('His').'-'.$filename;
             $file->move(public_path('img_categorie'), $picture);
             $image->url = $picture;
@@ -66,11 +68,13 @@ class CategorieController extends Controller
      */
     public function update(Request $request, $id)
     {   
-        //return response($request);
-        $categorie = Categories::find($id);
+        $dataprod [] = array();
+        /** Save categorie */
+        $categorie = new Categories();
         $categorie->nom = $request->nom;
         $categorie->parent_id = $request->parent_id;
-        $categorie->produits_id = $request->produits_id;
+        $dataprod [] =$request->produits_id;
+        $categorie->produits_id = json_decode($dataprod);
 
         $categorie->save();
         /** Save image */

@@ -1,6 +1,6 @@
 <?php
 /** Article Route */
-Route::resource('/article','ProduitController');
+Route::resource('/produit','ProduitController');
 
 /** Marque Route */
 Route::resource('/marque','MarqueController');
