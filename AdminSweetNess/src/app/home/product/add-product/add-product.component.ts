@@ -1,40 +1,65 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
+import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css',
+  ]
 })
 export class AddProductComponent implements OnInit {
-  data: any;
-  parent_id: any;
-  myFile: any;
 
 
-  constructor(private http: HttpClient) {
+  private e: any;
+  private spellcheck: any;
+
+  constructor(private http: HttpClient) { }
+
+
+// in app.component.ts
+  files: File[] = [];
+  marque: any;
+
+  onSelect(event) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
   }
 
-  ngOnInit() {
-    this.http.get('http://127.0.0.1:8000/api/marque').subscribe(data => {
+  onRemove(event) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+  submit(f: NgForm) {
 
-      console.log("Data is coming.",this.data = data);
+    var myFormData = new FormData();
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    headers.append('Accept', 'application/json');
+    console.log(f.value.nom);
+    console.log(f.value.parent_id);
+    myFormData.append('nom',f.value.nom);
+    myFormData.append('description',f.value.description);
+    myFormData.append('tva',f.value.tva);
+    myFormData.append('prix_ttc',f.value.prixttc);
+    myFormData.append('reduction',f.value.reduction);
+    myFormData.append('image', f.value.files);
+    myFormData.append('marque_id', '1');
+    myFormData.append('id_lot', '1');
 
-    }, error => console.error(error));
-    this.http.get('http://127.0.0.1:8000/api/').subscribe(data => {
+    const endpoint = '/assets';
 
-      console.log("Data is coming.",this.data = data);
+    this.http.post('http://127.0.0.1:8000/api/produit', myFormData, {
+      headers: headers
+    }).subscribe(data => {
+      console.log(data);
+    });
 
-    }, error => console.error(error));
   }
 
-  fileEvent($event: Event) {
-
+  ngOnInit(): void {
   }
 
-  onSubmit(f: NgForm) {
 
-  }
 
 }

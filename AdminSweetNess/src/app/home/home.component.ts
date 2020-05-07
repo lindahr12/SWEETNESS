@@ -28,24 +28,6 @@ export class HomeComponent implements OnInit {
   delete($id){
     this.items.splice($id,1);
   }
-  onFileChange(event) {
-    if (event.target.files && event.target.files[0]) {
-        var filesAmount = event.target.files.length;
-        for (let i = 0; i < filesAmount; i++) {
-                var reader = new FileReader();
 
-                reader.onload = (event:any) => {
-                  console.log(event.target.result);
-                   this.images.push(event.target.result);
-
-                   this.formgrp.patchValue({
-                      file: this.images
-                   });
-                }
-
-                reader.readAsDataURL(event.target.files[i]);
-        }
-    }
-  }
 
 }

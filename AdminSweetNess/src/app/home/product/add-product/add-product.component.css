@@ -21,3 +21,15 @@
   top: 0;
   opacity: 0;
 }
+
+#dropzone {
+  background-color: white;
+  height: 70px;
+  width: 50%;
+  border: 5px dotted #ccc;
+}
+
+#dropzone:hover {
+  border-color: #bbdefb;
+}
+

@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ProductRoutingModule } from './product-routing.module';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AllProductComponent } from './all-product/all-product.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NgxDropzoneModule} from "ngx-dropzone";
 
 
 @NgModule({
@@ -12,7 +13,9 @@ import {FormsModule} from "@angular/forms";
   imports: [
     CommonModule,
     ProductRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgxDropzoneModule
   ]
 })
 export class ProductModule { }

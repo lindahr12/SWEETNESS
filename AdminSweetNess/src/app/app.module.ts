@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './login/signup/signup.component';
 import {HttpClientModule} from "@angular/common/http";
 import { LayoutComponent } from './home/layout/layout.component';
+import {NgxDropzoneModule} from "ngx-dropzone";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LayoutComponent } from './home/layout/layout.component';
     ReactiveFormsModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxDropzoneModule
   ],
   providers: [],
   bootstrap: [AppComponent]
