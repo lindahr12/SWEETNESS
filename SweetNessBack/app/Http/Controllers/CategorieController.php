@@ -68,13 +68,12 @@ class CategorieController extends Controller
      */
     public function update(Request $request, $id)
     {   
-        $dataprod [] = array();
         /** Save categorie */
         $categorie = new Categories();
         $categorie->nom = $request->nom;
         $categorie->parent_id = $request->parent_id;
         $dataprod [] =$request->produits_id;
-        $categorie->produits_id = json_decode($dataprod);
+        $categorie->produits_id = json_encode($dataprod);
 
         $categorie->save();
         /** Save image */
