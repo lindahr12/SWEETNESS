@@ -6,11 +6,11 @@ import {ShowAllComponent} from "./show-all/show-all.component";
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'add-categorie',
     component: AddCategorieComponent
   },
   {
-    path: 'show_all',
+    path: '',
     component: ShowAllComponent
   }
 ];

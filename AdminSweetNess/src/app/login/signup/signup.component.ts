@@ -21,16 +21,13 @@ export class SignupComponent implements OnInit {
   signForm: any;
   submitted = false;
 data;
+  private notifier: any;
 
   constructor(private formbuilder: FormBuilder, private http: HttpClient) {
   }
 
   ngOnInit() {
-    this.http.get('http://127.0.0.1:8000/api/get-data').subscribe(data => {
 
-      console.log("Data is coming.",this.data = data);
-
-      }, error => console.error(error));
     this.signForm = this.formbuilder.group(
       {
         nom: ['', Validators.required],
@@ -73,6 +70,11 @@ data;
       , this.signForm.value,this.httpOptions).subscribe((res: Response) => {
       console.log(res);
       //this.registerForm.reset();
+        this.notifier.notify(
+          "success",
+          "You are awesome! I mean it!",
+          "THAT_NOTIFICATION_ID"
+        );
     },
     error=>console.log(error)
 

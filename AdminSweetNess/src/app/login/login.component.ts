@@ -29,11 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get('http://127.0.0.1:8000/api/get-data').subscribe(data => {
 
-      console.log("Data is coming.",this.data = data);
-
-    }, error => console.error(error));
     this.loginForm = this.formbuilder.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -62,9 +58,9 @@ export class LoginComponent implements OnInit {
 
        // console.log(res.token);
 
-        this.token = res['token'];
-        localStorage.removeItem('token');
+        this.token = res['access_token'];
         localStorage.setItem('token', this.token);
+        localStorage.setItem('expires_in', res['expires_in']);
         this.router.navigate(['/']);
       },
       (error) => {
