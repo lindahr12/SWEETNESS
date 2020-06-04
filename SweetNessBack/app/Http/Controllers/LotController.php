@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Marque;
+use App\Lot;
 use Illuminate\Http\Request;
-
-class MarqueController extends Controller
+class LotController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,8 @@ class MarqueController extends Controller
      */
     public function index()
     {
-        $marque = Marque::all();
-        return response()->json($marque);
+        $lots = Lot::all();
+        return response()->json($lots);
     }
 
     /**
@@ -35,17 +34,21 @@ class MarqueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        $marque = new Marque();
-        $marque->nom = $request->nomMarque;
-        $marque->ref = $request->ref;
-        $datamark = collect([]) ;
-        $datamark->push($request->produit_id);
-        $marque->produits_id = json_encode($datamark);
-        $marque->save();
-        return response('done');
+    {
+            $lot = new Lot();
+            $lot->date_expiration = $request->date_expiration;
+            $lot->date_achat = $request->date_achat;
+            $lot->quantite = $request->quantite;
+            $lot->prix_vente_souhaiter = $request->prix_vente_souhaiter;
+            $lot->note = $request->note;
+            $lot->priorite_de_vente = $request->priorite_de_vente;
+            $datalot = collect([]);
 
-        
+            $datalot->push($request->produit_id);
+
+            $lot->produits_id = json_encode($datalot);
+            $lot->prix_achat = $request->prix_achat;
+            $lot->save();
     }
 
     /**
@@ -79,12 +82,20 @@ class MarqueController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $marque = Marque::find($id);
-        $marque->nom = $request->nomMarque;
-        $marque->ref = $request->ref;
-        $datamarque[] = $request->produit_id;
-        $marque->produits_id = json_encode($datamarque);
-        $marque->save();
+        $lot = Lot::find($id);
+        $lot->date_expiration = $request->date_expiration;
+        $lot->date_achat = $request->date_achat;
+        $lot->quantite = $request->quantite;
+        $lot->prix_vente_souhaiter = $request->prix_vente_souhaiter;
+        $lot->note = $request->note;
+        $lot->priorite_de_vente = $request->priorite_de_vente;
+        $datalot = collect([]);
+
+        $datalot->push($request->produit_id);
+
+        $lot->produits_id = json_encode($datalot);
+        $lot->prix_achat = $request->prix_achat;
+        $lot->save();
     }
 
     /**
@@ -95,8 +106,8 @@ class MarqueController extends Controller
      */
     public function destroy($id)
     {
-        $Marque = Marque::find($id);
-        $Marque->delete();
+        $lot = Lot::find($id);
+        $lot->delete();
         return response('done');
     }
 }

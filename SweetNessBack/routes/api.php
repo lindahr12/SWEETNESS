@@ -7,6 +7,8 @@ Route::resource('/marque','MarqueController');
 
 Route::resource('/product','ProduitController');
 
+/**Lot */
+Route::resource('/lot','LotController');
 
 /** Categorie Route  */
 Route::resource('/categorie','CategorieController');

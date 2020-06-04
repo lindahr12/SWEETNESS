@@ -22,7 +22,9 @@ class CategorieController extends Controller
         $categorie = new Categories();
         $categorie->nom = $request->nom;
         $categorie->parent_id = $request->parent_id;
-        $dataprod [] = $request->produits_id;
+        $dataprod  = collect([]);
+
+        $dataprod->push($request->produit_id);
         $categorie->produits_id = json_encode($dataprod);
 
         $categorie->save();
@@ -68,11 +70,13 @@ class CategorieController extends Controller
      */
     public function update(Request $request, $id)
     {   
-        /** Save categorie */
-        $categorie = new Categories();
+        /** update categorie */
+        $categorie = Categories::find($id);
         $categorie->nom = $request->nom;
         $categorie->parent_id = $request->parent_id;
-        $dataprod [] =$request->produits_id;
+        $dataprod  = collect([]);
+
+        $dataprod->push($request->produit_id);
         $categorie->produits_id = json_encode($dataprod);
 
         $categorie->save();
@@ -110,7 +114,9 @@ class CategorieController extends Controller
 
    }
     public function search_nom($q){     ///search with nom of categorie
-            $categorie = Categories::with('images')->where( 'nom','LIKE',$q )->get();
+            $categorie = Categories::with('images')
+                        ->where( 'nom','LIKE',"%{$q}%")
+                        ->get();
            //  $categorie->get();
            return response()->json($categorie);
 
