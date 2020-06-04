@@ -86,6 +86,7 @@ class MarqueController extends Controller
         $datamark->push($request->produit_id);
         $marque->produits_id = json_encode($datamark);
         $marque->save();
+        return response('yeaah');
     }
 
     /**

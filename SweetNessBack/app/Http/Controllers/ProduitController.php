@@ -33,9 +33,9 @@ class ProduitController extends Controller
         if ($request->id_lot ){
             
             $lotexist = Lot::find($request->id_lot);
-            $datalot =collect([]);
+            $datalot =collect([$lotexist->produits_id]);
             $datalot->push( $produit->id);
-            $lotexist->produits_id->concat(json_encode($datalot));
+            $lotexist->produits_id = json_encode($datalot);
             $lotexist->save();
 
         }else{
@@ -55,7 +55,7 @@ class ProduitController extends Controller
         }
         if($request->id_marque){
             $marqueExist = Marque::find($request->id_marque);
-            $datamarque = collect([]);
+            $datamarque = collect([$marqueExist->produits_id]);
             $datamarque->push($request->produit_id);
             $marqueExist->produits_id = json_encode($datamarque);
             $marqueExist->save();
@@ -113,7 +113,7 @@ class ProduitController extends Controller
             $lotexist = Lot::find($request->id_lot);
             $datalot =collect([]);
             $datalot->push( $produit->id);
-            $lotexist->produits_id->concat(json_encode($datalot));
+            $lotexist->produits_id =json_encode($datalot);
             $lotexist->save();
 
         }else{
