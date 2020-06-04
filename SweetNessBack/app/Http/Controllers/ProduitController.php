@@ -33,7 +33,8 @@ class ProduitController extends Controller
         if ($request->id_lot ){
             
             $lotexist = Lot::find($request->id_lot);
-            $datalot [] = $produit->id;
+            $datalot =collect([]);
+            $datalot->push( $produit->id);
             $lotexist->produits_id->concat(json_encode($datalot));
             $lotexist->save();
 
@@ -45,7 +46,8 @@ class ProduitController extends Controller
             $lot->prix_vente_souhaiter = $request->prix_vente_souhaiter;
             $lot->note = $request->note;
             $lot->priorite_de_vente = $request->priorite_de_vente;
-            $datalot [] = $produit->id;
+            $datalot =collect([]);
+            $datalot->push( $produit->id);
 
             $lot->produits_id = json_encode($datalot);
             $lot->prix_achat = $request->prix_achat;
@@ -53,16 +55,19 @@ class ProduitController extends Controller
         }
         if($request->id_marque){
             $marqueExist = Marque::find($request->id_marque);
-            $datamarque[] = $produit->id;
-            $marqueExist->produits_id->concat(json_encode($datamarque));
+            $datamarque = collect([]);
+            $datamarque->push($request->produit_id);
+            $marqueExist->produits_id = json_encode($datamarque);
             $marqueExist->save();
         }else{
             $marque = new Marque();
             $marque->nom = $request->nomMarque;
             $marque->ref = $request->ref;
-            $datamarque[] = $produit->id;
-            $marque->produits_id = json_encode($datamarque);
+            $datamark = collect([]) ;
+            $datamark->push($request->produit_id);
+            $marque->produits_id = json_encode($datamark);
             $marque->save();
+            
 
         }
         /** Save image */

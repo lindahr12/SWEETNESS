@@ -82,8 +82,9 @@ class MarqueController extends Controller
         $marque = Marque::find($id);
         $marque->nom = $request->nomMarque;
         $marque->ref = $request->ref;
-        $datamarque[] = $request->produit_id;
-        $marque->produits_id = json_encode($datamarque);
+        $datamark = collect([]) ;
+        $datamark->push($request->produit_id);
+        $marque->produits_id = json_encode($datamark);
         $marque->save();
     }
 
