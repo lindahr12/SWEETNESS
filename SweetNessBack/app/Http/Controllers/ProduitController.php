@@ -11,8 +11,8 @@ use Illuminate\Http\Request;
 class ProduitController extends Controller
 {
     public function index(){
-        $articles = Article::orderBy('id', 'DESC');
-        return response($articles);
+        $Produit = Produit::orderBy('id', 'DESC');
+        return response($Produit);
     }
     public function store (Request $request){
        
@@ -95,22 +95,28 @@ class ProduitController extends Controller
         return response($article);
     }
     public function update(Request $request,$id){
-        $article = Produit::find($id);
-        $article->nom = $request->nom;
-        $article->limite_stock_alert = $request->limite_stock_alert;
-        $article->total_stock = $request->total_stock;
-        $article->note = $request->note;
-        $article->description = $request->description;
-        $article->nbr_noted = $request->nbr_noted;
-        $article->tva = $request->tva;
-        $article->prix_ht = $request->prix_ht;
-        $article->prix_ttc = $request->prix_ttc;
-        $article->marge = $request->marge;
-        $article->reduction = $request->reduction;
-        $article->marque_id = $request->marque_id;
-        $article->save();
-        if ($request->id_lot == null){
+        $produit = Produit::find($id);
+        $produit->nom = $request->nomproduit;
+        $produit->limite_stock_alert = $request->limite_stock_alert;
+        $produit->total_stock = $request->total_stock;
+        $produit->note = $request->note;
+        $produit->description = $request->description;
+        $produit->nbr_noted = $request->nbr_noted;
+        $produit->tva = $request->tva;
+        $produit->prix_ht = $request->prix_ht;
+        $produit->prix_ttc = $request->prix_ttc;
+        $produit->marge = $request->marge;
+        $produit->reduction = $request->reduction;
+        $produit->save();
+        if ($request->id_lot ){
+            
+            $lotexist = Lot::find($request->id_lot);
+            $datalot =collect([]);
+            $datalot->push( $produit->id);
+            $lotexist->produits_id->concat(json_encode($datalot));
+            $lotexist->save();
 
+        }else{
             $lot = new Lot();
             $lot->date_expiration = $request->date_expiration;
             $lot->date_achat = $request->date_achat;
@@ -118,26 +124,28 @@ class ProduitController extends Controller
             $lot->prix_vente_souhaiter = $request->prix_vente_souhaiter;
             $lot->note = $request->note;
             $lot->priorite_de_vente = $request->priorite_de_vente;
-            $data [] = $article->id;
+            $datalot =collect([]);
+            $datalot->push( $produit->id);
 
-            $lot->produits_id = $data;
-            $lot->date_achat = $request->date_achat;
-
-        }else{
-            $lotexist = Lot::find($request->id_lot);
-            $data [] = $article->id;
-            $lotexist->produits_id->concat($data);
+            $lot->produits_id = json_encode($datalot);
+            $lot->prix_achat = $request->prix_achat;
+            $lot->save();
         }
-        if ($request->id_marque != null){
+        if($request->id_marque){
             $marqueExist = Marque::find($request->id_marque);
-            $data [] = $article->id;
-            $marqueExist->produits_id->concat($data);
+            $datamarque = collect([]);
+            $datamarque->push($request->produit_id);
+            $marqueExist->produits_id = json_encode($datamarque);
+            $marqueExist->save();
         }else{
             $marque = new Marque();
-            $marque->nom = $request->nom;
+            $marque->nom = $request->nomMarque;
             $marque->ref = $request->ref;
-            $data [] = $article->id;
-            $marque->produits_id = $data;
+            $datamark = collect([]) ;
+            $datamark->push($request->produit_id);
+            $marque->produits_id = json_encode($datamark);
+            $marque->save();
+            
 
         }
         /** Save image */
@@ -148,17 +156,17 @@ class ProduitController extends Controller
             $filename  = $img->getClientOriginalName();
             $picture   = date('His').'-'.$filename;
             $img->move(public_path('img_article'), $picture);
-            $data[] =$filename;
+            $dataimage[] =$filename;
 
             }
 
         }
         
         $image = new Image();
-        $image->url = json_encode($data);
-        $article->images()->save($image);
+        $image->url = json_encode($dataimage);
+        $produit->images()->save($image);
         $image->save();
-
+        
        
         return response()->json('article updated');
 
