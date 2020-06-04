@@ -1,48 +1,100 @@
 <div class="block block-condensed">
-  <!-- START HEADING --><div class="app-heading app-heading-small">
-  <div class="title"><h5>Using Template Features</h5>
-    <p>Its possible to use all features inside table</p>
-  </div>
-</div>
-  <!-- END HEADING -->
-  <div class="table-responsive">
-    <table class="table table-head-light table-striped">
-      <thead>
-      <tr>
-        <th>user</th>
-        <th>about</th>
-        <th>birthdate</th>
-        <th>role</th>
-        <th>actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td><div class="contact contact-rounded contact-bordered contact-lg status-online"><img src="assets\assets\images\users\user_1.jpg"><div class="contact-container"><a href="#">Juan Obrien</a> <span>UI/UX Designer</span></div></div></td><td><p><strong>Lorem ipsum dolor sit</strong><br>Aliquam in vestibulum nibh. Phasellus iaculis tristique nulla. Cras eu nisi felis.</p></td>
-        <td>25/12/1988</td><td><select class="bs-select" name="user_1"><option selected="">Administrator</option><option>Moderator</option><option>Member</option></select></td>
-        <td><button class="btn btn-default btn-icon"><span class="fa fa-pencil"></span></button> <button class="btn btn-default btn-icon"><span class="fa fa-times"></span></button></td>
-      </tr>
-      <tr>
-        <td><div class="contact contact-rounded contact-bordered contact-lg status-online"><img src="assets\assets\images\users\user_2.jpg"><div class="contact-container"><a href="#">John Doe</a> <span>Web Developer</span></div></div></td>
-        <td><p><strong>Lorem ipsum dolor sit</strong><br>Aliquam in vestibulum nibh. Phasellus iaculis tristique nulla. Cras eu nisi felis.</p></td>
-        <td>14/02/1989</td>
-        <td><select class="bs-select" name="user_2"><option>Administrator</option><option>Moderator</option><option selected="">Member</option></select></td>
-        <td><button class="btn btn-default btn-icon"><span class="fa fa-pencil"></span></button> <button class="btn btn-default btn-icon"><span class="fa fa-times"></span></button></td>
-      </tr>
-      <tr>
-        <td><div class="contact contact-rounded contact-bordered contact-lg status-away"><img src="assets\assets\images\users\user_4.jpg"><div class="contact-container"><a href="#">Stephany Owkins</a> <span>Designer</span></div></div></td>
-        <td><p><strong>Lorem ipsum dolor sit</strong><br>Aliquam in vestibulum nibh. Phasellus iaculis tristique nulla. Cras eu nisi felis.</p></td>
-        <td>09/12/1991</td>
-        <td><select class="bs-select" name="user_3"><option>Administrator</option><option selected="">Moderator</option><option>Member</option></select></td>
-        <td><button class="btn btn-default btn-icon"><span class="fa fa-pencil"></span></button> <button class="btn btn-default btn-icon"><span class="fa fa-times"></span></button></td>
-      </tr>
-      <tr>
-        <td><div class="contact contact-rounded contact-bordered contact-lg status-offline"><img src="assets\assets\images\users\user_5.jpg"><div class="contact-container"><a href="#">Garret Tofty</a> <span>CEO</span></div></div></td>
-        <td><p><strong>Lorem ipsum dolor sit</strong><br>Aliquam in vestibulum nibh. Phasellus iaculis tristique nulla. Cras eu nisi felis.</p></td>
-        <td>09/12/1990</td><td><select class="bs-select" name="user_4"><option>Administrator</option><option>Moderator</option><option selected="">Member</option></select></td>
-        <td><button class="btn btn-default btn-icon"><span class="fa fa-pencil"></span></button> <button class="btn btn-default btn-icon"><span class="fa fa-times"></span></button></td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+    <!-- START HEADING -->
+    <div class="app-heading app-heading-small">
+        <div class="title">
+            <h5>Using Template Features</h5>
+            <p>Its possible to use all features inside table</p>
+        </div>
+    </div>
+    <!-- END HEADING -->
+    <div class="table-responsive">
+        <table class="table table-head-light table-striped">
+            <thead>
+                <tr>
+                    <th>utilisateur</th>
+                    <th>à propos</th>
+                    <th>date de naissance</th>
+                    <th>role</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="contact contact-rounded contact-bordered contact-lg status-online"><img src="assets\assets\images\users\user_1.jpg">
+                            <div class="contact-container"><a href="#">Juan Obrien</a> <span>UI/UX Designer</span></div>
+                        </div>
+                    </td>
+                    <td>
+                        <p><strong>Lorem ipsum dolor sit</strong><br>Aliquam in vestibulum nibh. Phasellus iaculis tristique nulla. Cras eu nisi felis.</p>
+                    </td>
+                    <td>25/12/1988</td>
+                    <td>
+                        <select class="form-control" id="exampleFormControlSelect2" name="parent_id">
+                            <option selected="">Administrator</option>
+                            <option>Moderator</option>
+                            <option>Member</option>
+                         </select>
+                    </td>
+                    <td><button class="btn btn-default btn-icon"><span class="fa fa-pencil"></span></button> <button class="btn btn-default btn-icon"><span class="fa fa-times"></span></button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="contact contact-rounded contact-bordered contact-lg status-online"><img src="assets\assets\images\users\user_2.jpg">
+                            <div class="contact-container"><a href="#">John Doe</a> <span>Web Developer</span></div>
+                        </div>
+                    </td>
+                    <td>
+                        <p><strong>Lorem ipsum dolor sit</strong><br>Aliquam in vestibulum nibh. Phasellus iaculis tristique nulla. Cras eu nisi felis.</p>
+                    </td>
+                    <td>14/02/1989</td>
+                    <td>
+                      <select class="form-control" id="exampleFormControlSelect2" name="parent_id">
+                        <option>Administrator</option>
+                        <option  selected="">Moderator</option>
+                        <option>Member</option>
+                      </select>
+                    <td><button class="btn btn-default btn-icon"><span class="fa fa-pencil"></span></button> <button class="btn btn-default btn-icon"><span class="fa fa-times"></span></button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="contact contact-rounded contact-bordered contact-lg status-away"><img src="assets\assets\images\users\user_4.jpg">
+                            <div class="contact-container"><a href="#">Stephany Owkins</a> <span>Designer</span></div>
+                        </div>
+                    </td>
+                    <td>
+                        <p><strong>Lorem ipsum dolor sit</strong><br>Aliquam in vestibulum nibh. Phasellus iaculis tristique nulla. Cras eu nisi felis.</p>
+                    </td>
+                    <td>09/12/1991</td>
+                    <td>
+                      <select class="form-control" id="exampleFormControlSelect2" name="parent_id">
+                        <option>Administrator</option>
+                        <option  selected="">Moderator</option>
+                        <option>Member</option>
+                      </select>
+                    </td>
+                    <td><button class="btn btn-default btn-icon"><span class="fa fa-pencil"></span></button> <button class="btn btn-default btn-icon"><span class="fa fa-times"></span></button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="contact contact-rounded contact-bordered contact-lg status-offline"><img src="assets\assets\images\users\user_5.jpg">
+                            <div class="contact-container"><a href="#">Garret Tofty</a> <span>CEO</span></div>
+                        </div>
+                    </td>
+                    <td>
+                        <p><strong>Lorem ipsum dolor sit</strong><br>Aliquam in vestibulum nibh. Phasellus iaculis tristique nulla. Cras eu nisi felis.</p>
+                    </td>
+                    <td>09/12/1990</td>
+                    <td>
+                      <select class="form-control" id="exampleFormControlSelect2" name="parent_id">
+                        <option>Administrator</option>
+                        <option>Moderator</option>
+                        <option  selected="">Member</option>
+                      </select>
+                    </td>
+                    <td><button class="btn btn-default btn-icon"><span class="fa fa-pencil"></span></button> <button class="btn btn-default btn-icon"><span class="fa fa-times"></span></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

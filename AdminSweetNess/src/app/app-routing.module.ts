@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path:'',
     component: HomeComponent, children :[
-       {path: 'categories',
+       {path: 'categorie',
          loadChildren: './home/categories/categories.module#CategoriesModule'
        },
       {
@@ -31,7 +31,8 @@ const routes: Routes = [
         path:'product',
         loadChildren: './home/product/product.module#ProductModule'
 
-      }
+      },
+
 
 
     ]

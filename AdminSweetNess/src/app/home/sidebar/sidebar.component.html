@@ -1,48 +1,107 @@
 <!-- START SIDEBAR -->
-<div class="app-sidebar app-navigation app-navigation-fixed scroll app-navigation-style-default app-navigation-open-hover dir-left" data-type="close-other"><a href="index.html" class="app-navigation-logo">Boooya - Revolution Admin Template <button class="app-navigation-logo-button mobile-hidden" data-sidepanel-toggle=".app-sidepanel"><span class="icon-alarm"></span>
+<div class="app-sidebar app-navigation app-navigation-fixed scroll app-navigation-style-default app-navigation-open-hover dir-left" data-type="close-other">
+    <a href="index.html" class="app-navigation-logo">SweetNess <button class="app-navigation-logo-button mobile-hidden" data-sidepanel-toggle=".app-sidepanel">
+      <span class="icon-alarm"></span>
   <span class="app-navigation-logo-button-alert">7</span>
 </button>
 </a>
   <nav>
     <ul>
-      <li class="title">Tableau de bord</li>
+      <!-- START PACK PRODUCT-->
+      <li class="title">PACK PRODUIT</li>
       <li><a routerLink="/dashboard/"><span class="nav-icon-hexa">TB</span> Tableau de Bord</a></li>
-      <li class="title">Categorie</li>
-<!--  Categorie-->
-  <li>
-
-      <li><a routerLink="/categories/"><span class="nav-icon-hexa">AC</span>
-        Ajouter Categorie </a>
-      </li>
-      <li><a routerLink="/categories/show_all"><span class="nav-icon-hexa">AC</span>
-        Afficher tous Categories </a>
-
-      </li>
-
-
-  <!--  Users-->
-
-  <li class="title">Utilisateurs</li>
-  <li><a routerLink="/users"><span class="nav-icon-hexa">Fe</span> All Users</a>
-
-  </li>
-
-  <li class="title">Produits</li><li>
-      <a  routerLink="/product"><span class="nav-icon-hexa">AP</span>Produit</a>
+      <li><a routerLink="#"><span class="nav-icon-hexa">TB</span> Produit</a>
       <ul>
+        <li><a  routerLink="/product/all-product"><span class="nav-icon-hexa">P</span>Les produits</a></li>
         <li><a  routerLink="/product"><span class="nav-icon-hexa">AP</span>Ajouter Produit</a></li>
-
-        <li><a href="#"><span class="nav-icon-hexa">Lt</span> Lists</a>
-          <ul>
-            <li><a href="components-lists.html"><span class="nav-icon-hexa">Bl</span> Basic Lists</a></li>
-
-          </ul>
-        </li>
-
+        <li><a  routerLink="/product/all-product"><span class="nav-icon-hexa">L</span>Les Lots </a></li>
+        <li><a  routerLink="/product/all-product"><span class="nav-icon-hexa">M</span>Les marques</a></li>
       </ul>
-    </li>
+      </li>
+      <li><a routerLink="#"><span class="nav-icon-hexa">TB</span> Categorie</a>
+        <ul>
+          <li><a  routerLink="/categorie"><span class="nav-icon-hexa">TC</span>Tous Categories</a></li>
+          <li><a  routerLink="/categorie/add-categorie"><span class="nav-icon-hexa">AC</span>Ajout Categorie</a></li>
+        </ul>
+      </li>
 
 
+      <!--  END PACK PRODUCT-->
+      <!-- START PACK USERS-->
+      <li class="title">PACK UTILIOSATEURS</li>
+      <li>
+
+      <li><a routerLink="/categories/"><span class="nav-icon-hexa">LU</span>UTILSATEUR</a>
+      <ul>
+        <li><a  routerLink="/users"><span class="nav-icon-hexa">TU</span>tous utlisateurs</a></li>
+        <li><a  routerLink="/product"><span class="nav-icon-hexa">AU</span>ajouter utlisateur</a></li>
+      </ul>
+      </li>
+      <li><a routerLink="/categories/show_all"><span class="nav-icon-hexa">LS</span>LISTE SOCIETES </a>
+        <ul>
+          <li><a  routerLink="/product"><span class="nav-icon-hexa">AS</span>ajout société</a></li>
+          <li><a  routerLink="/product/all-product"><span class="nav-icon-hexa">TU</span>tous société</a></li>
+        </ul>
+      </li>
+      <li><a routerLink="/categories/show_all"><span class="nav-icon-hexa">LA</span>LISTE ADMINS </a>
+        <ul>
+          <li><a  routerLink="/product"><span class="nav-icon-hexa">AA</span>ajout admin</a></li>
+          <li><a  routerLink="/product/all-product"><span class="nav-icon-hexa">TA</span>tous admin</a></li>
+        </ul>
+      </li>
+      <!--  END PACK USERS-->
+
+
+
+      <!--  START PACK COMMANDES-->
+      <li class="title">PACK COMMANDES</li>
+      <li><a routerLink="/users"><span class="nav-icon-hexa">C</span>commandes</a>
+      </li>
+      <li><a routerLink="/users"><span class="nav-icon-hexa">F</span>factures</a>
+      </li>
+      <li><a routerLink="/users"><span class="nav-icon-hexa">F</span>fournisseurs</a>
+      </li>
+      <!--  END PACK COMMERCIAL-->
+
+      <!--  START PACK COMMMERCIAL-->
+      <li class="title">COMMERCIAL PACK</li>
+      <li>
+        <a  routerLink="/product"><span class="nav-icon-hexa">AP</span>LISTE COMMANDES</a>
+        <ul>
+          <li><a  routerLink="/product"><span class="nav-icon-hexa">AP</span>Ajouter Produit</a></li>
+          <li><a  routerLink="/product/all-product"><span class="nav-icon-hexa">AP</span>Les produits</a></li>
+
+          <li><a href="#"><span class="nav-icon-hexa">Lt</span> Lists</a>
+            <ul>
+              <li><a href="components-lists.html"><span class="nav-icon-hexa">Bl</span> Basic Lists</a></li>
+
+            </ul>
+          </li>
+
+        </ul>
+      </li>
+      <!--  END PACK COMMAERCIAL-->
+
+      <!--  START PACK APPLICATION-->
+      <li class="title">APPLICATION PACK</li>
+      <li>
+        <a  routerLink="/product"><span class="nav-icon-hexa">AP</span>APPLICATION</a>
+        <ul>
+          <li><a  routerLink="/product"><span class="nav-icon-hexa">AP</span>Ajouter Produit</a></li>
+          <li><a  routerLink="/product/all-product"><span class="nav-icon-hexa">P</span>Les produits</a></li>
+          <li><a  routerLink="/product/all-product"><span class="nav-icon-hexa">L</span>Les Lots </a></li>
+          <li><a  routerLink="/product/all-product"><span class="nav-icon-hexa">M</span>Les marques</a></li>
+
+          <li><a href="#"><span class="nav-icon-hexa">Lt</span> Lists</a>
+            <ul>
+              <li><a href="components-lists.html"><span class="nav-icon-hexa">Bl</span> Basic Lists</a></li>
+
+            </ul>
+          </li>
+
+        </ul>
+      </li>
+      <!--  END PACK APPLICATION-->
 
 </ul></nav></div>
 <!-- END SIDEBAR -->

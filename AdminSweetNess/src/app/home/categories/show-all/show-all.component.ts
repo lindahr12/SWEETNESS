@@ -4,6 +4,7 @@ import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import Swal from 'sweetalert2';
 import {FormBuilder, Validators} from "@angular/forms";
 
+
 @Component({
   selector: 'app-show-all',
   templateUrl: './show-all.component.html',
@@ -23,6 +24,7 @@ export class ShowAllComponent implements OnInit {
       'Accept':'application/json'
     })
   };
+
   private Categorieup: any;
   private parent_id: any;
   private categorie: Object;
