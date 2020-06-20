@@ -1,7 +1,6 @@
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './home/sidebar/sidebar.component';
@@ -13,7 +12,7 @@ import { SignupComponent } from './login/signup/signup.component';
 import {HttpClientModule} from "@angular/common/http";
 import { LayoutComponent } from './home/layout/layout.component';
 import {NgxDropzoneModule} from "ngx-dropzone";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     NgxDropzoneModule,
+
 
 
 

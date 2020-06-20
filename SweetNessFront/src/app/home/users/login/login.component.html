@@ -1,0 +1,37 @@
+<section id="content">
+  <div id="breadcrumb-container"><div class="container">
+    <ul class="breadcrumb"><li><a href="index.html">Home</a></li><li class="active">Login</li></ul>
+  </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12"><header class="content-title">
+        <h1 class="title">
+          Identifiez-vous ou créez un compte</h1><div class="md-margin"></div></header>
+        <div class="row"><div class="col-md-6 col-sm-6 col-xs-12"><h2>
+          Nouveau client</h2>
+          <p>
+            En créant un compte avec notre boutique, vous pourrez vous déplacer plus rapidement dans le processus de paiement,
+            stocker plusieurs adresses de livraison, afficher et suivre vos commandes dans votre compte et plus encore.</p>
+          <div class="md-margin">
+
+          </div><a href="register-account.html" class="btn btn-custom-2">Créer un compte</a><div class="lg-margin"></div>
+        </div>
+          <div class="col-md-6 col-sm-6 col-xs-12"><h2>
+            Clients enregistrés</h2><p>
+            Si vous avez un compte chez nous, veuillez vous connecter.</p>
+            <div class="xs-margin">
+
+          </div>
+            <form id="login-form" [formGroup]="signForm" (ngSubmit)="onSubmit()" >
+            <div class="input-group"><span class="input-group-addon"><span class="input-icon input-icon-email"></span>
+              <span class="input-text">Email&#42;</span></span>
+              <input type="text" required="" class="form-control input-lg" placeholder="Votre email"></div>
+            <div class="input-group xs-margin">
+              <span class="input-group-addon"><span class="input-icon input-icon-password"></span>
+                <span class="input-text">Mot de passe&#42;</span></span> <input type="password" required="" class="form-control input-lg" placeholder="Votre mot de passe">
+            </div><span class="help-block text-right">
+            <a href="#">
+Mot de passe oublié?</a></span> <button class="btn btn-custom-2">Connexion</button></form><div class="sm-margin"></div></div></div></div></div></div>
+</section>
+

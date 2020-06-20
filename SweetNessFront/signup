@@ -1,0 +1,210 @@
+<section id="content">
+  <div id="breadcrumb-container">
+    <div class="container"><ul class="breadcrumb">
+      <li><a href="index.html">Accueil</a></li>
+      <li class="active">Créer un compte</li>
+    </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row"><div class="col-md-12">
+      <header class="content-title"><h1 class="title">Créer un compte</h1>
+        <p class="title-desc">
+          Si vous avez déjà un compte, veuillez vous connecter à <a href="#">
+          page de connexion</a>.</p>
+      </header>
+      <div class="xs-margin"></div>
+      <form id="register-form" [formGroup]="signForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12"><fieldset>
+            <h2 class="sub-title">
+              VOS INFORMATIONS PERSONNELLES</h2>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <span class="input-icon input-icon-user"></span>
+                <span class="input-text">Prénom&#42;</span>
+              </span>
+              <input type="text" required="" class="form-control input-lg" formControlName="nom"  placeholder="Votre Prénom">
+              <div *ngIf="submitted && m.prenom.errors" class="invalid-feedback">
+                <div *ngIf="m.prenom.errors.required">Le prenom est requis</div>
+              </div>
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="input-icon input-icon-user"></span>
+                <span class="input-text">Nom&#42;</span>
+              </span>
+              <input type="text" required="" class="form-control input-lg" formControlName="nom"  placeholder="Votre Nom">
+              <div *ngIf="submitted && m.nom.errors" class="invalid-feedback">
+                <div *ngIf="m.prenom.errors.required">Le prenom est requis</div>
+              </div>
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <span class="input-icon input-icon-email"></span>
+                <span class="input-text">Email&#42;</span>
+              </span>
+              <input type="text" required="" class="form-control input-lg" formControlName="email"  placeholder="Votre Email">
+              <div *ngIf="submitted && m.prenom.errors" class="invalid-feedback">
+                <div *ngIf="m.prenom.errors.required">Le prenom est requis</div>
+              </div>
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <span class="input-icon input-icon-phone"></span>
+                <span class="input-text">Telephone&#42;</span>
+              </span>
+              <input type="text" required="" class="form-control input-lg" formControlName="telephone"  placeholder="Votre  Telephone">
+              <div *ngIf="submitted && m.telephone.errors" class="invalid-feedback">
+                <div *ngIf="m.telephone.errors.required">Le prenom est requis</div>
+              </div>
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <span class="input-icon input-icon-fax"></span>
+                <span class="input-text">Fax</span>
+              </span>
+              <input type="text" class="form-control input-lg" formControlName="fax"  placeholder="Votre Fax">
+              <div *ngIf="submitted && m.fax.errors" class="invalid-feedback">
+                <div *ngIf="m.fax.errors.required">Le fax est requis</div>
+              </div>
+
+            </div>
+          </fieldset>
+            <fieldset>
+              <h2 class="sub-title">
+                VOTRE MOT DE PASSE</h2>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="input-icon input-icon-password"></span>
+                  <span class="input-text">Mot de passe&#42;</span>
+                </span>
+                <input type="password" required="" class="form-control input-lg" formControlName="mdp1"  placeholder="Votre Mot de Passe ">
+                <div *ngIf="submitted && m.prenom.errors" class="invalid-feedback">
+                  <div *ngIf="m.prenom.errors.required">Le prenom est requis</div>
+                </div>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="input-icon input-icon-password"></span>
+                  <span class="input-text">Mot de passe&#42;</span>
+                </span>
+                <input type="password" required="" formControlName="mdp2"  class="form-control input-lg" placeholder="R">
+                <div *ngIf="submitted && m.prenom.errors" class="invalid-feedback">
+                  <div *ngIf="m.prenom.errors.required">Le prenom est requis</div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <fieldset>
+              <h2 class="sub-title">VOTRE ADRESSE
+              </h2>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="input-icon input-icon-company"></span>
+                  <span class="input-text">Compagnie&#42;</span>
+                </span>
+                <input type="text" required="" class="form-control input-lg" formControlName="compagnie"  placeholder="Votre Compagnie">
+                <div *ngIf="submitted && m.prenom.errors" class="invalid-feedback">
+                  <div *ngIf="m.prenom.errors.required">Le prenom est requis</div>
+                </div>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="input-icon input-icon-address"></span>
+                  <span class="input-text">Addresse 1&#42;</span>
+                </span>
+                <input type="text" class="form-control input-lg" formControlName="adresse"  placeholder="Votre Addresse ">
+                <div *ngIf="submitted && m.prenom.errors" class="invalid-feedback">
+                  <div *ngIf="m.prenom.errors.required">Le prenom est requis</div>
+                </div>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="input-icon input-icon-address"></span>
+                  <span class="input-text">Addresse 2&#42;</span>
+                </span>
+                <input type="text" required="" class="form-control input-lg" placeholder="Votre Adresse 2">
+                <div *ngIf="submitted && m.prenom.errors" class="invalid-feedback">
+                  <div *ngIf="m.prenom.errors.required">Le prenom est requis</div>
+                </div>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="input-icon input-icon-city"></span>
+                  <span class="input-text">Ville&#42;</span>
+                </span>
+                <input type="text" required="" class="form-control input-lg" formControlName="ville" placeholder="Votre Ville">
+                <div *ngIf="submitted && m.prenom.errors" class="invalid-feedback">
+                  <div *ngIf="m.prenom.errors.required">Le prenom est requis</div>
+                </div>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="input-icon input-icon-postcode"></span>
+                  <span class="input-text">Code postal&#42;</span>
+                </span>
+                <input type="text" required="" class="form-control input-lg" formControlName="codepostale" placeholder="Votre Code Postale">
+                <div *ngIf="submitted && m.prenom.errors" class="invalid-feedback">
+                  <div *ngIf="m.prenom.errors.required">Le prenom est requis</div>
+                </div>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="input-icon input-icon-country">
+
+                  </span><span class="input-text">Pays*</span>
+                </span>
+                <div class="large-selectbox clearfix">
+<!--                  <select id="country" name="country" class="selectbox">-->
+                    <select class="form-control" id="exampleFormControlSelect2">
+
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="France">France</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Spain">Spain</option>
+                  </select>
+                </div>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="input-icon input-icon-region"></span>
+                  <span class="input-text">Région / État&#42;</span>
+                </span>
+                <div class="large-selectbox clearfix">
+                  <select class="form-control" id="exampleFormControlSelect2">
+                    <option value="California">California</option>
+                    <option value="Texas">Texas</option>
+                    <option value="NewYork">NewYork</option>
+                    <option value="Narnia">Narnia</option>
+                    <option value="Jumanji">Jumanji</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <fieldset class="half-margin">
+              <h2 class="sub-title">BULLETIN</h2>
+              <div class="input-desc-box">
+                <i class="fa fa-check"></i>I wish to subscribe to the Venedor newsletter.</div>
+              <div class="input-group custom-checkbox">
+                <input type="checkbox">
+                <span class="checbox-container">
+                  <i class="fa fa-check"></i></span>
+                j'ai lu et accepté les
+                <a href="#">Politique de confidentialité
+                </a>.</div>
+            </fieldset>
+            <input type="submit" value="
+CRÉER MON COMPTE" class="btn btn-custom-2 md-margin">
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+</section>

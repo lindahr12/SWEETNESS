@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
         this.token = res['access_token'];
         localStorage.setItem('token', this.token);
         localStorage.setItem('expires_in', res['expires_in']);
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       },
       (error) => {
         localStorage.removeItem('token');

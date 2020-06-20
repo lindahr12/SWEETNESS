@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {HttpClient, HttpParams, HttpHeaders} from "@angular/common/http";
 import { error } from 'util';
+import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-signup',
@@ -23,7 +25,8 @@ export class SignupComponent implements OnInit {
 data;
   private notifier: any;
 
-  constructor(private formbuilder: FormBuilder, private http: HttpClient) {
+  constructor(private formbuilder: FormBuilder, private http: HttpClient,private router: Router) {
+
   }
 
   ngOnInit() {
@@ -69,13 +72,24 @@ data;
     return this.http.post('http://127.0.0.1:8000/api/auth/signup'
       , this.signForm.value,this.httpOptions).subscribe((res: Response) => {
       console.log(res);
-      //this.registerForm.reset();
-        this.notifier.notify(
-          "success",
-          "You are awesome! I mean it!",
-          "THAT_NOTIFICATION_ID"
-        );
-    },
+      Swal.fire({
+          title: '\n' +
+            'utilisateur ajouté avec succès',
+          text: "ajouter un nouveau !",
+          showCancelButton: true,
+          confirmButtonColor: '#298fca',
+          cancelButtonColor: '#d33',
+          }).then((result) => {
+            if(!result.value)
+            this.router.navigate(['/']);
+             else {
+               this.signForm.reset();
+            }
+      });
+        //this.router.navigate(['/']);
+
+
+      },
     error=>console.log(error)
 
 

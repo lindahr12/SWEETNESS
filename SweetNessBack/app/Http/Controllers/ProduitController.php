@@ -11,11 +11,11 @@ use Illuminate\Http\Request;
 class ProduitController extends Controller
 {
     public function index(){
-        $Produit = Produit::orderBy('id', 'DESC');
+        $Produit = Produit::orderBy('id', 'DESC')->get();
         return response($Produit);
     }
     public function store (Request $request){
-       
+
 
         $produit = new Produit();
         $produit->nom = $request->nomproduit;
@@ -31,10 +31,9 @@ class ProduitController extends Controller
         $produit->reduction = $request->reduction;
         $produit->save();
         if ($request->id_lot ){
-            
+
             $lotexist = Lot::find($request->id_lot);
-            $datalot =collect([$lotexist->produits_id]);
-            $datalot->push( $produit->id);
+            $datalot =collect([$lotexist->produits_id,$produit->id]);
             $lotexist->produits_id = json_encode($datalot);
             $lotexist->save();
 
@@ -55,8 +54,7 @@ class ProduitController extends Controller
         }
         if($request->id_marque){
             $marqueExist = Marque::find($request->id_marque);
-            $datamarque = collect([$marqueExist->produits_id]);
-            $datamarque->push($request->produit_id);
+            $datamarque = collect([$marqueExist->produits_id,$request->produit_id]);
             $marqueExist->produits_id = json_encode($datamarque);
             $marqueExist->save();
         }else{
@@ -67,23 +65,24 @@ class ProduitController extends Controller
             $datamark->push($request->produit_id);
             $marque->produits_id = json_encode($datamark);
             $marque->save();
-            
+
 
         }
         /** Save image */
         if($request->hasFile('image')){
+            $dataimage = collect([]);
             foreach($request->file('image') as $img)
             {
 
             $filename  = $img->getClientOriginalName();
             $picture   = date('His').'-'.$filename;
             $img->move(public_path('img_article'), $picture);
-            $dataimage[] =$filename;
+            $dataimage->push($filename);
 
             }
 
         }
-        
+
         $image = new Image();
         $image->url = json_encode($dataimage);
         $produit->images()->save($image);
@@ -109,7 +108,7 @@ class ProduitController extends Controller
         $produit->reduction = $request->reduction;
         $produit->save();
         if ($request->id_lot ){
-            
+
             $lotexist = Lot::find($request->id_lot);
             $datalot =collect([]);
             $datalot->push( $produit->id);
@@ -145,7 +144,7 @@ class ProduitController extends Controller
             $datamark->push($request->produit_id);
             $marque->produits_id = json_encode($datamark);
             $marque->save();
-            
+
 
         }
         /** Save image */
@@ -161,13 +160,13 @@ class ProduitController extends Controller
             }
 
         }
-        
+
         $image = new Image();
         $image->url = json_encode($dataimage);
         $produit->images()->save($image);
         $image->save();
-        
-       
+
+
         return response()->json('article updated');
 
     }

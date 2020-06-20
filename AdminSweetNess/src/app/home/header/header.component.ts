@@ -32,13 +32,13 @@ export class HeaderComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     localStorage.clear();
-    return this.http.post('http://127.0.0.1:8000/api/auth/logout', this.router.navigate(['/login']))
+    return this.http.post('http://127.0.0.1:8000/api/auth/logout', this.router.navigate(['/']))
       .subscribe((res: Response) => {
 
         // console.log(res.token);
 
-   console.log("loooooooogout");
-        this.router.navigate(['/login']);
+         console.log("loooooooogout");
+        this.router.navigate(['/']);
       },
       (error) => {
         localStorage.removeItem('token');

@@ -52,6 +52,7 @@ export class AddCategorieComponent implements OnInit {
       headers: headers
     }).subscribe(data => {
       console.log(data);
+
     });
 
   }

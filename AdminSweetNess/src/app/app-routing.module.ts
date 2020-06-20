@@ -13,7 +13,7 @@ import {MainComponent} from "./home/dashboard/main/main.component";
 const routes: Routes = [
 
   {
-    path:'',
+    path:'home',
     component: HomeComponent, children :[
        {path: 'categorie',
          loadChildren: './home/categories/categories.module#CategoriesModule'
@@ -42,7 +42,7 @@ const routes: Routes = [
 
 
   {
-    path:'login',
+    path:'',
     component:LoginComponent
   },
   {

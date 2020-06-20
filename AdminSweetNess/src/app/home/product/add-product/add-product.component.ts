@@ -38,18 +38,24 @@ export class AddProductComponent implements OnInit {
     headers.append('Accept', 'application/json');
     console.log(f.value.nom);
     console.log(f.value.parent_id);
-    myFormData.append('nom',f.value.nom);
+    myFormData.append('nomproduit',f.value.nomproduit);
+    myFormData.append('limite_stock_alert','12');
+    myFormData.append('total_stock','12');
+    myFormData.append('note','12');
     myFormData.append('description',f.value.description);
+    myFormData.append('nbr_noted','14');
     myFormData.append('tva',f.value.tva);
+    myFormData.append('prix_ht','1247');
     myFormData.append('prix_ttc',f.value.prixttc);
+    myFormData.append('marge',f.value.marge);
     myFormData.append('reduction',f.value.reduction);
     myFormData.append('image', f.value.files);
-    myFormData.append('marque_id', '1');
+    myFormData.append('id_marque', '1');
     myFormData.append('id_lot', '1');
 
     const endpoint = '/assets';
 
-    this.http.post('http://127.0.0.1:8000/api/produit', myFormData, {
+    this.http.post('http://127.0.0.1:8000/api/product', myFormData, {
       headers: headers
     }).subscribe(data => {
       console.log(data);
