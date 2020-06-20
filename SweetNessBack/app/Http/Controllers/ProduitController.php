@@ -11,12 +11,21 @@ use Illuminate\Http\Request;
 class ProduitController extends Controller
 {
     public function index(){
+<<<<<<< HEAD
         $Produit = Produit::orderBy('id', 'DESC')->get();
         return response($Produit);
     }
     public function store (Request $request){
 
 
+=======
+        $Produit = Produit::orderBy('id', 'DESC')
+        ->with('images')
+        ->get();
+        return response($Produit);
+    }
+    public function store (Request $request){
+>>>>>>> 4c7e1c6c3e67b0ec139150d609447c1f1aef74f0
         $produit = new Produit();
         $produit->nom = $request->nomproduit;
         $produit->limite_stock_alert = $request->limite_stock_alert;
@@ -33,8 +42,16 @@ class ProduitController extends Controller
         if ($request->id_lot ){
 
             $lotexist = Lot::find($request->id_lot);
+<<<<<<< HEAD
             $datalot =collect([$lotexist->produits_id,$produit->id]);
             $lotexist->produits_id = json_encode($datalot);
+=======
+            $datalot =json_decode($lotexist->produits_id);
+            //return response( $datalot);
+            $Newdatalot =collect([$produit->id]);
+            $MergeLot = $Newdatalot->merge($datalot);
+            $lotexist->produits_id = json_encode($MergeLot);
+>>>>>>> 4c7e1c6c3e67b0ec139150d609447c1f1aef74f0
             $lotexist->save();
 
         }else{
@@ -54,15 +71,22 @@ class ProduitController extends Controller
         }
         if($request->id_marque){
             $marqueExist = Marque::find($request->id_marque);
+<<<<<<< HEAD
             $datamarque = collect([$marqueExist->produits_id,$request->produit_id]);
             $marqueExist->produits_id = json_encode($datamarque);
+=======
+            $marqC = json_decode($marqueExist->produits_id);
+            $datamarque = collect($produit->id);
+            $MergeMarque = $datamarque->merge($marqC);
+            $marqueExist->produits_id = json_encode($MergeMarque);
+>>>>>>> 4c7e1c6c3e67b0ec139150d609447c1f1aef74f0
             $marqueExist->save();
         }else{
             $marque = new Marque();
             $marque->nom = $request->nomMarque;
             $marque->ref = $request->ref;
             $datamark = collect([]) ;
-            $datamark->push($request->produit_id);
+            $datamark->push($produit->id);
             $marque->produits_id = json_encode($datamark);
             $marque->save();
 
@@ -73,20 +97,33 @@ class ProduitController extends Controller
             $dataimage = collect([]);
             foreach($request->file('image') as $img)
             {
-
             $filename  = $img->getClientOriginalName();
             $picture   = date('His').'-'.$filename;
             $img->move(public_path('img_article'), $picture);
+<<<<<<< HEAD
             $dataimage->push($filename);
+=======
+            
+            $dataimage[] = $picture;
+>>>>>>> 4c7e1c6c3e67b0ec139150d609447c1f1aef74f0
 
             }
+            $image = new Image();
+            $image->url = json_encode($dataimage);
+            $produit->images()->save($image);
+            $image->save();
 
         }
+<<<<<<< HEAD
 
         $image = new Image();
         $image->url = json_encode($dataimage);
         $produit->images()->save($image);
         $image->save();
+=======
+        
+        
+>>>>>>> 4c7e1c6c3e67b0ec139150d609447c1f1aef74f0
         return response()->json('article saved');
     }
     public function edit($id){
@@ -110,9 +147,11 @@ class ProduitController extends Controller
         if ($request->id_lot ){
 
             $lotexist = Lot::find($request->id_lot);
-            $datalot =collect([]);
-            $datalot->push( $produit->id);
-            $lotexist->produits_id =json_encode($datalot);
+            $datalot =json_decode($lotexist->produits_id);
+            //return response( $datalot);
+            $Newdatalot =collect([$produit->id]);
+            $MergeLot = $Newdatalot->merge($datalot);
+            $lotexist->produits_id = json_encode($MergeLot);
             $lotexist->save();
 
         }else{
@@ -132,16 +171,18 @@ class ProduitController extends Controller
         }
         if($request->id_marque){
             $marqueExist = Marque::find($request->id_marque);
-            $datamarque = collect([]);
-            $datamarque->push($request->produit_id);
-            $marqueExist->produits_id = json_encode($datamarque);
+            return response($marqueExist);
+            $marqC = json_decode($marqueExist->produits_id);
+            $datamarque = collect($produit->id);
+            $MergeMarque = $datamarque->merge($marqC);
+            $marqueExist->produits_id = json_encode($MergeMarque);
             $marqueExist->save();
         }else{
             $marque = new Marque();
             $marque->nom = $request->nomMarque;
             $marque->ref = $request->ref;
             $datamark = collect([]) ;
-            $datamark->push($request->produit_id);
+            $datamark->push($produit->id);
             $marque->produits_id = json_encode($datamark);
             $marque->save();
 
@@ -151,7 +192,6 @@ class ProduitController extends Controller
         if($request->hasFile('image')){
             foreach($request->file('image') as $img)
             {
-
             $filename  = $img->getClientOriginalName();
             $picture   = date('His').'-'.$filename;
             $img->move(public_path('img_article'), $picture);
