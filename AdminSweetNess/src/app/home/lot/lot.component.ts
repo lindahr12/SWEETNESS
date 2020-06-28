@@ -16,13 +16,9 @@ export class LotComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSelect($event: NgxDropzoneChangeEvent) {
 
-  }
 
-  onRemove(f: any) {
 
-  }
 
   submit(f: NgForm) {
 

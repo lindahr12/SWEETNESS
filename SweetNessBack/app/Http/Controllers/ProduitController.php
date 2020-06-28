@@ -53,7 +53,7 @@ class ProduitController extends Controller
         // }
         // if($request->id_marque){
         //     $marqueExist = Marque::find($request->id_marque);
-           
+
         //     $marqC = json_decode($marqueExist->produits_id);
         //     $datamarque = collect($produit->id);
         //     $MergeMarque = $datamarque->merge($marqC);
@@ -78,7 +78,7 @@ class ProduitController extends Controller
             $filename  = $img->getClientOriginalName();
             $picture   = date('His').'-'.$filename;
             $img->move(public_path('img_article'), $picture);
-            
+
             $dataimage[] = $picture;
 
             }
@@ -88,8 +88,8 @@ class ProduitController extends Controller
             $image->save();
 
         }
-        
-        
+
+
         return response()->json('article saved');
     }
     public function edit($id){

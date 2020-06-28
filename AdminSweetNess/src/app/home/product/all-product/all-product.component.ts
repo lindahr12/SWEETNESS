@@ -13,10 +13,10 @@ export class AllProductComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-
-// in app.component.ts
   files: File[] = [];
   marque: any;
+  data: any;
+  fournisseur_id: any;
 
   onSelect(event) {
     console.log(event);
@@ -33,25 +33,17 @@ export class AllProductComponent implements OnInit {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
-    console.log(f.value.nom);
-    console.log(f.value.parent_id);
+    console.log(f.value);
+    console.log(this.files);
     myFormData.append('nomproduit',f.value.nomproduit);
-    myFormData.append('limite_stock_alert','12');
-    myFormData.append('total_stock','12');
-    myFormData.append('note','12');
+    myFormData.append('reference',f.value.reference);
     myFormData.append('description',f.value.description);
-    myFormData.append('nbr_noted','14');
-    myFormData.append('tva',f.value.tva);
-    myFormData.append('prix_ht','1247');
-    myFormData.append('prix_ttc',f.value.prixttc);
-    myFormData.append('marge',f.value.marge);
-    myFormData.append('reduction',f.value.reduction);
-    myFormData.append('image', f.value.files);
-    myFormData.append('id_marque', '1');
-    myFormData.append('id_lot', '1');
-
+    myFormData.append('image', 'this.files');
+    myFormData.append('note', '0');
+    myFormData.append('nbr_noted', '0');
+    myFormData.append('is_active', '5');
+    myFormData.append('fournisseur_id', '1');
     const endpoint = '/assets';
-
     this.http.post('http://127.0.0.1:8000/api/product', myFormData, {
       headers: headers
     }).subscribe(data => {
