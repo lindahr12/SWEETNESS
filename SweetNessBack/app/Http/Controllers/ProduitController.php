@@ -19,16 +19,12 @@ class ProduitController extends Controller
     public function store (Request $request){
         $produit = new Produit();
         $produit->nom = $request->nomproduit;
-        $produit->limite_stock_alert = $request->limite_stock_alert;
-        $produit->total_stock = $request->total_stock;
-        $produit->note = $request->note;
         $produit->description = $request->description;
+        $produit->reference = $request->reference;
+        $produit->note = $request->note;
         $produit->nbr_noted = $request->nbr_noted;
-        $produit->tva = $request->tva;
-        $produit->prix_ht = $request->prix_ht;
-        $produit->prix_ttc = $request->prix_ttc;
-        $produit->marge = $request->marge;
-        $produit->reduction = $request->reduction;
+        $produit->is_active = $request->is_active;
+        $produit->fournisseur_id = $request->fournisseur_id;
         $produit->save();
         // if ($request->id_lot ){
 
