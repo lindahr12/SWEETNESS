@@ -8,6 +8,8 @@ import {AddCategorieComponent} from "./home/categories/add-categorie/add-categor
 import {BaseLayoutComponent} from "./home/base-layout/base-layout.component";
 import {DashboardRoutingModule} from "./home/dashboard/dashboard-routing.module";
 import {MainComponent} from "./home/dashboard/main/main.component";
+import {LotComponent} from "./home/lot/lot.component";
+import {MarqueComponent} from "./home/marque/marque.component";
 
 
 const routes: Routes = [
@@ -31,6 +33,14 @@ const routes: Routes = [
         path:'product',
         loadChildren: './home/product/product.module#ProductModule'
 
+      },
+      {
+        path:'lot',
+        component:LotComponent
+      },
+      {
+        path:'marque',
+        component:MarqueComponent
       },
 
 

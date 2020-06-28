@@ -1,0 +1,117 @@
+<div class="container">
+<div class="col-md-12">
+  <!-- START LATEST TRANSACTIONS -->
+  <div class="block block-condensed">
+    <div class="app-heading">
+      <div class="title">
+        <h2>Les marques </h2>
+        <p>Information rapide</p>
+
+      </div>
+      <div class="row margin-bottom-30 margin-top-10">
+        <div class="col-md-6 col-md-offset-3 col-sm-12">
+          <div class="col-xs-5">
+            <button class="btn btn-primary btn-block btn-icon-fixed" >
+              <span class="fa fa-caret-left"></span>
+              Liste produit
+            </button>
+          </div>
+          <div class="col-xs-5">
+            <button class="btn btn-primary btn-block btn-icon-fixed" data-toggle="modal" data-target="#modal-primary">
+              <span class="fa fa-plus"></span>
+              Ajouter marque
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="block-content">
+      <div class="table-responsive">
+        <table class="table table-clean-paddings margin-bottom-0">
+          <thead>
+          <tr><th>Marque</th>
+            <th width="150">mis à jour à</th>
+            <th width="20">Actions</th>
+            <th width="55"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let i of data">
+            <td>
+              <div class="contact contact-rounded contact-bordered contact-lg" *ngFor="let k of i.images">
+                <img src='' >
+                <div class="contact-container"><a href="#">{{i.nom}}</a>
+                  <span>{{i.created_at| date}} </span>
+                </div>
+              </div>
+            </td>
+            <td>{{i.created_at|date}}</td>
+
+            <td><button type="submit" (click)="recuperer(i.id,i.nom,i.images.url,i.parent_id)" class="btn btn-default btn-icon btn-clean dropdown-toggle"  data-toggle="modal" data-target="#id" aria-haspopup="true" aria-expanded="false">
+              <span  class="fa fa-pencil"></span>
+            </button></td>
+            <td>
+
+
+              <button type="submit" (click)="delete(i.id)" class="btn btn-default btn-icon"><span class="icon-cross-circle"></span></button>
+
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div><!-- END LATEST TRANSACTIONS --></div>
+
+</div>
+
+
+<!-- MODAL PRIMARY -->
+<div class="modal fade" id="modal-primary" tabindex="-1" role="dialog" aria-labelledby="modal-primary-header">
+  <div class="modal-dialog modal-primary" role="document">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true" class="icon-cross"></span>
+    </button>
+    <div class="modal-content"><div class="modal-header">
+      <h4 class="modal-title" id="modal-primary-header">Ajout lot</h4>
+    </div>
+      <form #f="ngForm" (ngSubmit)="submit(f)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="col-md-2 control-label">Nom</label>
+            <div class="col-md-10">
+              <input type="text" class="mask_date form-control" name="nom" ngModel>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Réference</label>
+            <div class="col-md-10">
+              <input type="text" class="mask_date form-control" name="ref" ngModel>
+            </div>
+          </div>
+          <div class="form-group">
+
+            <label class="col-md-2 control-label">image</label>
+            <div class="col-md-10">
+              <ngx-dropzone (change)="onSelect($event)">
+                <ngx-dropzone-label><img src="https://cdn4.iconfinder.com/data/icons/fevzicons-1/91/noun_170933-512.png" style="height: 100px; width: 100px"></ngx-dropzone-label>
+                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                  <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                </ngx-dropzone-preview>
+              </ngx-dropzone>
+            </div>
+            <!--        <img *ngFor='let url of images'  [src]="url" height="50px" width="50px" style="margin: 3px;"> <br/>-->
+          </div>
+
+
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- END MODAL PRIMARY -->
+</div>

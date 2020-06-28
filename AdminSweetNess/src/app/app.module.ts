@@ -12,6 +12,8 @@ import { SignupComponent } from './login/signup/signup.component';
 import {HttpClientModule} from "@angular/common/http";
 import { LayoutComponent } from './home/layout/layout.component';
 import {NgxDropzoneModule} from "ngx-dropzone";
+import { LotComponent } from './home/lot/lot.component';
+import { MarqueComponent } from './home/marque/marque.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import {NgxDropzoneModule} from "ngx-dropzone";
     LoginComponent,
     SignupComponent,
     LayoutComponent,
+    LotComponent,
+    MarqueComponent,
 
   ],
   imports: [
