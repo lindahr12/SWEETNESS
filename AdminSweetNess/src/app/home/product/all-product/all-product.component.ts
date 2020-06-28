@@ -13,7 +13,7 @@ export class AllProductComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  files: File[] = [];
+  files: File[]=[];
   marque: any;
   data: any;
   fournisseur_id: any;
@@ -34,15 +34,18 @@ export class AllProductComponent implements OnInit {
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
     console.log(f.value);
-    console.log(this.files);
+    console.log(this.files[0]);
     myFormData.append('nomproduit',f.value.nomproduit);
     myFormData.append('reference',f.value.reference);
     myFormData.append('description',f.value.description);
-    myFormData.append('image', 'this.files');
+    for (let i = 0; i < 5; i++) {
+      myFormData.append('image[]', this.files[i]);
+    }
     myFormData.append('note', '0');
     myFormData.append('nbr_noted', '0');
     myFormData.append('is_active', '5');
     myFormData.append('fournisseur_id', '1');
+
     const endpoint = '/assets';
     this.http.post('http://127.0.0.1:8000/api/product', myFormData, {
       headers: headers
