@@ -10,4 +10,8 @@ class Marque extends Model
     protected $fillable=[
         'nom','ref'
     ];
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'owner');
+    }
 }

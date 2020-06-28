@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Marque;
+use App\Image;
+
 use Illuminate\Http\Request;
 
 class MarqueController extends Controller
@@ -43,7 +45,7 @@ class MarqueController extends Controller
         $marque->ref = $request->ref;
         $datamark =json_decode($marque->produits_id);
         //return response( $datalot);
-        $Newdatamark =collect([$produit->id]);
+        $Newdatamark =collect([$request->produit_id]);
         $Mergemarq = $Newdatamark->merge($datamark);
         $marque->produits_id = json_encode($Mergemarq);
         $marque->save();
@@ -97,11 +99,23 @@ class MarqueController extends Controller
         $marque = Marque::find($id);
         $marque->nom = $request->nomMarque;
         $marque->ref = $request->ref;
-        $datamark = collect([]) ;
-        $datamark->push($request->produit_id);
-        $marque->produits_id = json_encode($datamark);
+        $datamark =json_decode($marque->produits_id);
+        //return response( $datalot);
+        $Newdatamark =collect([$request->produit_id]);
+        $Mergemarq = $Newdatamark->merge($datamark);
+        $marque->produits_id = json_encode($Mergemarq);
         $marque->save();
-        return response('yeaah');
+        if($request->hasFile('image')){
+            $image = new Image();
+            $file      = $request->file('image');
+            $filename  = $file->getClientOriginalName();
+            $picture   = date('His').'-'.$filename;
+            $file->move(public_path('img_Marque'), $picture);
+            $image->url = $picture;
+            $marque->images()->save($image);
+            $image->save();
+        }
+        return response('updated');
     }
 
     /**
