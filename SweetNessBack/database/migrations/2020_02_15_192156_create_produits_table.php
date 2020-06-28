@@ -17,16 +17,11 @@ class CreateproduitsTable extends Migration
             $table->bigIncrements('id');
             $table->string('nom');
             $table->string('description');
-            $table->integer('limite_stock_alert');
-            $table->integer('total_stock');
+            $table->string('reference');
             $table->double('note');
             $table->integer('nbr_noted');
-            $table->double('tva');
-            $table->double('prix_ht');
-            $table->double('prix_ttc');
-            $table->double('marge');
-            $table->boolean('is_active')->default(true);
-            $table->double('reduction');
+            $table->boolean('is_active');
+            $table->bigInteger('fournisseur_id');
 
             $table->timestamps();
         });

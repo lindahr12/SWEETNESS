@@ -83,17 +83,16 @@ class CategorieController extends Controller
         /** Save image */
 
         if($request->hasFile('image')){
-            $image = Image::where('owner_id',$id)->get();
+            $image = new Image();
             $file      = $request->file('image');
             $filename  = $file->getClientOriginalName();
             $picture   = date('His').'-'.$filename;
             $file->move(public_path('img_categorie'), $picture);
-            $image->url = $picture;        
+            $image->url = $picture;
+            $categorie->images()->save($image);
+
             $image->save();
         }
-        
-        
-        return response()->json('Categorie updated');
         
         
         

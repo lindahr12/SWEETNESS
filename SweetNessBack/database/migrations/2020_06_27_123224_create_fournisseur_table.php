@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class SocieteTable extends Migration
+class CreateFournisseurTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,19 @@ class SocieteTable extends Migration
      */
     public function up()
     {
-        Schema::create('societe', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('raison_sociale');
+        Schema::create('fournisseur', function (Blueprint $table) {
+            $table->id();
+            $table->string('nom');
             $table->string('description');
             $table->string('rue');
-            $table->string('ville');
-            $table->string('email')->unique();
-            $table->string('logo');
-            $table->string('statue');
-            $table->string('matriculation_fiscal');
+            $table->string('region');
+            $table->integer('num_tel');
+            $table->integer('num_fax');
+            $table->integer('email')->unique();
+            $table->boolean('is_active');
+            $table->string('matricule_fiscale');
+
+
 
 
             $table->timestamps();
@@ -36,6 +39,6 @@ class SocieteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('societe');
+        Schema::dropIfExists('fournisseur');
     }
 }

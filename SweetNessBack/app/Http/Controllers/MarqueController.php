@@ -14,7 +14,9 @@ class MarqueController extends Controller
      */
     public function index()
     {
-        $marque = Marque::all();
+        $marque = Marque::orderBy('id','DESC')
+        ->with('images')
+        ->get();
         return response()->json($marque);
     }
 
@@ -39,10 +41,22 @@ class MarqueController extends Controller
         $marque = new Marque();
         $marque->nom = $request->nomMarque;
         $marque->ref = $request->ref;
-        $datamark = collect([]) ;
-        $datamark->push($request->produit_id);
-        $marque->produits_id = json_encode($datamark);
+        $datamark =json_decode($marque->produits_id);
+        //return response( $datalot);
+        $Newdatamark =collect([$produit->id]);
+        $Mergemarq = $Newdatamark->merge($datamark);
+        $marque->produits_id = json_encode($Mergemarq);
         $marque->save();
+        if($request->hasFile('image')){
+            $image = new Image();
+            $file      = $request->file('image');
+            $filename  = $file->getClientOriginalName();
+            $picture   = date('His').'-'.$filename;
+            $file->move(public_path('img_Marque'), $picture);
+            $image->url = $picture;
+            $marque->images()->save($image);
+            $image->save();
+        }
         return response('done');
 
         
@@ -56,7 +70,8 @@ class MarqueController extends Controller
      */
     public function show($id)
     {
-        //
+        $marque = Marque::find($id);
+        return response()->json($marque);
     }
 
     /**

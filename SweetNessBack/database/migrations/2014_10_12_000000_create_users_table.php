@@ -25,6 +25,9 @@ class CreateUsersTable extends Migration
             $table->integer('num_tel');
             $table->integer('num_fax');
             $table->bigInteger('societe_id')->nullable();
+            $table->string('statue_compte');
+            $table->string('token_validation');
+
             $table->rememberToken();
             $table->timestamps();
         });

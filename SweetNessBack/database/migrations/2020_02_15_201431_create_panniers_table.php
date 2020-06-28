@@ -19,6 +19,7 @@ class CreatePanniersTable extends Migration
             $table->bigInteger('article_id');
             $table->bigInteger('commande_id')->nullable();
             $table->integer('quantite');
+            $table->double('total_cout');
             $table->timestamps();
         });
     }

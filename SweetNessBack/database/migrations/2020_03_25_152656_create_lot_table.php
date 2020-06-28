@@ -21,9 +21,8 @@ class CreateLotTable extends Migration
             $table->double('prix_achat');
             $table->double('prix_vente_souhaiter');
             $table->boolean('is_active')->default(true);
-            $table->string('note');
             $table->integer('priorite_de_vente');
-            $table->string('produits_id')->nullable();
+            $table->bigInteger('produits_id')->nullable();
             $table->timestamps();
         });
     }

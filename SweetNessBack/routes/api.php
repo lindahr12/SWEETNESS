@@ -4,8 +4,10 @@
 Route::resource('/marque','MarqueController');
 
 Route::resource('/product','ProduitController');
+/**Fournisseur Route */
+Route::resource('/fournisseur','FournisseurController');
 
-/**Lot */
+/**Lot Route */
 Route::resource('/lot','LotController');
 
 /** Categorie Route  */
