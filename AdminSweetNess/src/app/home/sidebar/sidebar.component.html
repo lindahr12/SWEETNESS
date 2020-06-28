@@ -1,8 +1,8 @@
 <!-- START SIDEBAR -->
 <div class="app-sidebar app-navigation app-navigation-fixed scroll app-navigation-style-default app-navigation-open-hover dir-left" data-type="close-other">
-    <a href="index.html" class="app-navigation-logo">SweetNess <button class="app-navigation-logo-button mobile-hidden" data-sidepanel-toggle=".app-sidepanel">
+    <a href="index.html" > <button class="app-navigation-logo-button mobile-hidden" data-sidepanel-toggle=".app-sidepanel">
       <span class="icon-alarm"></span>
-  <span class="app-navigation-logo-button-alert">7</span>
+  <span class="app-navigation-logo-button-alert"></span>
 </button>
 </a>
   <nav>
@@ -13,14 +13,13 @@
       <li><a routerLink="#"><span class="nav-icon-hexa">TB</span> Produit</a>
       <ul>
         <li><a  routerLink="/home/product/all-product"><span class="nav-icon-hexa">P</span>Les produits</a></li>
-        <li><a  routerLink="/home/product"><span class="nav-icon-hexa">AP</span>Ajouter Produit</a></li>
-        <li><a  routerLink="/home/product/all-product"><span class="nav-icon-hexa">L</span>Les Lots </a></li>
-        <li><a  routerLink="/home/product/all-product"><span class="nav-icon-hexa">M</span>Les marques</a></li>
+        <li><a  routerLink="/home/lot"><span class="nav-icon-hexa">L</span>Les Lots </a></li>
+        <li><a  routerLink="/home/marque"><span class="nav-icon-hexa">M</span>Les marques</a></li>
+        <li><a  routerLink="/home/categorie"><span class="nav-icon-hexa">TC</span>Tous Categories</a></li>
       </ul>
       </li>
       <li><a routerLink="#"><span class="nav-icon-hexa">TB</span> Categorie</a>
         <ul>
-          <li><a  routerLink="/home/categorie"><span class="nav-icon-hexa">TC</span>Tous Categories</a></li>
           <li><a  routerLink="/home/categorie/add-categorie"><span class="nav-icon-hexa">AC</span>Ajout Categorie</a></li>
         </ul>
       </li>
@@ -28,24 +27,21 @@
 
       <!--  END PACK PRODUCT-->
       <!-- START PACK USERS-->
-      <li class="title">PACK UTILIOSATEURS</li>
+      <li class="title">PACK UTILISATEURS</li>
       <li>
 
       <li><a routerLink="/home/categories/"><span class="nav-icon-hexa">LU</span>UTILSATEUR</a>
       <ul>
         <li><a  routerLink="/home/users"><span class="nav-icon-hexa">TU</span>tous utlisateurs</a></li>
-        <li><a  routerLink="/home/product"><span class="nav-icon-hexa">AU</span>ajouter utlisateur</a></li>
       </ul>
       </li>
       <li><a routerLink="/home/categories/show_all"><span class="nav-icon-hexa">LS</span>LISTE SOCIETES </a>
         <ul>
-          <li><a  routerLink="/home/product"><span class="nav-icon-hexa">AS</span>ajout société</a></li>
           <li><a  routerLink="/home/product/all-product"><span class="nav-icon-hexa">TU</span>tous société</a></li>
         </ul>
       </li>
       <li><a routerLink="/home/categories/show_all"><span class="nav-icon-hexa">LA</span>LISTE ADMINS </a>
         <ul>
-          <li><a  routerLink="/home/product"><span class="nav-icon-hexa">AA</span>ajout admin</a></li>
           <li><a  routerLink="/home/product/all-product"><span class="nav-icon-hexa">TA</span>tous admin</a></li>
         </ul>
       </li>
@@ -82,26 +78,7 @@
       </li>
       <!--  END PACK COMMAERCIAL-->
 
-      <!--  START PACK APPLICATION-->
-      <li class="title">APPLICATION PACK</li>
-      <li>
-        <a  routerLink="/home/product"><span class="nav-icon-hexa">AP</span>APPLICATION</a>
-        <ul>
-          <li><a  routerLink="/home/product"><span class="nav-icon-hexa">AP</span>Ajouter Produit</a></li>
-          <li><a  routerLink="/home/product/all-product"><span class="nav-icon-hexa">P</span>Les produits</a></li>
-          <li><a  routerLink="/home/product/all-product"><span class="nav-icon-hexa">L</span>Les Lots </a></li>
-          <li><a  routerLink="/home/product/all-product"><span class="nav-icon-hexa">M</span>Les marques</a></li>
 
-          <li><a href="#"><span class="nav-icon-hexa">Lt</span> Lists</a>
-            <ul>
-              <li><a href="components-lists.html"><span class="nav-icon-hexa">Bl</span> Basic Lists</a></li>
-
-            </ul>
-          </li>
-
-        </ul>
-      </li>
-      <!--  END PACK APPLICATION-->
 
 </ul></nav></div>
 <!-- END SIDEBAR -->

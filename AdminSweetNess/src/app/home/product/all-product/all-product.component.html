@@ -1,58 +1,227 @@
 <!-- START PAGE CONTAINER -->
 <div class="container">
-  <div class="row margin-bottom-30 margin-top-10"><div class="col-md-6 col-md-offset-3 col-sm-12">
-    <div class="btn-group btn-group-justified" role="group">
-      <div class="btn-group" role="group">
-        <button type="button" class="btn btn-primary" data-filter="*">All</button>
+  <div class="col-md-12">
+    <!-- START LATEST TRANSACTIONS -->
+    <div class="block block-condensed">
+      <div class="app-heading">
+        <div class="title">
+          <h2>Les produits </h2>
+          <p>Information rapide</p>
+
+        </div>
+        <div class="row margin-bottom-30 margin-top-10">
+          <div class="col-md-6 col-md-offset-3 col-sm-12">
+            <div class="col-xs-5">
+              <button class="btn btn-primary btn-block btn-icon-fixed" >
+                <span class="fa fa-caret-left"></span>
+                categorie
+              </button>
+            </div>
+            <div class="col-xs-5">
+              <button class="btn btn-primary btn-block btn-icon-fixed" data-toggle="modal" data-target="#modal-primary">
+                <span class="fa fa-plus"></span>
+                Ajouter produit
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" data-filter=".filter-life">Life</button>
-      </div>
-      <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" data-filter=".filter-business">Business</button>
-      </div>
-      <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" data-filter=".filter-education">Education</button>
-      </div>
-      <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" data-filter=".filter-nature">Nature</button>
-      </div>
-    </div>
-  </div>
-  </div>
   <div class="row grid">
-    <div class="col-md-3 col-ms-4 grid-element filter-business">
-      <div class="tile-basic">
-        <a href="#" class="tile-image tile-image-padding tile-image-hover-grayscale preview" data-preview-image="assets/assets/images/large/img-1.jpg" data-preview-size="modal-lg">
-          <img src="assets/assets\images\preview\img-1.jpg" alt=""></a>
-        <div class="tile-content tile-content-condensed-bottom text-center">
-          <span class="tile-subtitle">
-            22/05/2017 - 12 comments - John Doe
-          </span>
-          <h5 class="tile-title">Quamquam haec quidem praeposita</h5>
-          <button type="submit"  class="btn btn-default btn-icon"><span class="icon-trash"></span></button>
-          <button type="submit"  class="btn btn-default btn-icon"><span class="icon-cog"></span></button>
 
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 col-ms-4 grid-element filter-business">
-      <div class="tile-basic">
-        <a href="#" class="tile-image tile-image-padding tile-image-hover-grayscale preview" data-preview-image="assets/assets/images/large/img-1.jpg" data-preview-size="modal-lg">
-          <img src="assets/assets\images\preview\img-1.jpg" alt=""></a>
-        <div class="tile-content tile-content-condensed-bottom text-center">
-          <span class="tile-subtitle">
-            22/05/2017 - 12 comments - John Doe
-          </span>
-          <h5 class="tile-title">Quamquam haec quidem praeposita</h5>
-          <button type="submit"  class="btn btn-default btn-icon"><span class="icon-trash"></span></button>
-          <button type="submit"  class="btn btn-default btn-icon"><span class="icon-cog"></span></button>
-
-        </div>
-      </div>
+    <div class="table-responsive">
+      <table class="table table-head-light table-striped">
+        <thead>
+        <tr>
+          <th width="150">Order id</th>
+          <th>Product name</th>
+          <th width="250">Customer</th>
+          <th width="150">Total</th>
+          <th width="150">Date</th>
+          <th width="150">Status</th>
+          <th width="120"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <a href="#" class="text-bolder text-primary">A155-33-2</a>
+          </td>
+          <td><div class="contact contact-lg">
+            <img src="assets\images\shop\img-1.jpg">
+            <div class="contact-container">
+              <a href="#">iPhone</a>
+              <span>32Gb</span>
+            </div>
+          </div>
+          </td>
+          <td>
+            <div class="contact contact-lg">
+              <img src="assets\images\users\user_8.jpg">
+              <div class="contact-container">
+                <a href="#">Juan Obrien</a>
+                <span>Advanced</span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="text-bolder">$720.00</span>
+          </td>
+          <td>07/11/2017</td>
+          <td><span class="label label-danger">Canceled</span></td>
+          <td><button class="btn btn-primary btn-icon"><span class="icon-pencil"></span></button>
+            <button class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" class="text-bolder text-primary">A155-34-9</a>
+          </td>
+          <td><div class="contact contact-lg">
+            <img src="assets\images\shop\img-2.jpg"><div class="contact-container">
+            <a href="#">iMac</a>
+            <span>25" Retina 4k</span>
+          </div>
+          </div>
+          </td>
+          <td><div class="contact contact-lg">
+            <img src="assets\images\users\user_7.jpg">
+            <div class="contact-container"><a href="#">John Doe</a>
+              <span>Regular</span>
+            </div>
+          </div>
+          </td>
+          <td>
+            <span class="text-bolder">$2,500.00</span>
+          </td>
+          <td>
+            07/11/2017</td>
+          <td>
+            <span class="label label-success">Delivered</span>
+          </td>
+          <td>
+            <button class="btn btn-primary btn-icon"><span class="icon-pencil"></span></button>
+            <button class="btn btn-danger btn-icon"><span class="icon-cross"></span></button>
+          </td>
+        </tr>
+        <tr>
+          <td><a href="#" class="text-bolder text-primary">A155-30-12</a></td>
+          <td><div class="contact contact-lg">
+            <img src="assets\images\shop\img-1.jpg">
+            <div class="contact-container">
+              <a href="#">iPhone</a>
+              <span>32Gb</span>
+            </div>
+          </div>
+          </td>
+          <td>
+            <div class="contact contact-lg">
+              <img src="assets\images\users\user_6.jpg">
+              <div class="contact-container">
+                <a href="#">Juan Obrien</a>
+                <span>Advanced</span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="text-bolder">$720.00</span>
+          </td>
+          <td>07/11/2017</td>
+          <td><span class="label label-danger">Canceled</span></td>
+          <td>
+            <button class="btn btn-primary btn-icon">
+              <span class="icon-pencil"></span>
+            </button>
+            <button class="btn btn-danger btn-icon"><span class="icon-cross"></span></button>
+          </td>
+        </tr>
+        <tr>
+          <td><a href="#" class="text-bolder text-primary">A155-29-1</a></td>
+          <td>
+            <div class="contact contact-lg">
+              <img src="assets\images\shop\img-2.jpg">
+              <div class="contact-container"><a href="#">iMac</a>
+                <span>25" Retina 4k</span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="contact contact-lg">
+              <img src="assets\images\users\user_5.jpg">
+              <div class="contact-container"><a href="#">John Doe</a> <span>Regular</span></div>
+            </div>
+          </td>
+          <td><span class="text-bolder">$2,500.00</span></td>
+          <td>07/11/2017</td>
+          <td><span class="label label-warning">Waiting</span></td>
+          <td><button class="btn btn-primary btn-icon"><span class="icon-pencil"></span></button>
+            <button class="btn btn-danger btn-icon"><span class="icon-cross"></span></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" class="text-bolder text-primary">A155-28-88</a>
+          </td>
+          <td>
+            <div class="contact contact-lg"><img src="assets\images\shop\img-1.jpg"><div class="contact-container"><a href="#">iPhone</a> <span>64Gb</span></div></div></td><td><div class="contact contact-lg"><img src="assets\images\users\user_3.jpg"><div class="contact-container"><a href="#">Veronica el Toro</a> <span>Regular</span></div></div></td><td><span class="text-bolder">$1,000.00</span></td><td>07/11/2017</td><td><span class="label label-success">Delivered</span></td><td><button class="btn btn-primary btn-icon"><span class="icon-pencil"></span></button> <button class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td></tr>
+        </tbody>
+      </table>
     </div>
 
 
   </div>
 </div>
 <!-- END PAGE CONTAINER -->
+  </div>
+</div>
+<!-- MODAL PRIMARY -->
+<div class="modal fade" id="modal-primary" tabindex="-1" role="dialog" aria-labelledby="modal-primary-header">
+  <div class="modal-dialog modal-primary" role="document">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true" class="icon-cross"></span>
+    </button>
+    <div class="modal-content"><div class="modal-header">
+      <h4 class="modal-title" id="modal-primary-header">Ajout lot</h4>
+    </div>
+      <form #f="ngForm" (ngSubmit)="submit(f)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="col-md-2 control-label">Nom</label>
+            <div class="col-md-10">
+              <input type="text" class="mask_date form-control" name="nomproduit" ngModel>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Description</label>
+            <div class="col-md-10">
+              <input type="text" class="mask_date form-control" name="description" ngModel>
+            </div>
+          </div>
+          <div class="form-group">
+
+            <label class="col-md-2 control-label">image</label>
+            <div class="col-md-10">
+              <ngx-dropzone (change)="onSelect($event)">
+                <ngx-dropzone-label><img src="https://cdn4.iconfinder.com/data/icons/fevzicons-1/91/noun_170933-512.png" style="height: 100px; width: 100px"></ngx-dropzone-label>
+                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                  <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                </ngx-dropzone-preview>
+              </ngx-dropzone>
+            </div>
+            <!--        <img *ngFor='let url of images'  [src]="url" height="50px" width="50px" style="margin: 3px;"> <br/>-->
+          </div>
+
+
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- END MODAL PRIMARY -->
+</div>
+
+
+
+

@@ -50,13 +50,13 @@ export class LoginComponent implements OnInit {
       return;
     }
     console.log('loginn');
-    console.log(this.loginForm);
+//    console.log(this.loginForm);
 
 
     return this.http.post('http://127.0.0.1:8000/api/auth/login'
       , this.loginForm.value).subscribe((res: Response) => {
 
-       // console.log(res.token);
+       console.log("looooooooog");
 
         this.token = res['access_token'];
         localStorage.setItem('token', this.token);
