@@ -13,7 +13,9 @@ class LotController extends Controller
      */
     public function index()
     {
-        $lots = Lot::all();
+        $lots = Lot::orderBy('id','DESC')
+        ->with('produits')
+        ->get();
         return response()->json($lots);
     }
 
@@ -42,11 +44,7 @@ class LotController extends Controller
             $lot->prix_vente_souhaiter = $request->prix_vente_souhaiter;
             $lot->note = $request->note;
             $lot->priorite_de_vente = $request->priorite_de_vente;
-            $datalot = collect([]);
-
-            $datalot->push($request->produit_id);
-
-            $lot->produits_id = json_encode($datalot);
+            $lot->produits_id = $request->produit_id;
             $lot->prix_achat = $request->prix_achat;
             $lot->save();
     }
@@ -59,7 +57,11 @@ class LotController extends Controller
      */
     public function show($id)
     {
-        //
+        $lot = Lot::find($id)
+        ->with('produits')
+        ->get();
+        return response()->json($lot);
+
     }
 
     /**
@@ -88,13 +90,10 @@ class LotController extends Controller
         $lot->quantite = $request->quantite;
         $lot->prix_vente_souhaiter = $request->prix_vente_souhaiter;
         $lot->note = $request->note;
-        $lot->priorite_de_vente = $request->priorite_de_vente;
-        $datalot = collect([]);
-
-        $datalot->push($request->produit_id);
-
-        $lot->produits_id = json_encode($datalot);
+        $lot->is_active = $request->is_active;
         $lot->prix_achat = $request->prix_achat;
+        $lot->priorite_de_vente = $request->priorite_de_vente;
+        $lot->produits_id = $request->produit_id;
         $lot->save();
     }
 

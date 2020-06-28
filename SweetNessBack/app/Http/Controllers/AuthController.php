@@ -48,7 +48,22 @@ class AuthController extends Controller
        $user->password = bcrypt($request->password);
        $user->num_tel = $request->num_tel;
        $user->num_fax = $request->num_fax;
-       //$user->societe_id = 0;
+       $user->statue_compte = $request->statue_compte;
+       $user->token_validation = $request->token_validation;
+        if($request->societe){
+            $societe = new Societe();
+            $societe->raison_sociale = $request->raison_sociale;
+            $societe->description = $request->description;
+            $societe->rue = $request->rue;
+            $societe->ville = $request->ville;
+            $societe->email = $request->email;
+            $societe->logo = $request->logo;
+            $societe->statue = $request->statue;
+            $societe->matriculation_fiscal = $request->matriculation_fiscal;
+            $societe->save();
+            $user->societe_id = $societe->id;
+        }
+    
        $user->save();
         return $this->login($request);
     }
