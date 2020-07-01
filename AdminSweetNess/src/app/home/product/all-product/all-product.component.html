@@ -47,11 +47,15 @@
             <a href="#" class="text-bolder text-primary">{{i.description}}</a>
           </td>
           <td><div class="contact contact-lg" *ngFor="let k of i.images">
-              <img src='{{ getSantizeUrl( k.url ) }}'>
+            <div *ngFor="let image of Parseimg(k.url)">
+              <img src='{{ getSantizeUrl( image ) }}'>
               <div class="contact-container">
                 <a href="#">{{i.nom}}</a>
                 <span>{{i.description}}</span>
               </div>
+
+            </div>
+              
             
           </div>
           </td>

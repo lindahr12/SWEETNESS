@@ -63,15 +63,17 @@ export class AllProductComponent implements OnInit {
     });
 
   }
-  public getSantizeUrl(url : string): SafeHtml{
+  public Parseimg(url : string){
     //this.sanitizer.bypassSecurityTrustUrl("C:/wamp64/www/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url);
     //return this.domSanitizer.sanitizer(SecurityContext.HTML,this.domSanitizer.bypassSecurityTrustHtml("C:/wamp64/www/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url));
     var img = JSON.parse(url);
-    for (let index = 0; index < img.length; index++) {
-      return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_article/"+ img));
-      
-    }
+    return img;
   }
+  public getSantizeUrl(imageurl : string): SafeHtml{
+    return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_article/"+ imageurl));
+
+  }
+
 
 
 
