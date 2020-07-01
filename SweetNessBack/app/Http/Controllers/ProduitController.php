@@ -182,4 +182,16 @@ class ProduitController extends Controller
         return response('article deleted');
 
     }
+    public function search($id)
+    {
+          $Produit = Produit::with('images')->where('id',$id)->get();
+         return response()->json($Produit);
+ 
+    }
+     public function search_nom($nom){     ///search with nom of categorie
+             $Produit = Produit::where( 'nom','LIKE',"%{$nom}%")
+                         ->with('images')
+                         ->get();
+            return response()->json($Produit);}
+ 
 }

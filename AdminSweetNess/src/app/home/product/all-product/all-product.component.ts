@@ -58,6 +58,7 @@ export class AllProductComponent implements OnInit {
     this.http.post('http://127.0.0.1:8000/api/product', myFormData, {
       headers: headers
     }).subscribe(data => {
+      
       console.log(data);
     });
 
@@ -65,7 +66,11 @@ export class AllProductComponent implements OnInit {
   public getSantizeUrl(url : string): SafeHtml{
     //this.sanitizer.bypassSecurityTrustUrl("C:/wamp64/www/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url);
     //return this.domSanitizer.sanitizer(SecurityContext.HTML,this.domSanitizer.bypassSecurityTrustHtml("C:/wamp64/www/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url));
-    return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_article/"+url));
+    var img = JSON.parse(url);
+    for (let index = 0; index < img.length; index++) {
+      return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_article/"+ img));
+      
+    }
   }
 
 
