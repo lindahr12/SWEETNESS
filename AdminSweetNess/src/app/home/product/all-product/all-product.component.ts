@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, SecurityContext} from '@angular/core';
 import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-all-product',
@@ -10,14 +11,21 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class AllProductComponent implements OnInit {
   private e: any;
   private spellcheck: any;
-
-  constructor(private http: HttpClient) { }
-
   files: File[]=[];
   marque: any;
-  data: any;
   fournisseur_id: any;
+  private produit: any;
+  data: any;
 
+  constructor(private http: HttpClient,private _sanitizer: DomSanitizer) { }
+  ngOnInit(): void {
+    this.http.get('http://127.0.0.1:8000/api/product').subscribe(data =>
+    {
+      console.log("Data is coming.",this.data = data);
+
+
+    }, error => console.error(error));
+  }
   onSelect(event) {
     console.log(event);
     this.files.push(...event.addedFiles);
@@ -54,9 +62,13 @@ export class AllProductComponent implements OnInit {
     });
 
   }
-
-  ngOnInit(): void {
+  public getSantizeUrl(url : string): SafeHtml{
+    //this.sanitizer.bypassSecurityTrustUrl("C:/wamp64/www/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url);
+    //return this.domSanitizer.sanitizer(SecurityContext.HTML,this.domSanitizer.bypassSecurityTrustHtml("C:/wamp64/www/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url));
+    return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_article/"+url));
   }
+
+
 
 
 }

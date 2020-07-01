@@ -32,136 +32,45 @@
       <table class="table table-head-light table-striped">
         <thead>
         <tr>
-          <th width="150">Order id</th>
-          <th>Product name</th>
-          <th width="250">Customer</th>
-          <th width="150">Total</th>
+          <th width="150">Réefernce</th>
+          <th>Produit nom</th>
+          <th width="250">note</th>
+          <th width="150">Fournisseur</th>
           <th width="150">Date</th>
           <th width="150">Status</th>
           <th width="120"></th>
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr *ngFor="let i of data" >
           <td>
-            <a href="#" class="text-bolder text-primary">A155-33-2</a>
+            <a href="#" class="text-bolder text-primary">{{i.description}}</a>
           </td>
-          <td><div class="contact contact-lg">
-            <img src="assets\images\shop\img-1.jpg">
+          <td><div class="contact contact-lg" *ngFor="let k of i.images">
+            <img src='{{getSantizeUrl(k.url)}}'>
             <div class="contact-container">
-              <a href="#">iPhone</a>
-              <span>32Gb</span>
+              <a href="#">{{i.nom}}</a>
+              <span>{{i.description}}</span>
             </div>
           </div>
           </td>
           <td>
             <div class="contact contact-lg">
-              <img src="assets\images\users\user_8.jpg">
               <div class="contact-container">
-                <a href="#">Juan Obrien</a>
-                <span>Advanced</span>
+                <a href="#">{{i.note}}</a>
+                <span>{{i.nbr_noted}}</span>
               </div>
             </div>
           </td>
           <td>
-            <span class="text-bolder">$720.00</span>
+            <span class="text-bolder">{{i.fournisseur_id}}</span>
           </td>
-          <td>07/11/2017</td>
+          <td>{{i.created_at| date}}</td>
           <td><span class="label label-danger">Canceled</span></td>
           <td><button class="btn btn-primary btn-icon"><span class="icon-pencil"></span></button>
             <button class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
         </tr>
-        <tr>
-          <td>
-            <a href="#" class="text-bolder text-primary">A155-34-9</a>
-          </td>
-          <td><div class="contact contact-lg">
-            <img src="assets\images\shop\img-2.jpg"><div class="contact-container">
-            <a href="#">iMac</a>
-            <span>25" Retina 4k</span>
-          </div>
-          </div>
-          </td>
-          <td><div class="contact contact-lg">
-            <img src="assets\images\users\user_7.jpg">
-            <div class="contact-container"><a href="#">John Doe</a>
-              <span>Regular</span>
-            </div>
-          </div>
-          </td>
-          <td>
-            <span class="text-bolder">$2,500.00</span>
-          </td>
-          <td>
-            07/11/2017</td>
-          <td>
-            <span class="label label-success">Delivered</span>
-          </td>
-          <td>
-            <button class="btn btn-primary btn-icon"><span class="icon-pencil"></span></button>
-            <button class="btn btn-danger btn-icon"><span class="icon-cross"></span></button>
-          </td>
-        </tr>
-        <tr>
-          <td><a href="#" class="text-bolder text-primary">A155-30-12</a></td>
-          <td><div class="contact contact-lg">
-            <img src="assets\images\shop\img-1.jpg">
-            <div class="contact-container">
-              <a href="#">iPhone</a>
-              <span>32Gb</span>
-            </div>
-          </div>
-          </td>
-          <td>
-            <div class="contact contact-lg">
-              <img src="assets\images\users\user_6.jpg">
-              <div class="contact-container">
-                <a href="#">Juan Obrien</a>
-                <span>Advanced</span>
-              </div>
-            </div>
-          </td>
-          <td>
-            <span class="text-bolder">$720.00</span>
-          </td>
-          <td>07/11/2017</td>
-          <td><span class="label label-danger">Canceled</span></td>
-          <td>
-            <button class="btn btn-primary btn-icon">
-              <span class="icon-pencil"></span>
-            </button>
-            <button class="btn btn-danger btn-icon"><span class="icon-cross"></span></button>
-          </td>
-        </tr>
-        <tr>
-          <td><a href="#" class="text-bolder text-primary">A155-29-1</a></td>
-          <td>
-            <div class="contact contact-lg">
-              <img src="assets\images\shop\img-2.jpg">
-              <div class="contact-container"><a href="#">iMac</a>
-                <span>25" Retina 4k</span>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="contact contact-lg">
-              <img src="assets\images\users\user_5.jpg">
-              <div class="contact-container"><a href="#">John Doe</a> <span>Regular</span></div>
-            </div>
-          </td>
-          <td><span class="text-bolder">$2,500.00</span></td>
-          <td>07/11/2017</td>
-          <td><span class="label label-warning">Waiting</span></td>
-          <td><button class="btn btn-primary btn-icon"><span class="icon-pencil"></span></button>
-            <button class="btn btn-danger btn-icon"><span class="icon-cross"></span></button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a href="#" class="text-bolder text-primary">A155-28-88</a>
-          </td>
-          <td>
-            <div class="contact contact-lg"><img src="assets\images\shop\img-1.jpg"><div class="contact-container"><a href="#">iPhone</a> <span>64Gb</span></div></div></td><td><div class="contact contact-lg"><img src="assets\images\users\user_3.jpg"><div class="contact-container"><a href="#">Veronica el Toro</a> <span>Regular</span></div></div></td><td><span class="text-bolder">$1,000.00</span></td><td>07/11/2017</td><td><span class="label label-success">Delivered</span></td><td><button class="btn btn-primary btn-icon"><span class="icon-pencil"></span></button> <button class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td></tr>
+
         </tbody>
       </table>
     </div>
