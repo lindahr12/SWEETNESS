@@ -92,7 +92,17 @@ class ProduitController extends Controller
 
         return response()->json('article saved');
     }
+<<<<<<< HEAD
 
+=======
+     public function search($id)
+       {
+             $produit = Produit::with('images')->findOrFail($id);
+            //  $categorie->get();
+            return response()->json($produit);
+
+       }
+>>>>>>> 3bfc4a7d4d812d32c647b68887db92d28b033321
     public function edit($id){
         $article = Produit::find($id);
         return response($article);
