@@ -178,6 +178,7 @@ class ProduitController extends Controller
     }
     public function destroy($id){
         $article = Produit::find($id);
+        $image = Image::where('owner_id',$id)->first()->delete();
         $article->delete();
         return response('article deleted');
 

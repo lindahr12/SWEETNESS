@@ -102,6 +102,8 @@ class CategorieController extends Controller
 
     public function destroy($id){
        $categorie = Categories::findOrFail($id);
+       $image = Image::where('owner_id',$id)->first()->delete();
+
        $categorie->delete();
       return response('done');
    }

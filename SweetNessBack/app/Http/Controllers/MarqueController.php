@@ -127,6 +127,8 @@ class MarqueController extends Controller
     public function destroy($id)
     {
         $Marque = Marque::find($id);
+        $image = Image::where('owner_id',$id)->first()->delete();
+
         $Marque->delete();
         return response('done');
     }
