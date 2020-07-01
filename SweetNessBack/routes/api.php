@@ -4,6 +4,9 @@
 Route::resource('/marque','MarqueController');
 
 Route::resource('/product','ProduitController');
+Route::get('/product/{id}','ProduitController@search_nom');
+Route::get('/product/{nom}','ProduitController@search');
+
 /**Fournisseur Route */
 Route::resource('/fournisseur','FournisseurController');
 
