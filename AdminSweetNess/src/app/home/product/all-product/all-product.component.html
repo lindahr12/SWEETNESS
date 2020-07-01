@@ -26,77 +26,78 @@
           </div>
         </div>
       </div>
-  <div class="row grid">
+      <div class="row grid">
 
-    <div class="table-responsive">
-      <table class="table table-head-light table-striped">
-        <thead>
-        <tr>
-          <th width="150">Réefernce</th>
-          <th>Produit nom</th>
-          <th width="250">note</th>
-          <th width="150">Fournisseur</th>
-          <th width="150">Date</th>
-          <th width="150">Status</th>
-          <th width="120"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let i of data" >
-          <td>
-            <a href="#" class="text-bolder text-primary">{{i.reference}}</a>
-          </td>
-<<<<<<< HEAD
-          <td><div class="contact contact-lg" *ngFor="let k of i.images">
-            <div *ngFor="let image of Parseimg(k.url)">
-              <img src='{{ getSantizeUrl( image ) }}'>
-              <div class="contact-container">
-                <a href="#">{{i.nom}}</a>
-                <span>{{i.description}}</span>
-              </div>
+        <div class="table-responsive">
+          <table class="table table-head-light table-striped">
+            <thead>
+            <tr>
+              <th width="150">Réefernce</th>
+              <th>Produit nom</th>
+              <th>Produit nom</th>
+              <th width="250">note</th>
+              <th width="150">Fournisseur</th>
+              <th width="150">Date</th>
+              <th width="150">Status</th>
+              <th width="120"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let i of data" >
+              <td>
+                <a href="#" class="text-bolder text-primary">{{i.description}}</a>
+              </td>
+              <td style="display: table">
+                <div  *ngFor="let k of i.images" style="display:table;vertical-align:auto;">
+                  <div *ngFor="let image of Parseimg(k.url)">
+                  <img src='{{ getSantizeUrl( image ) }}' style="width:40px; height: 40px; float: left;; border-radius: 100%;clear:left ;display: inline">
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="contact contact-lg" >
 
-=======
-          <td><div class="contact contact-lg" *ngFor="let k of i.images ">
-            <img src='{{getSantizeUrl(k.url)}}'>
-            <div class="contact-container">
-              <a href="#">{{i.nom}}</a>
-              <span>{{i.description}}</span>
->>>>>>> add
-            </div>
-              
-            
-          </div>
-          </td>
-          <td>
-            <div class="contact contact-lg">
-              <div class="contact-container">
-                <a href="#">{{i.note}}</a>
-                <span>{{i.nbr_noted}}</span>
-              </div>
-            </div>
-          </td>
-          <td>
-            <span class="text-bolder">{{i.fournisseur_id}}</span>
-          </td>
-          <td>{{i.created_at| date}}</td>
-<!--          <td><span *ngIf="i.is_active == 0" class="label label-danger">Canceled</span></td>-->
-          <td><span  *ngIf="i.is_active == 5" class="label label-warning">ne pas actif</span>
-          <span  *ngIf="i.is_active == 0" class="label label-success">est actif</span></td>
-          <td><button  type="submit" (click)="recuperer(i.id,i.nom,i.images.url,i.description,i.reference,i.is_active)" data-toggle="modal" data-target="#modal-info" class="btn btn-primary btn-icon">
-            <span class="icon-pencil"></span></button>
-            <button type="submit"  (click)="deleteproduct(i.id)" class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
-        </tr>
+                    <div class="contact-container">
+                      <a href="#">{{i.nom}}</a>
+                      <span>{{i.description}}</span>
+                    </div>
 
-        </tbody>
-      </table>
+
+
+
+                </div>
+              </td>
+              <td>
+                <div class="contact contact-lg">
+                  <div class="contact-container">
+                    <a href="#">{{i.note}}</a>
+                    <span>{{i.nbr_noted}}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <span class="text-bolder">{{i.fournisseur_id}}</span>
+              </td>
+              <td>{{i.created_at| date}}</td>
+              <td><span class="label label-danger">Canceled</span></td>
+              <td><button type="submit" (click)="recupid(i.id)" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#modal-info" ><span class="icon-pencil"></span></button>
+                <button type="submit" (click)="delete(i.id)" class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+
+      </div>
     </div>
-
-
+    <!-- END PAGE CONTAINER -->
   </div>
 </div>
-<!-- END PAGE CONTAINER -->
-  </div>
-</div>
+
+
+
+
 
 <!-- MODAL LARGE -->
 <div class="modal fade" id="modal-large" tabindex="-1" role="dialog" aria-labelledby="modal-large-header"><div class="modal-dialog modal-lg" role="document">
@@ -145,7 +146,7 @@
         <div class="form-group">
           <label for="exampleFormControlSelect1" class="col-md-2 control-label">Fournisseur </label>
           <div class="col-md-10">
-            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="fournisseur_id"ngValue="fournisseur_id"  name="fournisseur_id" >
+            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="fournisseur_id" ngValue="fournisseur_id"  name="fournisseur_id" >
               <option></option>
               <option *ngFor="let i of data" ngValue="{{i.id}}">{{i.nom}} </option>
 
@@ -153,14 +154,13 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" data-dismiss="modal" class="btn btn-link" data-dismiss="modal">Close</button>
-          <button type="submit" data-dismiss="modal" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
         </div>
       </div>
     </form>
   </div>
-  </div>
-</div>
+</div></div>
 <!-- END MODAL LARGE -->
 
 <!-- MODAL INFO -->
@@ -173,25 +173,25 @@
       <div class="modal-header">
         <h4 class="modal-title" id="modal-info-header">Info Modal</h4>
       </div><div class="modal-body">
-      <form #fupdate="ngForm" (ngSubmit)="update(f)">
-        <div class="modal-body">
+      <form [formGroup]="formupdate" (ngSubmit)="update(f)">
+        <div class="modal-body" *ngFor="let p of produit">
           <div class="form-group">
             <label class="col-md-2 control-label">Nom</label>
             <div class="col-md-10">
-              <input type="text" class="mask_date form-control" formControlName="nom" name="nomproduit" ngModel>
+              <input type="text" class="mask_date form-control" value="{{p.nom}}"  name="nomproduit" formControlName="nom">
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Réference</label>
             <div class="col-md-10">
-              <input type="text" class="mask_date form-control" id="reference" name="reference" ngModel>
+              <input type="text" class="mask_date form-control" value="{{p.reference}}" id="reference2" name="reference" formControlName="reference">
             </div>
           </div>
           <div class="form-group">
 
             <label class="col-md-2 control-label">Description</label>
             <div class="col-md-10">
-              <textarea class="form-control" rows="5" class="mask_date form-control" name="description" ngModel></textarea>
+              <input type="text" class="form-control" rows="5" class="mask_date form-control" value="{{p.description}" name="description" formControlName="description">
               <span class="help-block"></span>
             </div>
 
@@ -201,8 +201,11 @@
             <div class="col-md-10">
               <ngx-dropzone (change)="onSelect($event)">
                 <ngx-dropzone-label><img src="https://cdn4.iconfinder.com/data/icons/fevzicons-1/91/noun_170933-512.png" style="height: 100px; width: 100px"></ngx-dropzone-label>
-                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-preview value="" *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
                   <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+
+
+
                 </ngx-dropzone-preview>
               </ngx-dropzone>
             </div>
@@ -211,7 +214,7 @@
           <div class="form-group">
             <label for="exampleFormControlSelect1" class="col-md-2 control-label">Fournisseur </label>
             <div class="col-md-10">
-              <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="fournisseur_id"ngValue="fournisseur_id"  name="fournisseur_id" >
+              <select class="form-control" id="exampleFormControlSelect1" formControlName="fournisseur_id" name="fournisseur_id" >
                 <option></option>
                 <option *ngFor="let i of data" ngValue="{{i.id}}">{{i.nom}} </option>
 
@@ -228,4 +231,4 @@
     </div>
   </div>
 </div>
-<!-- END MODAL INFO -->
+<!-- END MODAL INFO-->

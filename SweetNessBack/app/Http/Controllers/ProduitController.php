@@ -92,13 +92,7 @@ class ProduitController extends Controller
 
         return response()->json('article saved');
     }
-     public function search($id)
-       {
-             $produit = Produit::with('images')->findOrFail($id);
-            //  $categorie->get();
-            return response()->json($produit);
 
-       }
     public function edit($id){
         $article = Produit::find($id);
         return response($article);
@@ -195,11 +189,11 @@ class ProduitController extends Controller
           $Produit = Produit::with('images')->where('id',$id)
           ->get();
          return response()->json($Produit);
- 
+
     }
     public function search_nom(Request $request){     ///search with nom of categorie
         $Produit = Produit::with('images')->where('nom','LIKE',"%{$request->nom}%")->get();
             return response()->json($Produit);
     }
- 
+
 }
