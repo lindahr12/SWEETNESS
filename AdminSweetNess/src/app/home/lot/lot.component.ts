@@ -62,4 +62,8 @@ export class LotComponent implements OnInit {
   delete(id: any) {
 
   }
+
+  recupid(id: any) {
+
+  }
 }

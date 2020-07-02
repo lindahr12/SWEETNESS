@@ -1,60 +1,87 @@
 
-<!-- START PAGE CONTAINER -->
 <div class="container">
-
-
-
-
-
   <div class="col-md-12">
     <!-- START LATEST TRANSACTIONS -->
     <div class="block block-condensed">
       <div class="app-heading">
         <div class="title">
-          <h2>Les lots</h2>
+          <h2>Les lots </h2>
           <p>Information rapide</p>
+
         </div>
         <div class="row margin-bottom-30 margin-top-10">
           <div class="col-md-6 col-md-offset-3 col-sm-12">
             <div class="col-xs-5">
               <button class="btn btn-primary btn-block btn-icon-fixed" >
                 <span class="fa fa-caret-left"></span>
-                Liste produit
+                Produits
               </button>
             </div>
             <div class="col-xs-5">
-              <button class="btn btn-primary btn-block btn-icon-fixed" data-toggle="modal" data-target="#modal-primary">
+              <button class="btn btn-primary btn-block btn-icon-fixed" data-toggle="modal" data-target="#modal-large">
                 <span class="fa fa-plus"></span>
-                Ajouter lot
+                Ajouter Lot
               </button>
             </div>
           </div>
         </div>
       </div>
-      <div class="block-content">
+      <div class="row grid">
+
         <div class="table-responsive">
-          <table class="table table-striped">
+          <table class="table table-head-light table-striped">
             <thead>
-            <tr><th>2017</th>
-              <th>Chrome</th>
-              <th>IE</th>
-              <th>Firefox</th>
-              <th>Safari</th>
-              <th>Opera</th>
+            <tr>
+              <th width="150">Produit</th>
+              <th width="150" >Quantite</th>
+              <th  width="150" style="margin-right: 10px" class="col-md-1" >Prix achat</th>
+              <th width="150" class="col-md-2">Date achat</th>
+              <th width="150"class="col-md-2">Prix vente</th>
+              <th width="150"class="col-md-2">Priorite</th>
+              <th width="150"class="col-md-2">Date expiration</th>
+              <th width="150"class="col-md-2">Date creation</th>
+              <th width="150"class="col-md-2">Status</th>
+              <th width="120"class="col-md-2"></th>
             </tr>
             </thead>
             <tbody>
-            <tr><td>April</td><td>70.4 %</td><td>5.8 %</td><td>17.5 %</td><td>3.7 %</td><td>1.3 %</td></tr>
-            <tr><td>March</td><td>69.9 %</td><td>6.1 %</td><td>17.8 %</td><td>3.6 %</td><td>1.3 %</td></tr>
-            <tr><td>February</td><td>69.0 %</td><td>6.2 %</td><td>18.6 %</td><td>3.7 %</td><td>1.3 %</td></tr>
-            <tr><td>January</td><td>68.4 %</td><td>6.2 %</td><td>18.8 %</td><td>3.7 %</td><td>1.4 %</td></tr>
+            <tr *ngFor="let i of lot" >
+              <td >
+                <a href="#" class="text-bolder text-primary">{{i.produits.id}}</a>
+              </td>
+              <td >
+                <a href="#" class="text-bolder text-primary">{{i.quantite}}</a>
+              </td>
+              <td >
+                <a href="#" class="text-bolder text-primary">{{i.prix_achat}}</a>
+              </td>
+              <td >
+                <a href="#" class="text-bolder text-primary">{{i.date_achat}}</a>
+              </td>
+              <td >
+                <a href="#" class="text-bolder text-primary">{{i.prix_vente_souhaiter}}</a>
+              </td>
+              <td >
+                <a href="#" class="text-bolder text-primary">{{i.priorite_de_vente}}</a>
+              </td>
+              <td >
+                <a href="#" class="text-bolder text-primary">{{i.date_expiration}}</a>
+              </td>
+              <td>{{i.created_at| date}}</td>
+              <td ><button type="submit" (click)="recupid(i.id)" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#modal-info" ><span class="icon-pencil"></span></button>
+                <button type="submit" (click)="delete(i.id)" class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
+            </tr>
+
             </tbody>
           </table>
         </div>
+
+
       </div>
-    </div><!-- END LATEST TRANSACTIONS --></div>
+    </div>
+    <!-- END PAGE CONTAINER -->
+  </div>
 </div>
-<!-- END PAGE CONTAINER -->
 
 
 

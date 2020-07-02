@@ -1,4 +1,3 @@
-import { AddFournisseurComponent } from './home/fournisseur/add-fournisseur/add-fournisseur.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
@@ -42,10 +41,6 @@ const routes: Routes = [
       {
         path:'marque',
         component:MarqueComponent
-      },
-      {
-        path:'addfournisseur',
-        component:AddFournisseurComponent
       },
 
 
