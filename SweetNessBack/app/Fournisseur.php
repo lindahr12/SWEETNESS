@@ -11,8 +11,5 @@ class Fournisseur extends Model
     protected $fillable=[
         'nom','description','rue','region','num_tel','num_fax','email','is_active','matricule_fiscale'
     ];
-    public function images()
-    {
-        return $this->morphMany(Image::class, 'owner');
-    }
+   
 }
