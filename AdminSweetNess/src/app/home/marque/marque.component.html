@@ -29,25 +29,29 @@
       <div class="table-responsive">
         <table class="table table-clean-paddings margin-bottom-0">
           <thead>
-          <tr><th>Marque</th>
+          <tr>
+            <th>Marque</th>
+            <th>Réference</th>
+            <th>product </th>
             <th width="150">mis à jour à</th>
             <th width="20">Actions</th>
             <th width="55"></th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let i of data">
+          <tr *ngFor="let i of marque">
             <td>
               <div class="contact contact-rounded contact-bordered contact-lg" *ngFor="let k of i.images">
-                <img src='' >
+                <img src='{{k.url}}'>
                 <div class="contact-container"><a href="#">{{i.nom}}</a>
-                  <span>{{i.created_at| date}} </span>
+                  <span>{{i.ref}} </span>
                 </div>
               </div>
             </td>
+            <td>{{i.ref}}</td>
             <td>{{i.created_at|date}}</td>
 
-            <td><button type="submit" (click)="recuperer(i.id,i.nom,i.images.url,i.parent_id)" class="btn btn-default btn-icon btn-clean dropdown-toggle"  data-toggle="modal" data-target="#id" aria-haspopup="true" aria-expanded="false">
+            <td><button type="submit"  class="btn btn-default btn-icon btn-clean dropdown-toggle"  data-toggle="modal" data-target="#id" aria-haspopup="true" aria-expanded="false">
               <span  class="fa fa-pencil"></span>
             </button></td>
             <td>
@@ -102,16 +106,101 @@
             </div>
             <!--        <img *ngFor='let url of images'  [src]="url" height="50px" width="50px" style="margin: 3px;"> <br/>-->
           </div>
+          <div class="form-group">
+
+            <label class="col-md-2 control-label">Produits </label>
+            <div class="col-md-10"  >
+            <ejs-multiselect id='localData' name='productnom'  #local='ngModel' [(value)]='value'[(ngModel)]='value' [dataSource]="produit" [fields]='localFields' [placeholder]='localWaterMark'>
+
+            </ejs-multiselect>
+            </div>
+          </div>
 
 
 
 
           <div class="modal-footer">
             <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" onclick="$('.modal').modal('hide')">Submit</button>
           </div>
         </div>
       </form>
     </div>
   </div><!-- END MODAL PRIMARY -->
 </div>
+<!--END MODEL PRIMARY -->
+
+<!-- MODAL INFO -->
+<!--<div class="modal fade" id="modal-info" tabindex="-1" role="dialog" aria-labelledby="modal-info-header">-->
+<!--  <div class="modal-dialog modal-info" role="document">-->
+<!--    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--      <span aria-hidden="true" class="icon-cross"></span>-->
+<!--    </button>-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h4 class="modal-title" id="modal-info-header">Info Modal</h4>-->
+<!--      </div><div class="modal-body">-->
+<!--      <form [formGroup]="formupdate" (ngSubmit)="update()">-->
+<!--        <div class="modal-body" *ngFor="let p of produit">-->
+<!--          <div class="form-group">-->
+<!--            <label class="col-md-2 control-label">Nom</label>-->
+<!--            <div class="col-md-10">-->
+<!--              <input type="text" class="mask_date form-control" value="{{p.nom}}"  name="nomproduit" formControlName="nom">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label class="col-md-2 control-label">Réference</label>-->
+<!--            <div class="col-md-10">-->
+<!--              <input type="text" class="mask_date form-control" value="{{p.reference}}" id="reference2" name="reference" formControlName="reference">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+
+<!--            <label class="col-md-2 control-label">Description</label>-->
+<!--            <div class="col-md-10">-->
+<!--              <input type="text" class="form-control" rows="5" class="mask_date form-control" value="{{p.description}" name="description" formControlName="description">-->
+<!--              <span class="help-block"></span>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label class="col-md-2 control-label">image</label>-->
+<!--            <div class="col-md-10">-->
+<!--              <ngx-dropzone (change)="onSelect($event)">-->
+<!--                <ngx-dropzone-label><img src="https://cdn4.iconfinder.com/data/icons/fevzicons-1/91/noun_170933-512.png" style="height: 100px; width: 100px"></ngx-dropzone-label>-->
+<!--                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">-->
+<!--                  <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>-->
+
+<!--                  <div  *ngFor="let k of p.images" style="display:table;vertical-align:auto;">-->
+<!--                    <div *ngFor="let image of Parseimg(k.url)">-->
+<!--                      <ngx-dropzone-image-preview><img src='{{ getSantizeUrl( image ) }}' style="width:40px; height: 40px; float: left;; border-radius: 100%;clear:left ;"> </ngx-dropzone-image-preview>-->
+<!--                    </div>-->
+<!--                  </div>-->
+
+<!--                </ngx-dropzone-preview>-->
+<!--              </ngx-dropzone>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;        <img *ngFor='let url of images'  [src]="url" height="50px" width="50px" style="margin: 3px;"> <br/>&ndash;&gt;-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="exampleFormControlSelect1" class="col-md-2 control-label">Fournisseur </label>-->
+<!--            <div class="col-md-10">-->
+<!--              <select class="form-control" id="exampleFormControlSelect1" formControlName="fournisseur_id" name="fournisseur_id" >-->
+<!--                <option></option>-->
+<!--                <option *ngFor="let i of data" ngValue="{{i.id}}">{{i.nom}} </option>-->
+
+<!--              </select>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="modal-footer">-->
+<!--            <button type="button" data-dismiss="modal" class="btn btn-link" >Close</button>-->
+<!--            <button type="submit"  class="btn btn-primary" onclick="$('.modal').modal('hide')">Submit</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!-- END MODAL INFO-->
+
