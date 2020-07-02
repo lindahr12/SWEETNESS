@@ -33,7 +33,7 @@ class AuthController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->respondWithToken($token);
+        return $this->respondWithToken($token,auth()->user()->role()->nom);
     }
       /**
      * Get the authenticated User.
@@ -65,7 +65,7 @@ class AuthController extends Controller
         }
 
        $user->save();
-        return $this->login($request);
+        return $this->login($request,auth()->user()->role()->nom);
     }
 
     /**
@@ -75,7 +75,7 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        return response()->json(auth()->user(),auth()->user()->role()->nom);
     }
 
     /**
@@ -113,7 +113,8 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user()->name
+            'user' => auth()->user()->name,
+            'role' =>auth()->user()->role()->nom
         ]);
     }
 

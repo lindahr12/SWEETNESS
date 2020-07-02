@@ -68,10 +68,11 @@ class ProduitController extends Controller
         $produit->reduction = $request->reduction;
         $produit->save();
         /**delete image */
-        $image = Image::where('owner_id',$id)->first()->delete();
 
         /** Save image */
         if($request->hasFile('image')){
+            $image = Image::where('owner_id',$id)->first()->delete();
+
             foreach($request->file('image') as $img)
             {
             $filename  = $img->getClientOriginalName();

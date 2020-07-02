@@ -34,9 +34,7 @@ export class AddFournisseurComponent implements OnInit {
     }else{
       myFormData.append('is_active','0');
     }
-
     const endpoint = '/assets';
-
     this.http.post('http://127.0.0.1:8000/api/fournisseur', myFormData, {
       headers: headers
     }).subscribe(data => {
