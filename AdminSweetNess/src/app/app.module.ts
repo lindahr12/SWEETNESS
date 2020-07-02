@@ -14,6 +14,8 @@ import { LayoutComponent } from './home/layout/layout.component';
 import {NgxDropzoneModule} from "ngx-dropzone";
 import { LotComponent } from './home/lot/lot.component';
 import { MarqueComponent } from './home/marque/marque.component';
+import { AddFournisseurComponent } from './home/fournisseur/add-fournisseur/add-fournisseur.component';
+import { ShowallComponent } from './home/fournisseur/showall/showall.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { MarqueComponent } from './home/marque/marque.component';
     LayoutComponent,
     LotComponent,
     MarqueComponent,
+    AddFournisseurComponent,
+    ShowallComponent,
 
   ],
   imports: [
