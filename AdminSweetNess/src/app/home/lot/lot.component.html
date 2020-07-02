@@ -68,52 +68,62 @@
     <div class="modal-content"><div class="modal-header">
       <h4 class="modal-title" id="modal-primary-header">Ajout lot</h4>
     </div>
-      <form #f="ngForm" (ngSubmit)="submit(f)">
-      <div class="modal-body">
-        <div class="form-group">
-            <label class="col-md-2 control-label">Quantité</label>
+      <form [formGroup]="formlot" (ngSubmit)="submit()">
+        <div class="modal-body" >
+          <div class="form-group">
+            <label class="col-md-2 control-label">Quantite</label>
             <div class="col-md-10">
-              <input type="text" class="mask_date form-control" name="quantite" ngModel>
+              <input type="text" class="mask_date form-control"  name="quantite" formControlName="quantite">
             </div>
           </div>
-        <div class="form-group">
-          <label class="col-md-2 control-label">Prix achat</label>
-          <div class="col-md-10">
-            <input type="text" class="mask_date form-control" name="prix_achat" ngModel>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Prix achat</label>
+            <div class="col-md-10">
+              <input type="text" class="mask_date form-control"  name="prix_achat" formControlName="prix_achat">
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-2 control-label">Prix vente</label>
-          <div class="col-md-10">
-            <input type="text" class="mask_date form-control" name="prix_vente" ngModel>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Prix vente souhaiter</label>
+            <div class="col-md-10">
+              <input type="text" class="mask_date form-control"  id="reference2" name="prix_vente_souhaiter" formControlName="prix_vente_souhaiter">
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-2 control-label">Priorité de vente</label>
-          <div class="col-md-10">
-            <input type="text" class="mask_date form-control" name="priorite" ngModel>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-2 control-label">Date achat</label>
-          <div class="col-md-10">
-            <input type="date" class="mask_date form-control" name="date_achat" ngModel>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-2 control-label">Date expiration</label>
-          <div class="col-md-10">
-            <input type="date" class="mask_date form-control" name="date_achat" ngModel>
-          </div>
-        </div>
+          <div class="form-group">
 
+            <label class="col-md-2 control-label">Priorite Vente</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" rows="5" class="mask_date form-control" name="priorite_de_vente" formControlName="priorite_de_vente">
+              <span class="help-block"></span>
+            </div>
 
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Date achat</label>
+            <div class="col-md-10">
+              <input type="date" class="mask_date form-control"  name="date_achat" formControlName="date_achat">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Date expiration</label>
+            <div class="col-md-10">
+              <input type="date" class="mask_date form-control"  name="date_expiration" formControlName="date_expiration">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1" class="col-md-2 control-label">Produits </label>
+            <div class="col-md-10">
+              <select class="form-control" id="exampleFormControlSelect1" formControlName="produit_id" name="produit_id" >
+                <option></option>
+                <option *ngFor="let i of produit" ngValue="{{i.id}}">{{i.nom}} </option>
 
-        <div class="modal-footer">
-        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-link" >Close</button>
+            <button type="submit"  class="btn btn-primary">Submit</button>
+          </div>
+        </div>
       </form>
   </div>
 </div><!-- END MODAL PRIMARY -->

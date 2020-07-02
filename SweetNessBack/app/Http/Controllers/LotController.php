@@ -42,10 +42,11 @@ class LotController extends Controller
             $lot->date_achat = $request->date_achat;
             $lot->quantite = $request->quantite;
             $lot->prix_vente_souhaiter = $request->prix_vente_souhaiter;
-            $lot->note = $request->note;
             $lot->priorite_de_vente = $request->priorite_de_vente;
             $lot->produits_id = $request->produit_id;
             $lot->prix_achat = $request->prix_achat;
+            $lot->is_active = '0';
+
             $lot->save();
     }
 
