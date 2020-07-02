@@ -117,5 +117,13 @@ class AuthController extends Controller
             'role' =>auth()->user()->role()->nom
         ]);
     }
+    public function allusers()
+    {
+        # code...
+        $users = User::orderBy('id','DESC')
+        ->with('role')
+        ->with('societe')->get();
+        return response()->json($users);
+    }
 
 }

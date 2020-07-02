@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Lot;
+use App\User;
+
 use Illuminate\Http\Request;
 class LotController extends Controller
 {
@@ -117,8 +119,6 @@ class LotController extends Controller
          return response()->json($Lot);
 
     }
-    public function search_nom(Request $request){     ///search with nom of categorie
-        $Lot = Lot::with('produits')->where('nom','LIKE',"%{$request->nom}%")->get();
-        return response()->json($Lot);
-    }
+   
+   
 }
