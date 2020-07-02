@@ -155,7 +155,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
+          <button type="submit" class="btn btn-primary" onclick="$('.modal').modal('hide')">Submit</button>
         </div>
       </div>
     </form>
@@ -173,7 +173,7 @@
       <div class="modal-header">
         <h4 class="modal-title" id="modal-info-header">Info Modal</h4>
       </div><div class="modal-body">
-      <form [formGroup]="formupdate" (ngSubmit)="update(f)">
+      <form [formGroup]="formupdate" (ngSubmit)="update()">
         <div class="modal-body" *ngFor="let p of produit">
           <div class="form-group">
             <label class="col-md-2 control-label">Nom</label>
@@ -226,8 +226,8 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-link" data-dismiss="modal">Close</button>
-            <button type="submit" data-dismiss="modal" class="btn btn-primary">Submit</button>
+            <button type="button" data-dismiss="modal" class="btn btn-link" >Close</button>
+            <button type="submit"  class="btn btn-primary">Submit</button>
           </div>
         </div>
       </form>

@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import Swal from "sweetalert2";
+import {Router, Routes} from "@angular/router";
 
 @Component({
   selector: 'app-all-product',
@@ -29,7 +30,7 @@ export class AllProductComponent implements OnInit {
   };
   formupdate: FormGroup;
 
-  constructor(private http: HttpClient, private _sanitizer: DomSanitizer,private formBuilder: FormBuilder) {
+  constructor(private http: HttpClient, private _sanitizer: DomSanitizer,private formBuilder: FormBuilder,private router: Router) {
   }
 
   ngOnInit(): void {
@@ -83,6 +84,8 @@ export class AllProductComponent implements OnInit {
     }).subscribe(data => {
 
       console.log(data);
+      this.router.navigate["/home/product"];
+
     });
 
   }
@@ -119,6 +122,8 @@ export class AllProductComponent implements OnInit {
               'success'
             )
             window.location.reload();
+            //this.router.navigate["/home"];
+
           },
           error => {
             console.log(error);
@@ -138,9 +143,7 @@ export class AllProductComponent implements OnInit {
 
   }
 
-  update(f: NgForm) {
 
-  }
 
   recupid(id: any) {
 
@@ -149,5 +152,35 @@ export class AllProductComponent implements OnInit {
 
 
     }, error => console.error(error));
+  }
+
+  update() {
+
+    var myFormData = new FormData();
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    headers.append('Accept', 'application/json');
+    console.log(this.formupdate.value);
+    console.log(this.files[0]);
+    myFormData.append('nomproduit', this.formupdate.value.nomproduit);
+    myFormData.append('reference', this.formupdate.value.reference);
+    myFormData.append('description', this.formupdate.value.description);
+    for (let i = 0; i < 5; i++) {
+      myFormData.append('image[]', this.files[i]);
+    }
+    myFormData.append('note', '0');
+    myFormData.append('nbr_noted', '0');
+    myFormData.append('is_active', '5');
+    myFormData.append('fournisseur_id', '1');
+
+    const endpoint = '/assets';
+    this.http.put('http://127.0.0.1:8000/api/product', myFormData, {
+      headers: headers
+    }).subscribe(data => {
+
+      console.log(data);
+      this.router.navigate["/home/product"];
+
+    });
   }
 }
