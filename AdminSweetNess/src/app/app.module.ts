@@ -16,6 +16,7 @@ import { LotComponent } from './home/lot/lot.component';
 import { MarqueComponent } from './home/marque/marque.component';
 import { AddFournisseurComponent } from './home/fournisseur/add-fournisseur/add-fournisseur.component';
 import { ShowallComponent } from './home/fournisseur/showall/showall.component';
+import {MultiSelectAllModule} from "@syncfusion/ej2-angular-dropdowns";
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { ShowallComponent } from './home/fournisseur/showall/showall.component';
     FormsModule,
     HttpClientModule,
     NgxDropzoneModule,
-
+    MultiSelectAllModule
 
 
 

@@ -42,13 +42,11 @@ export class MarqueComponent implements OnInit {
 
 
     }, error => console.error(error));
-    // this.formupdate = this.formBuilder.group({
-    //   nom: ['', Validators.required],
-    //   reference: ['', Validators.required],
-    //   description: ['',],
-    //   produits_id: ['',]
-    //
-    // });
+    this.http.get('http://127.0.0.1:8000/api/product').subscribe(data => {
+      console.log("Data is coming.", this.produit = data);
+
+
+    }, error => console.error(error));
   }
 
   onSelect(event) {
@@ -60,7 +58,10 @@ export class MarqueComponent implements OnInit {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
   }
-
+  public localFields: Object = { text: 'nom'};
+  // set the placeholder to MultiSelect Dropdown input element
+  public localWaterMark: string = 'Select produits';
+  value: any;
   submit(f: NgForm) {
 
     var myFormData = new FormData();
@@ -72,7 +73,9 @@ export class MarqueComponent implements OnInit {
     myFormData.append('nomMarque', f.value.nom);
     myFormData.append('ref', f.value.ref);
     myFormData.append('image', f.value.files);
+
     myFormData.append('produit_id', '1');
+
 
     const endpoint = '/assets';
     this.http.post('http://127.0.0.1:8000/api/marque', myFormData, {
@@ -178,4 +181,6 @@ export class MarqueComponent implements OnInit {
 
     });
   }
+
+
 }
