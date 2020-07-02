@@ -106,6 +106,8 @@ class MarqueController extends Controller
         $marque->produits_id = json_encode($Mergemarq);
         $marque->save();
         if($request->hasFile('image')){
+            $image = Image::where('owner_id',$id)->first()->delete();
+
             $image = new Image();
             $file      = $request->file('image');
             $filename  = $file->getClientOriginalName();

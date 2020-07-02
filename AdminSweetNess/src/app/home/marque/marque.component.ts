@@ -40,15 +40,7 @@ export class MarqueComponent implements OnInit {
     this.http.get('http://127.0.0.1:8000/api/marque').subscribe(data => {
       console.log("Data is coming.", this.marque = data);
 
-
     }, error => console.error(error));
-    // this.formupdate = this.formBuilder.group({
-    //   nom: ['', Validators.required],
-    //   reference: ['', Validators.required],
-    //   description: ['',],
-    //   produits_id: ['',]
-    //
-    // });
   }
 
   onSelect(event) {
@@ -68,10 +60,10 @@ export class MarqueComponent implements OnInit {
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
     console.log(f.value);
-    console.log(this.files[0]);
+    console.log(this.files[0]['name']);
     myFormData.append('nomMarque', f.value.nom);
     myFormData.append('ref', f.value.ref);
-    myFormData.append('image', f.value.files);
+    myFormData.append('image', this.files[0]);
     myFormData.append('produit_id', '1');
 
     const endpoint = '/assets';

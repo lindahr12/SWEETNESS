@@ -8,7 +8,7 @@ class Marque extends Model
 {
     protected $table='marque';
     protected $fillable=[
-        'nom','ref'
+        'nom','ref','produits_id'
     ];
     public function images()
     {
