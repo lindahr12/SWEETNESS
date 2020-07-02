@@ -90,7 +90,7 @@ export class MarqueComponent implements OnInit {
   }
 
   public getSantizeUrl(imageurl: string): SafeHtml {
-    return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_article/" + imageurl));
+    return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_Marque/" + imageurl));
 
   }
 

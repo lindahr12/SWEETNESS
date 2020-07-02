@@ -110,4 +110,15 @@ class LotController extends Controller
         $lot->delete();
         return response('done');
     }
+    public function search($id)
+    {
+          $Lot = Lot::with('produits')->where('id',$id)
+          ->get();
+         return response()->json($Lot);
+
+    }
+    public function search_nom(Request $request){     ///search with nom of categorie
+        $Lot = Lot::with('produits')->where('nom','LIKE',"%{$request->nom}%")->get();
+        return response()->json($Lot);
+    }
 }
