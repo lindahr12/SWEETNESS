@@ -7,13 +7,9 @@ import {AllProductComponent} from "./all-product/all-product.component";
 const routes: Routes = [
   {
     path: '',
-    component: AddProductComponent,
-    data: {title: 'product'}
-  },
-  {
-    path: 'all-product',
     component: AllProductComponent
-  }
+  },
+
 ];
 
 @NgModule({

@@ -58,7 +58,7 @@ export class AllProductComponent implements OnInit {
     this.http.post('http://127.0.0.1:8000/api/product', myFormData, {
       headers: headers
     }).subscribe(data => {
-      
+
       console.log(data);
     });
 
