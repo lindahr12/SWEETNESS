@@ -42,7 +42,7 @@
           <tr *ngFor="let i of marque">
             <td>
               <div class="contact contact-rounded contact-bordered contact-lg" *ngFor="let k of i.images">
-                <img src='{{k.url}}'>
+                <img src='{{getSantizeUrl(k.url)}}'>
                 <div class="contact-container"><a href="#">{{i.nom}}</a>
                   <span>{{i.ref}} </span>
                 </div>
