@@ -13,7 +13,7 @@ class LotController extends Controller
      */
     public function index()
     {
-        $lots = Lot::orderBy('id','DESC')
+        $lots = Lot::orderBy('id', 'DESC')
         ->with('produits')
         ->get();
         return response()->json($lots);
