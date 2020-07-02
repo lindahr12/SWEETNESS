@@ -12,7 +12,7 @@ Route::resource('/fournisseur','FournisseurController');
 
 /**Lot Route */
 Route::resource('/lot','LotController');
-Route::resource('/lotsearch/{id}','LotController@search');
+Route::get('/lotid/{id}','LotController@search');
 
 
 /** Categorie Route  */
