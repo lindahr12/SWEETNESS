@@ -10,18 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddFournisseurComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit() {
   }
+
   onSubmit(f: NgForm) {
 
     var myFormData = new FormData();
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
-    myFormData.append('nom',f.value.nom);
-   
+    myFormData.append('nom', f.value.nom);
+
     myFormData.append('description', f.value.description);
     myFormData.append('rue ', f.value.rue);
     myFormData.append('region', f.value.region);
@@ -29,10 +31,10 @@ export class AddFournisseurComponent implements OnInit {
     myFormData.append('num_fax', f.value.num_fax);
     myFormData.append('matricule_fiscale', f.value.matricule_fiscale);
     myFormData.append('email', f.value.email);
-    if(f.value.is_active) {
-      myFormData.append('is_active','1');
-    }else{
-      myFormData.append('is_active','0');
+    if (f.value.is_active) {
+      myFormData.append('is_active', '1');
+    } else {
+      myFormData.append('is_active', '0');
     }
     const endpoint = '/assets';
     this.http.post('http://127.0.0.1:8000/api/fournisseur', myFormData, {
@@ -44,3 +46,5 @@ export class AddFournisseurComponent implements OnInit {
 
   }
 }
+
+
