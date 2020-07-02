@@ -63,7 +63,7 @@ class AuthController extends Controller
             $societe->save();
             $user->societe_id = $societe->id;
         }
-    
+
        $user->save();
         return $this->login($request);
     }

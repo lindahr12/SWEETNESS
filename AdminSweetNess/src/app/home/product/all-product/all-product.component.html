@@ -34,6 +34,7 @@
             <tr>
               <th width="150">Réefernce</th>
               <th>Produit nom</th>
+              <th>Produit nom</th>
               <th width="250">note</th>
               <th width="150">Fournisseur</th>
               <th width="150">Date</th>
@@ -46,18 +47,25 @@
               <td>
                 <a href="#" class="text-bolder text-primary">{{i.description}}</a>
               </td>
-              <td><div class="contact contact-lg" *ngFor="let k of i.images">
-                <div *ngFor="let image of Parseimg(k.url)">
-                  <img src='{{ getSantizeUrl( image ) }}'>
-                  <div class="contact-container">
-                    <a href="#">{{i.nom}}</a>
-                    <span>{{i.description}}</span>
+              <td style="display: table">
+                <div  *ngFor="let k of i.images" style="display:table;vertical-align:auto;">
+                  <div *ngFor="let image of Parseimg(k.url)">
+                  <img src='{{ getSantizeUrl( image ) }}' style="width:40px; height: 40px; float: left;; border-radius: 100%;clear:left ;display: inline">
                   </div>
+                </div>
+              </td>
+              <td>
+                <div class="contact contact-lg" >
+
+                    <div class="contact-container">
+                      <a href="#">{{i.nom}}</a>
+                      <span>{{i.description}}</span>
+                    </div>
+
+
+
 
                 </div>
-
-
-              </div>
               </td>
               <td>
                 <div class="contact contact-lg">
@@ -72,8 +80,8 @@
               </td>
               <td>{{i.created_at| date}}</td>
               <td><span class="label label-danger">Canceled</span></td>
-              <td><button class="btn btn-primary btn-icon"><span class="icon-pencil"></span></button>
-                <button class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
+              <td><button type="submit" (click)="recupid(i.id)" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#modal-info" ><span class="icon-pencil"></span></button>
+                <button type="submit" (click)="delete(i.id)" class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
             </tr>
 
             </tbody>
@@ -86,6 +94,7 @@
     <!-- END PAGE CONTAINER -->
   </div>
 </div>
+
 
 
 
@@ -137,7 +146,7 @@
         <div class="form-group">
           <label for="exampleFormControlSelect1" class="col-md-2 control-label">Fournisseur </label>
           <div class="col-md-10">
-            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="fournisseur_id"ngValue="fournisseur_id"  name="fournisseur_id" >
+            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="fournisseur_id" ngValue="fournisseur_id"  name="fournisseur_id" >
               <option></option>
               <option *ngFor="let i of data" ngValue="{{i.id}}">{{i.nom}} </option>
 
@@ -146,7 +155,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" onclick="$('.modal').modal('hide')">Submit</button>
         </div>
       </div>
     </form>
@@ -155,68 +164,75 @@
 <!-- END MODAL LARGE -->
 
 <!-- MODAL INFO -->
-<!--<div class="modal fade" id="modal-info" tabindex="-1" role="dialog" aria-labelledby="modal-info-header">-->
-<!--  <div class="modal-dialog modal-info" role="document">-->
-<!--    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--      <span aria-hidden="true" class="icon-cross"></span>-->
-<!--    </button>-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h4 class="modal-title" id="modal-info-header">Info Modal</h4>-->
-<!--      </div><div class="modal-body">-->
-<!--      <form #fupdate="ngForm" (ngSubmit)="update(f)">-->
-<!--        <div class="modal-body">-->
-<!--          <div class="form-group">-->
-<!--            <label class="col-md-2 control-label">Nom</label>-->
-<!--            <div class="col-md-10">-->
-<!--              <input type="text" class="mask_date form-control" formControlName="nom" name="nomproduit" ngModel>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="form-group">-->
-<!--            <label class="col-md-2 control-label">Réference</label>-->
-<!--            <div class="col-md-10">-->
-<!--              <input type="text" class="mask_date form-control" id="reference" name="reference" ngModel>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="form-group">-->
+<div class="modal fade" id="modal-info" tabindex="-1" role="dialog" aria-labelledby="modal-info-header">
+  <div class="modal-dialog modal-info" role="document">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true" class="icon-cross"></span>
+    </button>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-info-header">Info Modal</h4>
+      </div><div class="modal-body">
+      <form [formGroup]="formupdate" (ngSubmit)="update()">
+        <div class="modal-body" *ngFor="let p of produit">
+          <div class="form-group">
+            <label class="col-md-2 control-label">Nom</label>
+            <div class="col-md-10">
+              <input type="text" class="mask_date form-control" value="{{p.nom}}"  name="nomproduit" formControlName="nom">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Réference</label>
+            <div class="col-md-10">
+              <input type="text" class="mask_date form-control" value="{{p.reference}}" id="reference2" name="reference" formControlName="reference">
+            </div>
+          </div>
+          <div class="form-group">
 
-<!--            <label class="col-md-2 control-label">Description</label>-->
-<!--            <div class="col-md-10">-->
-<!--              <textarea class="form-control" rows="5" class="mask_date form-control" name="description" ngModel></textarea>-->
-<!--              <span class="help-block"></span>-->
-<!--            </div>-->
+            <label class="col-md-2 control-label">Description</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" rows="5" class="mask_date form-control" value="{{p.description}" name="description" formControlName="description">
+              <span class="help-block"></span>
+            </div>
 
-<!--          </div>-->
-<!--          <div class="form-group">-->
-<!--            <label class="col-md-2 control-label">image</label>-->
-<!--            <div class="col-md-10">-->
-<!--              <ngx-dropzone (change)="onSelect($event)">-->
-<!--                <ngx-dropzone-label><img src="https://cdn4.iconfinder.com/data/icons/fevzicons-1/91/noun_170933-512.png" style="height: 100px; width: 100px"></ngx-dropzone-label>-->
-<!--                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">-->
-<!--                  <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>-->
-<!--                </ngx-dropzone-preview>-->
-<!--              </ngx-dropzone>-->
-<!--            </div>-->
-<!--            &lt;!&ndash;        <img *ngFor='let url of images'  [src]="url" height="50px" width="50px" style="margin: 3px;"> <br/>&ndash;&gt;-->
-<!--          </div>-->
-<!--          <div class="form-group">-->
-<!--            <label for="exampleFormControlSelect1" class="col-md-2 control-label">Fournisseur </label>-->
-<!--            <div class="col-md-10">-->
-<!--              <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="fournisseur_id"ngValue="fournisseur_id"  name="fournisseur_id" >-->
-<!--                <option></option>-->
-<!--                <option *ngFor="let i of data" ngValue="{{i.id}}">{{i.nom}} </option>-->
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">image</label>
+            <div class="col-md-10">
+              <ngx-dropzone (change)="onSelect($event)">
+                <ngx-dropzone-label><img src="https://cdn4.iconfinder.com/data/icons/fevzicons-1/91/noun_170933-512.png" style="height: 100px; width: 100px"></ngx-dropzone-label>
+                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                  <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
 
-<!--              </select>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="modal-footer">-->
-<!--            <button type="button" data-dismiss="modal" class="btn btn-link" data-dismiss="modal">Close</button>-->
-<!--            <button type="submit" data-dismiss="modal" class="btn btn-primary">Submit</button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </form>-->
-<!--    </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!-- END MODAL INFO -->
+                    <div  *ngFor="let k of p.images" style="display:table;vertical-align:auto;">
+                      <div *ngFor="let image of Parseimg(k.url)">
+                        <ngx-dropzone-image-preview><img src='{{ getSantizeUrl( image ) }}' style="width:40px; height: 40px; float: left;; border-radius: 100%;clear:left ;"> </ngx-dropzone-image-preview>
+                      </div>
+                    </div>
+
+                </ngx-dropzone-preview>
+              </ngx-dropzone>
+            </div>
+            <!--        <img *ngFor='let url of images'  [src]="url" height="50px" width="50px" style="margin: 3px;"> <br/>-->
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1" class="col-md-2 control-label">Fournisseur </label>
+            <div class="col-md-10">
+              <select class="form-control" id="exampleFormControlSelect1" formControlName="fournisseur_id" name="fournisseur_id" >
+                <option></option>
+                <option *ngFor="let i of data" ngValue="{{i.id}}">{{i.nom}} </option>
+
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-link" >Close</button>
+            <button type="submit"  class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+<!-- END MODAL INFO-->

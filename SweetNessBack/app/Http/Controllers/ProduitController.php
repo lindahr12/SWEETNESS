@@ -104,11 +104,11 @@ class ProduitController extends Controller
           $Produit = Produit::with('images')->where('id',$id)
           ->get();
          return response()->json($Produit);
- 
+
     }
     public function search_nom(Request $request){     ///search with nom of categorie
         $Produit = Produit::with('images')->where('nom','LIKE',"%{$request->nom}%")->get();
         return response()->json($Produit);
     }
- 
+
 }
