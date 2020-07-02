@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-lot',
@@ -18,7 +19,15 @@ export class LotComponent implements OnInit {
   produit_id: any;
   private formlot: FormGroup;
   constructor(private http: HttpClient,private formBuilder: FormBuilder,private router: Router) { }
-
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'PUT, GET, POST, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    })
+  };
   ngOnInit() {
     this.http.get('http://127.0.0.1:8000/api/product').subscribe(data => {
 
@@ -61,7 +70,46 @@ export class LotComponent implements OnInit {
 
   delete(id: any) {
 
+    console.log(id);
+    Swal.fire({
+      title: 'Êtes-vous sûr?',
+      text: 'Vous ne pourrez pas récupérer!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, supprimez-le!',
+      cancelButtonText: 'Non, garde-le'
+    }).then((result) => {
+      if (result.value) {
+        return this.http.delete('http://127.0.0.1:8000/api/lot/' + id, this.httpOptions).subscribe(data => {
+            console.log("sucess");
+            Swal.fire(
+              'Deleted!',
+              'produit a été supprimé.',
+              'success'
+            )
+              window.location.reload();
+            //this.router.navigate["/home"];
+
+
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+      // For more information about handling dismissals please visit
+      // https://sweetalert2.github.io/#handling-dismissals
+      else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Votre produit est sécurisé :)',
+          'error'
+        )
+      }
+    })
+
   }
+
 
   recupid(id: any) {
 
