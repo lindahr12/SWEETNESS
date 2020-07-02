@@ -26,50 +26,6 @@ class ProduitController extends Controller
         $produit->is_active = $request->is_active;
         $produit->fournisseur_id = $request->fournisseur_id;
         $produit->save();
-        // if ($request->id_lot ){
-
-        //     $lotexist = Lot::find($request->id_lot);
-        //     $datalot =json_decode($lotexist->produits_id);
-        //     //return response( $datalot);
-        //     $Newdatalot =collect([$produit->id]);
-        //     $MergeLot = $Newdatalot->merge($datalot);
-        //     $lotexist->produits_id = json_encode($MergeLot);
-        //     $lotexist->save();
-
-        // }else{
-        //     $lot = new Lot();
-        //     $lot->date_expiration = $request->date_expiration;
-        //     $lot->date_achat = $request->date_achat;
-        //     $lot->quantite = $request->quantite;
-        //     $lot->prix_vente_souhaiter = $request->prix_vente_souhaiter;
-        //     $lot->note = $request->note;
-        //     $lot->priorite_de_vente = $request->priorite_de_vente;
-        //     $datalot =collect([]);
-        //     $datalot->push( $produit->id);
-
-        //     $lot->produits_id = json_encode($datalot);
-        //     $lot->prix_achat = $request->prix_achat;
-        //     $lot->save();
-        // }
-        // if($request->id_marque){
-        //     $marqueExist = Marque::find($request->id_marque);
-
-        //     $marqC = json_decode($marqueExist->produits_id);
-        //     $datamarque = collect($produit->id);
-        //     $MergeMarque = $datamarque->merge($marqC);
-        //     $marqueExist->produits_id = json_encode($MergeMarque);
-        //     $marqueExist->save();
-        // }else{
-        //     $marque = new Marque();
-        //     $marque->nom = $request->nomMarque;
-        //     $marque->ref = $request->ref;
-        //     $datamark = collect([]) ;
-        //     $datamark->push($produit->id);
-        //     $marque->produits_id = json_encode($datamark);
-        //     $marque->save();
-
-
-        // }
         /** Save image */
         if($request->hasFile('image')){
             $dataimage = collect([]);
@@ -93,7 +49,6 @@ class ProduitController extends Controller
         return response()->json('article saved');
     }
 
-
     public function edit($id){
         $article = Produit::find($id);
         return response($article);
@@ -112,52 +67,12 @@ class ProduitController extends Controller
         $produit->marge = $request->marge;
         $produit->reduction = $request->reduction;
         $produit->save();
-        // if ($request->id_lot ){
+        /**delete image */
 
-        //     $lotexist = Lot::find($request->id_lot);
-        //     $datalot =json_decode($lotexist->produits_id);
-        //     //return response( $datalot);
-        //     $Newdatalot =collect([$produit->id]);
-        //     $MergeLot = $Newdatalot->merge($datalot);
-        //     $lotexist->produits_id = json_encode($MergeLot);
-        //     $lotexist->save();
-
-        // }else{
-        //     $lot = new Lot();
-        //     $lot->date_expiration = $request->date_expiration;
-        //     $lot->date_achat = $request->date_achat;
-        //     $lot->quantite = $request->quantite;
-        //     $lot->prix_vente_souhaiter = $request->prix_vente_souhaiter;
-        //     $lot->note = $request->note;
-        //     $lot->priorite_de_vente = $request->priorite_de_vente;
-        //     $datalot =collect([]);
-        //     $datalot->push( $produit->id);
-
-        //     $lot->produits_id = json_encode($datalot);
-        //     $lot->prix_achat = $request->prix_achat;
-        //     $lot->save();
-        // }
-        // if($request->id_marque){
-        //     $marqueExist = Marque::find($request->id_marque);
-        //     return response($marqueExist);
-        //     $marqC = json_decode($marqueExist->produits_id);
-        //     $datamarque = collect($produit->id);
-        //     $MergeMarque = $datamarque->merge($marqC);
-        //     $marqueExist->produits_id = json_encode($MergeMarque);
-        //     $marqueExist->save();
-        // }else{
-        //     $marque = new Marque();
-        //     $marque->nom = $request->nomMarque;
-        //     $marque->ref = $request->ref;
-        //     $datamark = collect([]) ;
-        //     $datamark->push($produit->id);
-        //     $marque->produits_id = json_encode($datamark);
-        //     $marque->save();
-
-
-        // }
         /** Save image */
         if($request->hasFile('image')){
+            $image = Image::where('owner_id',$id)->first()->delete();
+
             foreach($request->file('image') as $img)
             {
             $filename  = $img->getClientOriginalName();
@@ -194,7 +109,7 @@ class ProduitController extends Controller
     }
     public function search_nom(Request $request){     ///search with nom of categorie
         $Produit = Produit::with('images')->where('nom','LIKE',"%{$request->nom}%")->get();
-            return response()->json($Produit);
+        return response()->json($Produit);
     }
 
 }
