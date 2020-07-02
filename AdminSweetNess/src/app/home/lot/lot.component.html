@@ -32,6 +32,7 @@
           <table class="table table-head-light table-striped">
             <thead>
             <tr>
+              <th width="150">ID</th>
               <th width="150">Produit</th>
               <th width="150" >Quantite</th>
               <th  width="150" style="margin-right: 10px" class="col-md-1" >Prix achat</th>
@@ -46,6 +47,9 @@
             </thead>
             <tbody>
             <tr *ngFor="let i of lot" >
+              <td >
+                <a href="#" class="text-bolder text-primary">{{i.id}}</a>
+              </td>
               <td >
                 <a href="#" class="text-bolder text-primary">{{i.produits.id}}</a>
               </td>
@@ -69,7 +73,8 @@
               </td>
               <td>{{i.created_at| date}}</td>
               <td ><button type="submit" (click)="recupid(i.id)" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#modal-info" ><span class="icon-pencil"></span></button>
-                <button type="submit" (click)="delete(i.id)" class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
+                </td>
+               <td ><button type="submit" (click)="delete(i.id)" class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
             </tr>
 
             </tbody>
@@ -155,3 +160,77 @@
   </div>
 </div><!-- END MODAL PRIMARY -->
 </div>
+
+<!-- MODAL INFO -->
+<div class="modal fade" id="modal-info" tabindex="-1" role="dialog" aria-labelledby="modal-info-header">
+  <div class="modal-dialog modal-info" role="document">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true" class="icon-cross"></span>
+    </button>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-info-header">Info Modal</h4>
+      </div><div class="modal-body">
+      <form [formGroup]="formupdate" (ngSubmit)="update()">
+        <div class="modal-body" *ngFor="let p of produit">
+          <div class="form-group">
+            <label class="col-md-2 control-label">Nom</label>
+            <div class="col-md-10">
+              <input type="text" class="mask_date form-control" value="{{p.nom}}"  name="nomproduit" formControlName="nom">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Réference</label>
+            <div class="col-md-10">
+              <input type="text" class="mask_date form-control" value="{{p.reference}}" id="reference2" name="reference" formControlName="reference">
+            </div>
+          </div>
+          <div class="form-group">
+
+            <label class="col-md-2 control-label">Description</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" rows="5" class="mask_date form-control" value="{{p.description}" name="description" formControlName="description">
+              <span class="help-block"></span>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">image</label>
+            <div class="col-md-10">
+              <ngx-dropzone (change)="onSelect($event)">
+                <ngx-dropzone-label><img src="https://cdn4.iconfinder.com/data/icons/fevzicons-1/91/noun_170933-512.png" style="height: 100px; width: 100px"></ngx-dropzone-label>
+                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                  <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+
+                  <div  *ngFor="let k of p.images" style="display:table;vertical-align:auto;">
+                    <div *ngFor="let image of Parseimg(k.url)">
+                      <ngx-dropzone-image-preview><img src='{{ getSantizeUrl( image ) }}' style="width:40px; height: 40px; float: left;; border-radius: 100%;clear:left ;"> </ngx-dropzone-image-preview>
+                    </div>
+                  </div>
+
+                </ngx-dropzone-preview>
+              </ngx-dropzone>
+            </div>
+            <!--        <img *ngFor='let url of images'  [src]="url" height="50px" width="50px" style="margin: 3px;"> <br/>-->
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1" class="col-md-2 control-label">Fournisseur </label>
+            <div class="col-md-10">
+              <select class="form-control" id="exampleFormControlSelect1" formControlName="fournisseur_id" name="fournisseur_id" >
+                <option></option>
+                <option *ngFor="let i of data" ngValue="{{i.id}}">{{i.nom}} </option>
+
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-link" >Close</button>
+            <button type="submit"  class="btn btn-primary" onclick="$('.modal').modal('hide')">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+<!-- END MODAL INFO-->
