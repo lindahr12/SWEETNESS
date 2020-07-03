@@ -27,8 +27,8 @@
                     <th>{{u.is_actif}}</th>
 
                     <th>{{u.email}}</th>
-                    <th *ngFor="let item of {{u.societe}}">{{item.nom}}</th>
-                    <th *ngFor="let r of {{u.roles}}">{{r.nom}}</th>
+                    <th >{{u.societe.nom}}</th>
+                    <th >{{r.roles.nom}}</th>
 
                     <th></th>
                 </tr>

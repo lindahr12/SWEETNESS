@@ -1,0 +1,261 @@
+
+<div class="container">
+    <div class="col-md-12">
+      <!-- START LATEST TRANSACTIONS -->
+      <div class="block block-condensed">
+        <div class="app-heading">
+          <div class="title">
+            <h2>Les Fournsisseurs </h2>
+            <p>Information rapide</p>
+  
+          </div>
+          <div class="row margin-bottom-30 margin-top-10">
+            <div class="col-md-6 col-md-offset-3 col-sm-12">
+              <div class="col-xs-5">
+                <button class="btn btn-primary btn-block btn-icon-fixed" >
+                  <span class="fa fa-caret-left"></span>
+                  Produits
+                </button>
+              </div>
+              <div class="col-xs-5">
+                <button class="btn btn-primary btn-block btn-icon-fixed" data-toggle="modal" data-target="#modal-primary">
+                  <span class="fa fa-plus"></span>
+                  Ajouter Fournsisseur
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row grid">
+  
+          <div class="table-responsive">
+            <table class="table table-head-light table-striped">
+              <thead>
+              <tr>
+                <th width="150">ID</th>
+                <th width="150">Nom </th>
+                <th width="150" >Description</th>
+                <th  width="150" style="margin-right: 10px" class="col-md-1" >Region</th>
+                <th width="150" class="col-md-2">Rue</th>
+                <th width="150"class="col-md-2">Email</th>
+                <th width="150"class="col-md-2">Numero Telephone</th>
+                <th width="150"class="col-md-2">Numero Fax</th>
+                <th width="150"class="col-md-2">Matricule Fiscale</th>
+                <th width="150"class="col-md-2">Status</th>
+                <th width="120"class="col-md-2"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let i of fournisseur" >
+                <td >
+                  <a href="#" class="text-bolder text-primary">{{i.id}}</a>
+                </td>
+                <td >
+                  <a href="#" class="text-bolder text-primary">{{i.nom}}</a>
+                </td>
+                <td >
+                    <a href="#" class="text-bolder text-primary">{{i.description}}</a>
+                  </td>
+                <td >
+                  <a href="#" class="text-bolder text-primary">{{i.region}}</a>
+                </td>
+                <td >
+                  <a href="#" class="text-bolder text-primary">{{i.rue}}</a>
+                </td>
+                <td >
+                  <a href="#" class="text-bolder text-primary">{{i.email}}</a>
+                </td>
+                <td >
+                  <a href="#" class="text-bolder text-primary">{{i.num_tel}}</a>
+                </td>
+                <td >
+                  <a href="#" class="text-bolder text-primary">{{i.num_fax}}</a>
+                </td>
+                <td >
+                  <a href="#" class="text-bolder text-primary">{{i.matricule_fiscale}}</a>
+                </td>
+                <td *ngIf="i.is_active">Active</td>
+                <td ><button type="submit" (click)="recuperer(i.id)" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#modal-info" ><span class="icon-pencil"></span></button>
+                  </td>
+                 <td ><button type="submit" (click)="delete(i.id)" class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
+              </tr>
+  
+              </tbody>
+            </table>
+          </div>
+  
+  
+        </div>
+      </div>
+      <!-- END PAGE CONTAINER -->
+    </div>
+  </div>
+  
+  
+  
+  
+  <!-- MODAL PRIMARY -->
+  <div class="modal fade" id="modal-primary" tabindex="-1" role="dialog" aria-labelledby="modal-primary-header">
+    <div class="modal-dialog modal-primary" role="document">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true" class="icon-cross"></span>
+      </button>
+      <div class="modal-content"><div class="modal-header">
+        <h4 class="modal-title" id="modal-primary-header">Ajout Fournsisseur</h4>
+      </div>
+        <form [formGroup]="formfour" (ngSubmit)="submit()">
+          <div class="modal-body" >
+            <div class="form-group">
+              <label class="col-md-2 control-label">Nom</label>
+              <div class="col-md-10">
+                <input type="text" class="mask_date form-control"  name="nom" formControlName="nom">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Description</label>
+              <div class="col-md-10">
+                <input type="text" class="mask_date form-control"  name="description" formControlName="description">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Rue</label>
+              <div class="col-md-10">
+                <input type="text" class="mask_date form-control"  id="rue" name="rue" formControlName="rue">
+              </div>
+            </div>
+            <div class="form-group">
+  
+              <label class="col-md-2 control-label">Region</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" rows="5" class="mask_date form-control" name="region" formControlName="region">
+                <span class="help-block"></span>
+              </div>
+  
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Email</label>
+              <div class="col-md-10">
+                <input type="email" class="mask_date form-control"  name="email" formControlName="email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Numero Telephone</label>
+              <div class="col-md-10">
+                <input type="text" class="mask_date form-control"  name="num_tel" formControlName="num_tel">
+              </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Numero Fax</label>
+                <div class="col-md-10">
+                  <input type="text" class="mask_date form-control"  id="num_fax" name="num_fax" formControlName="num_fax">
+                </div>
+            </div>
+      
+            <div class="form-group">
+                <label class="col-md-2 control-label">Matricule Fiscale</label>
+                <div class="col-md-10">
+                  <input type="text" class="mask_date form-control"  id="matricule_fiscale" name="matricule_fiscale" formControlName="matricule_fiscale">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">Active</label>
+                <div class="col-md-10">
+                  <input type="checkbox" class="mask_date form-control"  value="1" name="is_active" formControlName="is_active">
+                </div>
+              </div>
+              
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-link" >Close</button>
+              <button type="submit"  class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+    </div>
+  </div><!-- END MODAL PRIMARY -->
+  </div>
+  <!-- MODAL INFO -->
+  <div class="modal fade" id="modal-info" tabindex="-1" role="dialog" aria-labelledby="modal-info-header">
+    <div class="modal-dialog modal-info" role="document">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true" class="icon-cross"></span>
+      </button>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-info-header">Info Modal</h4>
+        </div>
+        <div class="modal-body">
+        <form [formGroup]="formupdate" (ngSubmit)="update()">
+          <div class="modal-body">
+            <div class="modal-body" >
+                <div class="form-group">
+                  <label class="col-md-2 control-label">Nom</label>
+                  <div class="col-md-10">
+                    <input type="text" class="mask_date form-control" value="{{fournisseurupdated.nom}}"  name="nom" formControlName="nom">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-2 control-label">Description</label>
+                  <div class="col-md-10">
+                    <input type="text" class="mask_date form-control" value="{{fournisseurupdated.description}}"  name="description" formControlName="description">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-2 control-label">Rue</label>
+                  <div class="col-md-10">
+                    <input type="text" class="mask_date form-control"  value="{{fournisseurupdated.rue}}" name="rue" formControlName="rue">
+                  </div>
+                </div>
+                <div class="form-group">
+      
+                  <label class="col-md-2 control-label">Region</label>
+                  <div class="col-md-10">
+                    <input type="text" class="form-control" class="mask_date form-control" value="{{fournisseurupdated.region}}" name="region" formControlName="region">
+                    <span class="help-block"></span>
+                  </div>
+      
+                </div>
+                <div class="form-group">
+                  <label class="col-md-2 control-label">Email</label>
+                  <div class="col-md-10">
+                    <input type="email" class="mask_date form-control" value="{{fournisseurupdated.email}}" name="email" formControlName="email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-2 control-label">Numero Telephone</label>
+                  <div class="col-md-10">
+                    <input type="text" class="mask_date form-control" value="{{fournisseurupdated.num_tel}}" name="num_tel" formControlName="num_fax">
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Numero Fax</label>
+                    <div class="col-md-10">
+                      <input type="text" class="mask_date form-control"  value="{{fournisseurupdated.num_fax}}" name="num_fax" formControlName="num_fax">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Active</label>
+                    <div class="col-md-10">
+                      <input type="checkbox" class="mask_date form-control"  value="{{fournisseurupdated.is_active}}" name="is_active" formControlName="is_active">
+                    </div>
+                  </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Matricule Fiscale</label>
+                    <div class="col-md-10">
+                      <input type="text" class="mask_date form-control"  value="{{fournisseurupdated.matricule_fiscale}}" name="matricule_fiscale" formControlName="matricule_fiscale">
+                    </div>
+                  </div>
+                  
+          
+            </div>
+           
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-link" >Close</button>
+              <button type="submit"  class="btn btn-primary" onclick="$('.modal').modal('hide')">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      </div>
+  </div>
+  <!-- END MODAL INFO-->
+  
