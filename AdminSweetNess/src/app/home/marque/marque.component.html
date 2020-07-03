@@ -32,7 +32,6 @@
           <tr>
             <th>Marque</th>
             <th>Réference</th>
-            <th>product </th>
             <th width="150">mis à jour à</th>
             <th width="20">Actions</th>
             <th width="55"></th>
@@ -42,7 +41,7 @@
           <tr *ngFor="let i of marque">
             <td>
               <div class="contact contact-rounded contact-bordered contact-lg" *ngFor="let k of i.images">
-                <img src='{{getSantizeUrl(k.url)}}'>
+                <img src='{{getSantizeUrl(k.url)}}' style="width:40px; height: 40px; float: left;; border-radius: 100%;">
                 <div class="contact-container"><a href="#">{{i.nom}}</a>
                   <span>{{i.ref}} </span>
                 </div>
