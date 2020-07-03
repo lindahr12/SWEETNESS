@@ -21,7 +21,7 @@ class CreateFournisseurTable extends Migration
             $table->string('region');
             $table->integer('num_tel');
             $table->integer('num_fax');
-            $table->integer('email')->unique();
+            $table->string('email')->unique();
             $table->boolean('is_active');
             $table->string('matricule_fiscale');
 

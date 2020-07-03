@@ -59,7 +59,7 @@ class MarqueController extends Controller
             $marque->images()->save($image);
             $image->save();
         }
-        return response('done');
+        return response()->json('done');
 
         
     }
@@ -117,7 +117,7 @@ class MarqueController extends Controller
             $marque->images()->save($image);
             $image->save();
         }
-        return response('updated');
+        return response()->json('updated');
     }
     /**Search */
     public function search($id)
@@ -143,6 +143,6 @@ class MarqueController extends Controller
         $Marque = Marque::find($id);
         $image = Image::where('owner_id',$id)->first()->delete();
         $Marque->delete();
-        return response('done');
+        return response()->json('done');
     }
 }

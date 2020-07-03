@@ -1,3 +1,4 @@
+import { FournisseurComponent } from './home/fournisseur/fournisseur.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path:'marque',
         component:MarqueComponent
+      },
+      {
+        path:'fournisseur',
+        component:FournisseurComponent
       },
 
 

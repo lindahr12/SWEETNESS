@@ -14,7 +14,7 @@ class FournisseurController extends Controller
     public function index()
     {
         $fournisseurs  = Fournisseur::orderBy('id','DESC')->get();
-        return response($fournisseurs);
+        return response()->json($fournisseurs);
     }
 
     /**
@@ -46,7 +46,7 @@ class FournisseurController extends Controller
         $fournisseur->is_active = $request->is_active;
         $fournisseur->matricule_fiscale = $request->matricule_fiscale;
         $fournisseur->save();
-        return response('Fournisseur a éte savegardé avec succé');
+        return response()->json('Fournisseur stored');
 
 
     }
@@ -95,7 +95,7 @@ class FournisseurController extends Controller
         $fournisseur->is_active = $request->is_active;
         $fournisseur->matricule_fiscale = $request->matricule_fiscale;
         $fournisseur->save();
-        return response('Fournisseur a éte changé avec succé');
+        return response()->json('Fournisseur updated');
     }
 
     /**
@@ -108,5 +108,6 @@ class FournisseurController extends Controller
     {
         $fournisseur = Fournisseur::find($id);
         $fournisseur->delete();
+        return response()->json('deleted');
     }
 }

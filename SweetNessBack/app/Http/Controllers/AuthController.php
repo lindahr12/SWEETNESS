@@ -125,5 +125,10 @@ class AuthController extends Controller
         ->with('societe')->get();
         return response()->json($users);
     }
+    public function deleteUser($id){
+        $user = User::find($id);
+        $user->delete();
+        return response('deleted');
+    }
 
 }

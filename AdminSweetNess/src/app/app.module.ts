@@ -15,6 +15,7 @@ import {NgxDropzoneModule} from "ngx-dropzone";
 import { LotComponent } from './home/lot/lot.component';
 import { MarqueComponent } from './home/marque/marque.component';
 import {MultiSelectAllModule} from "@syncfusion/ej2-angular-dropdowns";
+import { FournisseurComponent } from './home/fournisseur/fournisseur.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {MultiSelectAllModule} from "@syncfusion/ej2-angular-dropdowns";
     LayoutComponent,
     LotComponent,
     MarqueComponent,
+    FournisseurComponent,
 
 
   ],
