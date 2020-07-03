@@ -16,5 +16,7 @@ user:any;
 
     }, error => console.error(error));
   }
+  /**Delete user */
+  
 
 }

@@ -119,6 +119,18 @@ class MarqueController extends Controller
         }
         return response('updated');
     }
+    /**Search */
+    public function search($id)
+    {
+          $Marque = Marque::with('images')->where('id',$id)
+          ->get();
+         return response()->json($Marque);
+
+    }
+    public function searchnom(Request $request){     ///search with nom of categorie
+        $Marque = Marque::with('images')->where('nom','LIKE',"%{$request->nom}%")->get();
+        return response()->json($Marque);
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -130,7 +142,6 @@ class MarqueController extends Controller
     {
         $Marque = Marque::find($id);
         $image = Image::where('owner_id',$id)->first()->delete();
-
         $Marque->delete();
         return response('done');
     }

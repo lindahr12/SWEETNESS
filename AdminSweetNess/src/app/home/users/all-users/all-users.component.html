@@ -11,10 +11,12 @@
         <table class="table table-head-light table-striped">
             <thead>
                 <tr>
-                    <th>utilisateur</th>
-                    <th>à propos</th>
-                    <th>date de naissance</th>
-                    <th>role</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Active</th>
+                    <th>Email</th>
+                    <th>Societe</th>
+                    <th>Role</th>
                     <th>actions</th>
                 </tr>
             </thead>
@@ -28,7 +30,7 @@
                     <th *ngFor="let item of {{u.societe}}">{{item.nom}}</th>
                     <th *ngFor="let r of {{u.roles}}">{{r.nom}}</th>
 
-
+                    <th></th>
                 </tr>
                     
             </tbody>
