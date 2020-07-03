@@ -110,7 +110,8 @@ export class MarqueComponent implements OnInit {
       cancelButtonText: 'Non, garde-le'
     }).then((result) => {
       if (result.value) {
-        return this.http.delete('http://127.0.0.1:8000/api/marque/' + id, this.httpOptions).subscribe(data => {
+
+        return this.http.delete('http://127.0.0.1:8000/api/marque/'+id, this.httpOptions).subscribe(data => {
             console.log("sucess");
             Swal.fire(
               'Deleted!',

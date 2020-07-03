@@ -2,7 +2,11 @@
 
 /** Marque Route */
 Route::resource('/marque','MarqueController');
+Route::get('/marqueid/{id}','MarqueController@search');
+Route::post('/marquesearch','MarqueController@searchnom');
 
+
+/**Prod Route */
 Route::resource('/product','ProduitController');
 Route::post('/productnom','ProduitController@search_nom');
 Route::get('/productid/{id}','ProduitController@search');

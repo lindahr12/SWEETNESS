@@ -2,7 +2,7 @@ import {Component, OnInit, SecurityContext} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import Swal from 'sweetalert2';
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, NgForm, Validators} from "@angular/forms";
 
 
 @Component({
@@ -94,6 +94,41 @@ export class ShowAllComponent implements OnInit {
         )
       }
     })
+
+  }
+  onSelect(event) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
+  }
+
+  onRemove(event) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+
+  onSubmit(f: NgForm) {
+
+    var myFormData = new FormData();
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    headers.append('Accept', 'application/json');
+    console.log(f.value.nom);
+    console.log(f.value.parent_id);
+    myFormData.append('nom',f.value.nom);
+    if(f.value.parent_id) {
+      myFormData.append('parent_id', f.value.parent_id);
+    }
+    myFormData.append('image', this.filedata);
+    myFormData.append('produits_id', "12");
+
+    const endpoint = '/assets';
+
+    this.http.post('http://127.0.0.1:8000/api/categorie', myFormData, {
+      headers: headers
+    }).subscribe(data => {
+      console.log(data);
+
+    });
 
   }
 
