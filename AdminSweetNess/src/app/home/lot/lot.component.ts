@@ -111,10 +111,14 @@ export class LotComponent implements OnInit {
   }
 
 
-  recupid(id: any) {
+  
+  recuperer(id: any) {
 
-    this.http.get('http://127.0.0.1:8000/api/lot/'+ id).subscribe(data => {
-      console.log("lot recup.",this.lotdata = data);
+    this.http.get('http://127.0.0.1:8000/api/lot/'+id).subscribe(data => {
+  
+      console.log("fournisseur recuperer.",this.lotdata = data[0]);
+      console.log("Lot date.",this.lotdata.produits.nom);
+
       this.formlot.patchValue({
         date_expiration: this.lotdata.date_expiration,
         quantite:  this.lotdata.quantite,
@@ -125,10 +129,11 @@ export class LotComponent implements OnInit {
         prix_achat: this.lotdata.prix_achat
   
   
-      })
-    }, error => console.error(error));
+      });
+  
+    }, error => console.error(error))
+    console.log(this.lotdata);
   }
-
   update() {
     this.http.put('http://127.0.0.1:8000/api/lot/'+this.lotdata.id,this.formlot.value).subscribe(data => {
       console.log("lot update.",this.data=data);

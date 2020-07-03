@@ -40,11 +40,11 @@ export class ShowAllComponent implements OnInit {
   ngOnInit(): void {
 
     this.http.get('http://127.0.0.1:8000/api/categorie').subscribe(data => {
-      console.log("Data is coming.",this.categorie= data);
+      console.log("categorie is coming.",this.categorie= data);
 
     }, error => console.error(error));
     this.http.get('http://127.0.0.1:8000/api/product').subscribe(data => {
-      console.log("Data is coming.", this.produit = data);
+      console.log("product is coming.", this.produit = data);
 
     }, error => console.error(error));
   }
