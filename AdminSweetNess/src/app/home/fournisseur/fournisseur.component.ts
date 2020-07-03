@@ -12,7 +12,6 @@ import Swal from "sweetalert2";
 })
 export class FournisseurComponent implements OnInit {
   private formfour: FormGroup;
-  private formupdate: FormGroup;
 
   
   fournisseur:any;
@@ -38,18 +37,7 @@ export class FournisseurComponent implements OnInit {
       matricule_fiscale: ['', Validators.required],
       is_active: ['', Validators.required],
     });
-    /**Form group update */
-    this.formupdate =this.formBuilder.group({
-      nom: ['', Validators.required],
-      description: ['', Validators.required],
-      rue: ['', Validators.required],
-      region: ['', Validators.required],
-      num_tel: ['', Validators.required],
-      num_fax: ['', Validators.required],
-      email: ['', Validators.required],
-      matricule_fiscale: ['', Validators.required],
-      is_active: ['', Validators.required],
-    });
+   
 /**get all fournisseur */
     this.http.get('http://127.0.0.1:8000/api/fournisseur').subscribe(data => {
 
@@ -111,20 +99,31 @@ export class FournisseurComponent implements OnInit {
 }
 
 recuperer(id: any) {
-
+  
   this.http.get('http://127.0.0.1:8000/api/fournisseur/'+id).subscribe(data => {
 
     console.log("fournisseur recuperer.",this.fournisseurupdated = data);
+    this.formfour.patchValue({
+      nom: this.fournisseurupdated.nom,
+      description: this.fournisseurupdated.description,
+      rue: this.fournisseurupdated.rue,
+      region: this.fournisseurupdated.region,
+      num_tel: this.fournisseurupdated.num_tel,
+      num_fax: this.fournisseurupdated.num_tel,
+      email: this.fournisseurupdated.email,
+      matricule_fiscale:this.fournisseurupdated.matricule_fiscale,
+      is_active: this.fournisseurupdated.is_active,
+    });
 
   }, error => console.error(error))
   console.log(this.fournisseurupdated);
 }
 /**submitt */
 update() {
-  console.log(this.formupdate.value);
- this.http.put('http://127.0.0.1:8000/api/fournisseur/'+this.fournisseurupdated.id, this.formupdate.value
+  console.log(this.formfour.value);
+ this.http.put('http://127.0.0.1:8000/api/fournisseur/'+this.fournisseurupdated.id, this.formfour.value
 ).subscribe(data => {
-   console.log("four ajoutée");
+   console.log("four updated");
 
  });
 }
