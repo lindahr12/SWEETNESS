@@ -66,6 +66,7 @@ data;
     Params = Params.append('num_tel', this.signForm.value.num_tel);
     Params = Params.append('num_fax', this.signForm.value.num_fax);
     Params = Params.append('statue_compte', '0');
+    Params = Params.append('is_actif', '0');
     console.log(Params);
 
     return this.http.post('http://127.0.0.1:8000/api/auth/signup'

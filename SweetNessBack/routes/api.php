@@ -8,7 +8,7 @@ Route::post('/marquesearch','MarqueController@searchnom');
 
 /**Prod Route */
 Route::resource('/product','ProduitController');
-Route::post('/productnom','ProduitController@search_nom');
+Route::get('/productnom/{nom}','ProduitController@search_nom');
 Route::get('/productid/{id}','ProduitController@search');
 
 /**Fournisseur Route */

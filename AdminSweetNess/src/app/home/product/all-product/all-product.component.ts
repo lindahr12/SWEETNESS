@@ -29,6 +29,7 @@ export class AllProductComponent implements OnInit {
     })
   };
   formupdate: FormGroup;
+  fournisseur: any;
 
   constructor(private http: HttpClient, private _sanitizer: DomSanitizer,private formBuilder: FormBuilder,private router: Router) {
   }
@@ -37,6 +38,12 @@ export class AllProductComponent implements OnInit {
 
     this.http.get('http://127.0.0.1:8000/api/product').subscribe(data => {
       console.log("Data is coming.", this.data = data);
+
+
+    }, error => console.error(error));
+
+    this.http.get('http://127.0.0.1:8000/api/fournisseur').subscribe(data => {
+      console.log("Data is coming.", this.fournisseur = data);
 
 
     }, error => console.error(error));
@@ -76,7 +83,7 @@ export class AllProductComponent implements OnInit {
     myFormData.append('note', '0');
     myFormData.append('nbr_noted', '0');
     myFormData.append('is_active', '5');
-    myFormData.append('fournisseur_id', '1');
+    myFormData.append('fournisseur_id', f.value.fournisseur_id);
 
     const endpoint = '/assets';
     this.http.post('http://127.0.0.1:8000/api/product', myFormData, {
