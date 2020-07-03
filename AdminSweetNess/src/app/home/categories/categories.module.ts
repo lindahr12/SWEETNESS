@@ -6,6 +6,7 @@ import { AddCategorieComponent } from './add-categorie/add-categorie.component';
 import { ShowAllComponent } from './show-all/show-all.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxDropzoneModule} from "ngx-dropzone";
+import {MultiSelectModule} from "@syncfusion/ej2-angular-dropdowns";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {NgxDropzoneModule} from "ngx-dropzone";
     CategoriesRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    MultiSelectModule
   ]
 })
 export class CategoriesModule { }

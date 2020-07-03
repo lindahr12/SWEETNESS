@@ -2,7 +2,8 @@ import {Component, OnInit, SecurityContext} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import Swal from 'sweetalert2';
-import {FormBuilder, NgForm, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -11,55 +12,111 @@ import {FormBuilder, NgForm, Validators} from "@angular/forms";
   styleUrls: ['./show-all.component.css']
 })
 export class ShowAllComponent implements OnInit {
-  data:any;
-  images:any;
-  private domSanitizer: any;
-  url: any;
+
+  private e: any;
+  private spellcheck: any;
+  files: File[] = [];
+  marque: any;
+  fournisseur_id: any;
+  private produit: any;
+  data: any;
+
   httpOptions = {
     headers: new HttpHeaders({
-      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'PUT, GET, POST, DELETE, OPTIONS',
       'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-      'Content-Type':'application/json',
-      'Accept':'application/json'
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
     })
   };
-
-  private Categorieup: any;
-  private parent_id: any;
+  formupdate: FormGroup;
   private categorie: Object;
-  constructor(private http: HttpClient,private _sanitizer: DomSanitizer,private formBuilder: FormBuilder) {
-  }
-  ngOnInit() {
-   this.getall_categorie();
-    this.categorieedit=this.formBuilder.group({
-      nom: ['', Validators.required],
-      image: ['', Validators.required],
-      parent_id:['', ]
+  private produitdetails: Object;
 
-    });
+  constructor(private http: HttpClient, private _sanitizer: DomSanitizer, private formBuilder: FormBuilder, private router: Router) {
   }
-  public getall_categorie()
-  {
+
+  ngOnInit(): void {
+
     this.http.get('http://127.0.0.1:8000/api/categorie').subscribe(data => {
+      console.log("Data is coming.",this.categorie= data);
 
-      console.log("Data is coming.",this.data = data);
-
+    }, error => console.error(error));
+    this.http.get('http://127.0.0.1:8000/api/product').subscribe(data => {
+      console.log("Data is coming.", this.produit = data);
 
     }, error => console.error(error));
   }
-  public getSantizeUrl(url : string): SafeHtml{
-     //this.sanitizer.bypassSecurityTrustUrl("C:/wamp64/www/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url);
-    //return this.domSanitizer.sanitizer(SecurityContext.HTML,this.domSanitizer.bypassSecurityTrustHtml("C:/wamp64/www/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url));
-      return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_categorie/"+url));
-    }
- _id: any;
-  private browserRefresh: boolean;
-  categorieedit: any;
 
-  submitted: any;
-  delete(_id) {
-    console.log(_id);
+  onSelect(event) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
+  }
+
+  onRemove(event) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+
+  public localFields: Object = {text: 'nom',value:'id'};
+  // set the placeholder to MultiSelect Dropdown input element
+  public localWaterMark: string = 'Select produits';
+  value: any;
+  parent_id: any;
+  produitsid :any;
+  submit(f: NgForm) {
+
+
+      var myFormData = new FormData();
+      const headers = new HttpHeaders();
+      console.log("produits selectionée "+f.value.value);
+      headers.append('Content-Type', 'multipart/form-data');
+      headers.append('Accept', 'application/json');
+      console.log(f.value.nom);
+      console.log(f.value.parent_id);
+      myFormData.append('nom', f.value.nom);
+      if (f.value.parent_id) {
+        myFormData.append('parent_id', f.value.parent_id);
+      }
+      myFormData.append('image', this.files[0]);
+
+    // this.http.get('http://127.0.0.1:8000/api/productnom/'+f.value.value).subscribe(data => {
+    //   console.log("product search  is coming.", this.produitdetails = data);
+    //
+    // }, error => console.error(error))
+
+
+    for (let i = 0; i < f.value.value.length; i++) {
+      myFormData.append('produits_id[]', f.value.value[i]);
+      console.log(f.value.value[i]);
+    }
+      const endpoint = '/assets';
+
+      this.http.post('http://127.0.0.1:8000/api/categorie', myFormData, {
+        headers: headers
+      }).subscribe(data => {
+        console.log(data);
+
+      });
+
+    }
+
+  public Parseimg(url: string) {
+    //this.sanitizer.bypassSecurityTrustUrl("C:/wamp64/www/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url);
+    //return this.domSanitizer.sanitizer(SecurityContext.HTML,this.domSanitizer.bypassSecurityTrustHtml("C:/wamp64/www/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url));
+    var img = JSON.parse(url);
+    return img;
+  }
+
+  public getSantizeUrl(imageurl: string): SafeHtml {
+    return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_Marque/" + imageurl));
+
+  }
+
+  delete(id: any) {
+
+    console.log(id);
     Swal.fire({
       title: 'Êtes-vous sûr?',
       text: 'Vous ne pourrez pas récupérer!',
@@ -69,19 +126,21 @@ export class ShowAllComponent implements OnInit {
       cancelButtonText: 'Non, garde-le'
     }).then((result) => {
       if (result.value) {
-        return this.http.delete('http://127.0.0.1:8000/api/delete-categorie/' + _id, this.httpOptions).subscribe(data => {
-            console.log("sucess");
+
+        return this.http.delete('http://127.0.0.1:8000/api/marque/'+id, this.httpOptions).subscribe(data => {
+            console.log(data);
             Swal.fire(
               'Deleted!',
-              'le catégorie a été supprimé.',
+              'marque a été supprimé.',
               'success'
             )
-          this.getall_categorie();
+            window.location.reload();
+            //this.router.navigate["/home"];
+
           },
           error => {
             console.log(error);
           }
-
         );
       }
       // For more information about handling dismissals please visit
@@ -89,82 +148,55 @@ export class ShowAllComponent implements OnInit {
       else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
           'Cancelled',
-          'Votre catégorie est sécurisé :)',
+          'Votre produit est sécurisé :)',
           'error'
         )
       }
     })
 
   }
-  // onSelect(event) {
-  //   console.log(event);
-  //   this.files.push(...event.addedFiles);
-  // }
-  //
-  // onRemove(event) {
-  //   console.log(event);
-  //   this.files.splice(this.files.indexOf(event), 1);
-  // }
 
-  onSubmit(f: NgForm) {
+
+  recupid(id: any) {
+
+    this.http.get('http://127.0.0.1:8000/api/productid/' + id).subscribe(data => {
+      console.log("marque is coming.", this.produit = data);
+
+
+    }, error => console.error(error));
+  }
+
+  update() {
 
     var myFormData = new FormData();
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
-    console.log(f.value.nom);
-    console.log(f.value.parent_id);
-    myFormData.append('nom',f.value.nom);
-    if(f.value.parent_id) {
-      myFormData.append('parent_id', f.value.parent_id);
+    console.log(this.formupdate.value);
+    console.log(this.files[0]);
+    myFormData.append('nomproduit', this.formupdate.value.nomproduit);
+    myFormData.append('reference', this.formupdate.value.reference);
+    myFormData.append('description', this.formupdate.value.description);
+    for (let i = 0; i < 5; i++) {
+      myFormData.append('image[]', this.files[i]);
     }
-   // myFormData.append('image', this.filedata);
-    myFormData.append('produits_id', "12");
+    myFormData.append('note', '0');
+    myFormData.append('nbr_noted', '0');
+    myFormData.append('is_active', '5');
+    myFormData.append('fournisseur_id', '1');
 
     const endpoint = '/assets';
-
-    this.http.post('http://127.0.0.1:8000/api/categorie', myFormData, {
+    this.http.put('http://127.0.0.1:8000/api/product', myFormData, {
       headers: headers
     }).subscribe(data => {
+
       console.log(data);
+      this.router.navigate["/home/product"];
 
     });
-
   }
 
 
-  Update() {
-
-  }
-  get E() {
-
-    return this.categorieedit.controls;
-  }
-   search(parent_id)
-   {
-     this.http.get('http://127.0.0.1:8000/api/search'+parent_id).subscribe(res => {
-
-       console.log("Data is coming.",this.categorie= res);
-
-
-     }, error => console.error(error));
-   }
-  recuperer(_id: any, nom: any, image: any, parent_id: any) {
-    console.log('updateeeeeeeeeeeeee')
-    this._id= _id;
-
-
-    console.log(this.parent_id);
-    this.categorieedit.get("nom").setValue(nom);
-    this.categorieedit.get("image").setValue(image);
-    if(parent_id){
-      console.log(this.parent_id);
-    this.categorieedit.get("parent_id").setValue(parent_id);}
-  }
-
-  edit() {
-
-  }
 }
 
 

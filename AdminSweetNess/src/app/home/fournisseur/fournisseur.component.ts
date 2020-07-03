@@ -32,10 +32,12 @@ export class FournisseurComponent implements OnInit {
       rue: ['', Validators.required],
       region: ['', Validators.required],
       email: ['', Validators.required],
+      num_tel: ['', Validators.required],
+      num_fax: ['', Validators.required],
       matricule_fiscale: ['', Validators.required],
       is_active: ['', Validators.required],
     });
-   
+
 /**get all fournisseur */
     this.http.get('http://127.0.0.1:8000/api/fournisseur').subscribe(data => {
 
@@ -50,6 +52,8 @@ export class FournisseurComponent implements OnInit {
    this.http.post('http://127.0.0.1:8000/api/fournisseur', this.formfour.value
   ).subscribe(data => {
      console.log("four ajoutée");
+     window.location.reload();
+
 
    });
  }
@@ -97,7 +101,7 @@ export class FournisseurComponent implements OnInit {
 }
 
 recuperer(id: any) {
-  
+
   this.http.get('http://127.0.0.1:8000/api/fournisseur/'+id).subscribe(data => {
 
     console.log("fournisseur recuperer.",this.fournisseurupdated = data);
@@ -122,6 +126,8 @@ update() {
  this.http.put('http://127.0.0.1:8000/api/fournisseur/'+this.fournisseurupdated.id, this.formfour.value
 ).subscribe(data => {
    console.log("four updated");
+   window.location.reload();
+
 
  });
 }

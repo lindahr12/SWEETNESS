@@ -5,10 +5,7 @@ import {ShowAllComponent} from "./show-all/show-all.component";
 
 
 const routes: Routes = [
-  {
-    path: 'add-categorie',
-    component: AddCategorieComponent
-  },
+
   {
     path: '',
     component: ShowAllComponent
