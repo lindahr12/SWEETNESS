@@ -96,15 +96,15 @@ export class ShowAllComponent implements OnInit {
     })
 
   }
-  onSelect(event) {
-    console.log(event);
-    this.files.push(...event.addedFiles);
-  }
-
-  onRemove(event) {
-    console.log(event);
-    this.files.splice(this.files.indexOf(event), 1);
-  }
+  // onSelect(event) {
+  //   console.log(event);
+  //   this.files.push(...event.addedFiles);
+  // }
+  //
+  // onRemove(event) {
+  //   console.log(event);
+  //   this.files.splice(this.files.indexOf(event), 1);
+  // }
 
   onSubmit(f: NgForm) {
 
@@ -118,7 +118,7 @@ export class ShowAllComponent implements OnInit {
     if(f.value.parent_id) {
       myFormData.append('parent_id', f.value.parent_id);
     }
-    myFormData.append('image', this.filedata);
+   // myFormData.append('image', this.filedata);
     myFormData.append('produits_id', "12");
 
     const endpoint = '/assets';

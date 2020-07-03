@@ -14,7 +14,7 @@ export class FournisseurComponent implements OnInit {
   private formfour: FormGroup;
   private formupdate: FormGroup;
 
-  
+
   fournisseur:any;
   fournisseurupdated:any;
 
@@ -32,24 +32,24 @@ export class FournisseurComponent implements OnInit {
       description: ['', Validators.required],
       rue: ['', Validators.required],
       region: ['', Validators.required],
+      email: ['', Validators.required],
       num_tel: ['', Validators.required],
       num_fax: ['', Validators.required],
-      email: ['', Validators.required],
       matricule_fiscale: ['', Validators.required],
       is_active: ['', Validators.required],
     });
     /**Form group update */
-    this.formupdate =this.formBuilder.group({
-      nom: ['', Validators.required],
-      description: ['', Validators.required],
-      rue: ['', Validators.required],
-      region: ['', Validators.required],
-      num_tel: ['', Validators.required],
-      num_fax: ['', Validators.required],
-      email: ['', Validators.required],
-      matricule_fiscale: ['', Validators.required],
-      is_active: ['', Validators.required],
-    });
+    // this.formupdate =this.formBuilder.group({
+    //   nom: ['', Validators.required],
+    //   description: ['', Validators.required],
+    //   rue: ['', Validators.required],
+    //   region: ['', Validators.required],
+    //   num_tel: ['', Validators.required],
+    //   num_fax: ['', Validators.required],
+    //   email: ['', Validators.required],
+    //   matricule_fiscale: ['', Validators.required],
+    //   is_active: ['', Validators.required],
+    // });
 /**get all fournisseur */
     this.http.get('http://127.0.0.1:8000/api/fournisseur').subscribe(data => {
 
