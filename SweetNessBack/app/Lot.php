@@ -11,6 +11,6 @@ class Lot extends Model
         'date_expiration','date_achat','quantite','prix_achat','prix_vente_souhaiter','is_active','priorite_de_vente','produits_id'
     ];
     public function produits(){
-        return $this->hasOne(Produit::class);
+        return $this->belongsTo(Produit::class);
     }
 }
