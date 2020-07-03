@@ -74,7 +74,6 @@ export class MarqueComponent implements OnInit {
     this.http.post('http://127.0.0.1:8000/api/marque', myFormData, {
       headers: headers
     }).subscribe(data => {
-
       console.log(data);
       this.router.navigate["/home/marque"];
 
@@ -107,7 +106,7 @@ export class MarqueComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         return this.http.delete('http://127.0.0.1:8000/api/marque/'+id, this.httpOptions).subscribe(data => {
-            console.log("sucess");
+            console.log(data);
             Swal.fire(
               'Deleted!',
               'produit a été supprimé.',

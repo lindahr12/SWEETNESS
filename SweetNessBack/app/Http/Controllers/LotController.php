@@ -42,6 +42,7 @@ class LotController extends Controller
             $lot->is_active = '0';
 
             $lot->save();
+            return response()->json('saved');
     }
 
     /**
@@ -80,7 +81,7 @@ class LotController extends Controller
         $lot->prix_achat = $request->prix_achat;
         $lot->is_active = '0';
         $lot->save();
-        return response('lot updated');
+        return response()->json('lot updated');
     }
 
     /**
@@ -93,12 +94,12 @@ class LotController extends Controller
     {
         $lot = Lot::find($id);
         $lot->delete();
-        return response('done');
+        return response()->json('done');
     }
     public function search($id)
     {
         $Lot = Lot::with('produits')->where('id',$id)->get();
-        return response($Lot);
+        return response()->json($Lot);
 
     }
    

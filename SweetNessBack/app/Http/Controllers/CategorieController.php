@@ -93,7 +93,7 @@ class CategorieController extends Controller
 
             $image->save();
         }
-        
+        return response()->json('updated');
         
         
     }
@@ -105,7 +105,7 @@ class CategorieController extends Controller
        $image = Image::where('owner_id',$id)->first()->delete();
 
        $categorie->delete();
-      return response('done');
+      return response()->json('done');
    }
    public function search($id)
    {

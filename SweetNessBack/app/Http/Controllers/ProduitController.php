@@ -14,7 +14,7 @@ class ProduitController extends Controller
         $Produit = Produit::orderBy('id', 'DESC')
         ->with('images')
         ->get();
-        return response($Produit);
+        return response()->json($Produit);
     }
     public function store (Request $request){
         $produit = new Produit();
@@ -51,7 +51,7 @@ class ProduitController extends Controller
 
     public function edit($id){
         $article = Produit::find($id);
-        return response($article);
+        return response()->json($article);
     }
     public function update(Request $request,$id){
         $produit = Produit::find($id);
@@ -97,7 +97,7 @@ class ProduitController extends Controller
         $article = Produit::find($id);
         $image = Image::where('owner_id',$id)->first()->delete();
         $article->delete();
-        return response('article deleted');
+        return response()->json('article deleted');
 
     }
     public function search($id)
