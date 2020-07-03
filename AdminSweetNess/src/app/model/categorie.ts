@@ -3,8 +3,6 @@ export  class categorie{
   private _image: string;
   private _parentid : string;
 
-
-
   constructor(nom: string, image: string, parent_id: string)
   {
     this._nom=nom;
