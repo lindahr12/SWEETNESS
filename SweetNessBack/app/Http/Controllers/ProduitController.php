@@ -12,8 +12,8 @@ class ProduitController extends Controller
 {
     public function index(){
         $Produit = Produit::orderBy('id', 'DESC')
-        ->with('images')
         ->with('lot')
+        ->with('images')
         ->get();
         return response()->json($Produit);
     }

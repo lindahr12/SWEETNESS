@@ -28,7 +28,7 @@ produit;
 
   public getSantizeUrl(imageurl: string): SafeHtml {
     console.log(imageurl);
-    return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_article/" +  JSON.parse(imageurl)));
+    return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_article/" + imageurl));
 
   }
 }

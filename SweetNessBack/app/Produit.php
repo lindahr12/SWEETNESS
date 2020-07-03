@@ -16,11 +16,9 @@ class Produit extends Model
         return $this->morphMany(Image::class, 'owner');
     }
 
-    public function lot()
-    {
-        return $this->belongsTo(Lot::class, 'id', 'produits_id');
+    public function lot(){
+        return $this->belongsTo(lot::class,'id');
     }
-    
     
     public function fournisseur(){
         return $this->belongsTo(Fournisseur::class);
