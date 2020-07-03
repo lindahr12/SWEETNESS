@@ -40,7 +40,8 @@ export class AddCategorieComponent implements OnInit {
     console.log(f.value.nom);
     console.log(f.value.parent_id);
     myFormData.append('nom',f.value.nom);
-    if(f.value.parent_id) {
+    if(f.value.parent_id)
+    {
       myFormData.append('parent_id', f.value.parent_id);
     }
     myFormData.append('image', this.filedata);
@@ -56,6 +57,5 @@ export class AddCategorieComponent implements OnInit {
     });
 
   }
-
 
 }
