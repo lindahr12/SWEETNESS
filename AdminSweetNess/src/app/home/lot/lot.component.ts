@@ -16,6 +16,7 @@ export class LotComponent implements OnInit {
   produit: any;
   parent_id: any;
   lot:any;
+  lotdata:any;
   produit_id: any;
   private formlot: FormGroup;
   constructor(private http: HttpClient,private formBuilder: FormBuilder,private router: Router) { }
@@ -112,15 +113,24 @@ export class LotComponent implements OnInit {
 
   recupid(id: any) {
 
-    this.http.get('http://127.0.0.1:8000/api/lotid/'+ id).subscribe(data => {
-      console.log("lot cherche.",this.data=data);
-
-
+    this.http.get('http://127.0.0.1:8000/api/lot/'+ id).subscribe(data => {
+      console.log("lot recup.",this.lotdata = data);
+      this.formlot.patchValue({
+        date_expiration: this.lotdata.date_expiration,
+        quantite:  this.lotdata.quantite,
+        date_achat: this.lotdata.date_achat,
+        prix_vente_souhaiter:  this.lotdata.prix_vente_souhaiter,
+        priorite_de_vente: this.lotdata.priorite_de_vente,
+        produit_id: this.lotdata.produit_id,
+        prix_achat: this.lotdata.prix_achat
+  
+  
+      })
     }, error => console.error(error));
   }
 
   update() {
-    this.http.put('http://127.0.0.1:8000/api/lot',this.formlot.value).subscribe(data => {
+    this.http.put('http://127.0.0.1:8000/api/lot/'+this.lotdata.id,this.formlot.value).subscribe(data => {
       console.log("lot update.",this.data=data);
 
 
