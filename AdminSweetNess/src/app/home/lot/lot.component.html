@@ -171,30 +171,30 @@
         <h4 class="modal-title" id="modal-info-header">Info Modal</h4>
       </div><div class="modal-body">
       <form [formGroup]="formlot" (ngSubmit)="update()">
-        <div class="modal-body" *ngFor="let i of data" >
+        <div class="modal-body" >
           <div class="form-group">
             <label class="col-md-2 control-label">Quantite</label>
             <div class="col-md-10">
-              <input type="text" class="mask_date form-control" value="{{i.quantite}}"  name="quantite" formControlName="quantite">
+              <input type="text" class="mask_date form-control" formControlName="quantite">
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Prix achat</label>
             <div class="col-md-10">
-              <input type="text" class="mask_date form-control" value="{{i.prix_achat}}"  name="prix_achat" formControlName="prix_achat">
+              <input type="text" class="mask_date form-control"  formControlName="prix_achat">
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Prix vente souhaiter</label>
             <div class="col-md-10">
-              <input type="text" class="mask_date form-control"  value="{{i.prix_vente_souhaiter}}" id="prix_vente_souhaiter" name="prix_vente_souhaiter" formControlName="prix_vente_souhaiter">
+              <input type="text" class="mask_date form-control" formControlName="prix_vente_souhaiter">
             </div>
           </div>
           <div class="form-group">
 
             <label class="col-md-2 control-label">Priorite Vente</label>
             <div class="col-md-10">
-              <input type="text" class="form-control"  class="mask_date form-control" value="{{i.priorite_de_vente}}" name="priorite_de_vente" formControlName="priorite_de_vente">
+              <input type="text" class="form-control"  class="mask_date form-control"  formControlName="priorite_de_vente">
               <span class="help-block"></span>
             </div>
 
@@ -202,20 +202,20 @@
           <div class="form-group">
             <label class="col-md-2 control-label">Date achat</label>
             <div class="col-md-10">
-              <input type="date" class="mask_date form-control"  value="{{i.date_achat}}" name="date_achat" formControlName="date_achat">
+              <input type="date" class="mask_date form-control" formControlName="date_achat">
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Date expiration</label>
             <div class="col-md-10">
-              <input type="date" class="mask_date form-control"  value="{{i.date_expiration}}" name="date_expiration" formControlName="date_expiration">
+              <input type="date" class="mask_date form-control" formControlName="date_expiration">
             </div>
           </div>
           <div class="form-group">
             <label for="exampleFormControlSelect1" class="col-md-2 control-label">Produits </label>
             <div class="col-md-10">
-              <select class="form-control" id="exampleFormControlSelect1" formControlName="produit_id" name="produit_id" >
-                <option selected>{{i.produits.nom}}</option>
+              <select class="form-control" id="exampleFormControlSelect1" formControlName="produit_id" >
+                <option selected></option>
                 <option *ngFor="let i of produit" ngValue="{{i.id}}">{{i.nom}} </option>
 
               </select>

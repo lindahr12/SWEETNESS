@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 export class FournisseurComponent implements OnInit {
   private formfour: FormGroup;
 
-
+  
   fournisseur:any;
   fournisseurupdated:any;
 
@@ -31,6 +31,8 @@ export class FournisseurComponent implements OnInit {
       description: ['', Validators.required],
       rue: ['', Validators.required],
       region: ['', Validators.required],
+      num_tel: ['', Validators.required],
+      num_fax: ['', Validators.required],
       email: ['', Validators.required],
       num_tel: ['', Validators.required],
       num_fax: ['', Validators.required],
@@ -111,7 +113,7 @@ recuperer(id: any) {
       rue: this.fournisseurupdated.rue,
       region: this.fournisseurupdated.region,
       num_tel: this.fournisseurupdated.num_tel,
-      num_fax: this.fournisseurupdated.num_tel,
+      num_fax: this.fournisseurupdated.num_fax,
       email: this.fournisseurupdated.email,
       matricule_fiscale:this.fournisseurupdated.matricule_fiscale,
       is_active: this.fournisseurupdated.is_active,
