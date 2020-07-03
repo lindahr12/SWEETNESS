@@ -56,7 +56,7 @@ export class MarqueComponent implements OnInit {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
   }
-  public localFields: Object = { text: 'nom'};
+  public localFields: Object = { text: 'nom',value:'id'};
   // set the placeholder to MultiSelect Dropdown input element
   public localWaterMark: string = 'Select produits';
   value: any;
@@ -71,8 +71,11 @@ export class MarqueComponent implements OnInit {
     myFormData.append('nomMarque', f.value.nom);
     myFormData.append('ref', f.value.ref);
     myFormData.append('image', this.files[0]);
-    myFormData.append('produit_id', '1');
-
+    console.log(f.value.value);
+    for (let i = 0; i < f.value.value.length; i++) {
+      myFormData.append('produits_id[]', f.value.value[i]);
+      console.log(f.value.value[i]);
+    }
 
     const endpoint = '/assets';
     this.http.post('http://127.0.0.1:8000/api/marque', myFormData, {
