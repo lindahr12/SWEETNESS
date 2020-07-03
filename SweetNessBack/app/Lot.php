@@ -8,9 +8,9 @@ class Lot extends Model
 {
     protected $table='lot';
     protected $fillable=[
-        'date_expiration','date_achat','quantite','prix_achat','prix_vente_souhaiter','is_active','note','priorite_de_vente','produits_id'
+        'date_expiration','date_achat','quantite','prix_achat','prix_vente_souhaiter','is_active','priorite_de_vente','produits_id'
     ];
     public function produits(){
-        return $this->belongsTo(Produit::class);
+        return $this->hasOne(Produit::class);
     }
 }

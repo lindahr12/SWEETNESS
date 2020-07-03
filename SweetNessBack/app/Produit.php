@@ -9,16 +9,19 @@ class Produit extends Model
     
     protected $table='produits';
     protected $fillable=[
-        'title','description','limite_stock_alert','total_stock','note','nbr_noted','tva','prix_ht','prix_ttc','marge','is_active','reduction'
+        'nom','description','note','nbr_noted','is_active','fournisseur_id','reference'
     ];
     public function images()
     {
         return $this->morphMany(Image::class, 'owner');
     }
 
-    public function lot(){
-        return $this->belongsTo(lot::class);
+    public function lot()
+    {
+        return $this->belongsTo(Lot::class, 'id', 'produits_id');
     }
+    
+    
     public function fournisseur(){
         return $this->belongsTo(Fournisseur::class);
     }
