@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, SecurityContext } from '@angular/core';
+import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
+
 
 @Component({
   selector: 'app-first',
@@ -6,10 +9,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./first.component.css']
 })
 export class FirstComponent implements OnInit {
-
-  constructor() { }
+produit;
+  constructor(private http: HttpClient,private _sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    this.http.get('http://127.0.0.1:8000/api/product').subscribe(data => {
+      console.log("Data is coming.", this.produit = data);
+
+
+    }, error => console.error(error));
+  }
+  public Parseimg(url: string) {
+    //this.sanitizer.bypassSecurityTrustUrl("C:/wamp64/www/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url);
+    //return this.domSanitizer.sanitizer(SecurityContext.HTML,this.domSanitizer.bypassSecurityTrustHtml("C:/wamp64/www/sweetness/SWEETNESS/SweetNessBack/public/img_categorie/"+url));
+    var img = JSON.parse(url);
+    return img;
   }
 
+  public getSantizeUrl(imageurl: string): SafeHtml {
+    console.log(imageurl);
+    return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_article/" +  JSON.parse(imageurl)));
+
+  }
 }

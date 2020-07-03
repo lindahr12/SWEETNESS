@@ -19,4 +19,7 @@ class Produit extends Model
     public function lot(){
         return $this->belongsTo(lot::class);
     }
+    public function fournisseur(){
+        return $this->belongsTo(Fournisseur::class);
+    }
 }

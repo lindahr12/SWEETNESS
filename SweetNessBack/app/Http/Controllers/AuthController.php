@@ -131,7 +131,7 @@ class AuthController extends Controller
     public function deleteUser($id){
         $user = User::find($id);
         $user->delete();
-        return response('deleted');
+        return response()->json('deleted');
     }
 
 }
