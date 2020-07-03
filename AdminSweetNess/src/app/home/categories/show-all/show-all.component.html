@@ -7,6 +7,23 @@
         <h2>Les categories </h2>
         <p>Information rapide</p>
       </div>
+      <div class="row margin-bottom-30 margin-top-10">
+        <div class="col-md-6 col-md-offset-3 col-sm-12">
+          <div class="col-xs-5">
+            <button class="btn btn-primary btn-block btn-icon-fixed" >
+              <span class="fa fa-caret-left"></span>
+              Liste produit
+            </button>
+          </div>
+          <div class="col-xs-5">
+            <button class="btn btn-primary btn-block btn-icon-fixed" data-toggle="modal" data-target="#modal-primary">
+              <span class="fa fa-plus"></span>
+              Ajouter categorie
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="block-content">
       <div class="table-responsive">
@@ -103,3 +120,57 @@
     </div>
   </div>
 </div>
+
+
+
+<!-- MODAL PRIMARY -->
+<div class="modal fade" id="modal-primary" tabindex="-1" role="dialog" aria-labelledby="modal-primary-header">
+  <div class="modal-dialog modal-primary" role="document">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true" class="icon-cross"></span>
+    </button>
+    <div class="modal-content"><div class="modal-header">
+      <h4 class="modal-title" id="modal-primary-header">Ajout lot</h4>
+    </div>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="form-group">
+          <label class="col-md-2 control-label">Nom</label>
+          <div class="col-md-5">
+            <input type="text" class="mask_date form-control" name="nom" ngModel>
+            <span class="help-block">Nom de la categorie au moins 4 caractére</span>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <label class="col-md-2 control-label">Image</label>
+          <div class="col-md-10">
+            <div class="upload-btn-wrapper">
+              <button class="btn btn-default">Upload a file</button>
+              <input type="file" class="mask_phone form-control" #fileupload [(ngModel)]="myFile" name="myFile" (change)="fileEvent($event)">
+              <span class="help-block">Image de la categorie</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlSelect1" class="col-md-2 control-label">Categorie disponible</label>
+          <div class="col-md-10">
+            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="parent_id"ngValue="parent_id"  name="parent_id" >
+              <option></option>
+              <option *ngFor="let i of data" ngValue="{{i.id}}">{{i.nom}} </option>
+
+            </select>
+          </div>
+        </div>
+
+
+        <div class="form-group margin-top-20"><button class="btn btn-default" type="submit">Submit & Validate</button></div>
+
+
+      </form>
+    </div>
+  </div><!-- END MODAL PRIMARY -->
+</div>
+<!--END MODEL PRIMARY -->

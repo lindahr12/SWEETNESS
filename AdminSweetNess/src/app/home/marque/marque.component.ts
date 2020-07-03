@@ -41,6 +41,10 @@ export class MarqueComponent implements OnInit {
       console.log("Data is coming.", this.marque = data);
 
     }, error => console.error(error));
+    this.http.get('http://127.0.0.1:8000/api/product').subscribe(data => {
+      console.log("Data is coming.", this.produit = data);
+
+    }, error => console.error(error));
   }
 
   onSelect(event) {
@@ -105,11 +109,12 @@ export class MarqueComponent implements OnInit {
       cancelButtonText: 'Non, garde-le'
     }).then((result) => {
       if (result.value) {
+
         return this.http.delete('http://127.0.0.1:8000/api/marque/'+id, this.httpOptions).subscribe(data => {
             console.log(data);
             Swal.fire(
               'Deleted!',
-              'produit a été supprimé.',
+              'marque a été supprimé.',
               'success'
             )
             window.location.reload();
@@ -138,7 +143,7 @@ export class MarqueComponent implements OnInit {
   recupid(id: any) {
 
     this.http.get('http://127.0.0.1:8000/api/productid/' + id).subscribe(data => {
-      console.log("produittttttttttttt is coming.", this.produit = data);
+      console.log("marque is coming.", this.produit = data);
 
 
     }, error => console.error(error));

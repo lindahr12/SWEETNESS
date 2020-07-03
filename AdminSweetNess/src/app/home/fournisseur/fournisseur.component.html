@@ -7,7 +7,7 @@
           <div class="title">
             <h2>Les Fournsisseurs </h2>
             <p>Information rapide</p>
-  
+
           </div>
           <div class="row margin-bottom-30 margin-top-10">
             <div class="col-md-6 col-md-offset-3 col-sm-12">
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="row grid">
-  
+
           <div class="table-responsive">
             <table class="table table-head-light table-striped">
               <thead>
@@ -79,21 +79,21 @@
                   </td>
                  <td ><button type="submit" (click)="delete(i.id)" class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
               </tr>
-  
+
               </tbody>
             </table>
           </div>
-  
-  
+
+
         </div>
       </div>
       <!-- END PAGE CONTAINER -->
     </div>
   </div>
-  
-  
-  
-  
+
+
+
+
   <!-- MODAL PRIMARY -->
   <div class="modal fade" id="modal-primary" tabindex="-1" role="dialog" aria-labelledby="modal-primary-header">
     <div class="modal-dialog modal-primary" role="document">
@@ -124,13 +124,13 @@
               </div>
             </div>
             <div class="form-group">
-  
+
               <label class="col-md-2 control-label">Region</label>
               <div class="col-md-10">
                 <input type="text" class="form-control" rows="5" class="mask_date form-control" name="region" formControlName="region">
                 <span class="help-block"></span>
               </div>
-  
+
             </div>
             <div class="form-group">
               <label class="col-md-2 control-label">Email</label>
@@ -150,7 +150,7 @@
                   <input type="text" class="mask_date form-control"  id="num_fax" name="num_fax" formControlName="num_fax">
                 </div>
             </div>
-      
+
             <div class="form-group">
                 <label class="col-md-2 control-label">Matricule Fiscale</label>
                 <div class="col-md-10">
@@ -163,7 +163,7 @@
                   <input type="checkbox" class="mask_date form-control"  value="1" name="is_active" formControlName="is_active">
                 </div>
               </div>
-              
+
             <div class="modal-footer">
               <button type="button" data-dismiss="modal" class="btn btn-link" >Close</button>
               <button type="submit"  class="btn btn-primary">Submit</button>
@@ -173,6 +173,7 @@
     </div>
   </div><!-- END MODAL PRIMARY -->
   </div>
+
   <!-- MODAL INFO -->
   <div class="modal fade" id="modal-info" tabindex="-1" role="dialog" aria-labelledby="modal-info-header">
     <div class="modal-dialog modal-info" role="document">
@@ -206,13 +207,13 @@
                   </div>
                 </div>
                 <div class="form-group">
-      
+
                   <label class="col-md-2 control-label">Region</label>
                   <div class="col-md-10">
                     <input type="text" class="form-control" class="mask_date form-control"  formControlName="region">
                     <span class="help-block"></span>
                   </div>
-      
+
                 </div>
                 <div class="form-group">
                   <label class="col-md-2 control-label">Email</label>
@@ -244,10 +245,10 @@
                       <input type="text" class="mask_date form-control"  name="matricule_fiscale" formControlName="matricule_fiscale">
                     </div>
                   </div>
-                  
-          
+
+
             </div>
-           
+
             <div class="modal-footer">
               <button type="button" data-dismiss="modal" class="btn btn-link" >Close</button>
               <button type="submit"  class="btn btn-primary" onclick="$('.modal').modal('hide')">Submit</button>
@@ -258,4 +259,4 @@
       </div>
   </div>
   <!-- END MODAL INFO-->
-  
+  </div>

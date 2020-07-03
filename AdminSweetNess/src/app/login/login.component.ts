@@ -51,8 +51,6 @@ export class LoginComponent implements OnInit {
     }
     console.log('loginn');
 //    console.log(this.loginForm);
-
-
     return this.http.post('http://127.0.0.1:8000/api/auth/login'
       , this.loginForm.value).subscribe((res: Response) => {
 
@@ -64,8 +62,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
       },
       (error) => {
-        localStorage.removeItem('token');
-
+           console.log(error);
       }
     );
   }

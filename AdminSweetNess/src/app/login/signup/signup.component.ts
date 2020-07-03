@@ -39,8 +39,6 @@ data;
         password: ['', Validators.required],
         num_tel: ['', Validators.required],
         num_fax: ['', Validators.required]
-
-
       }
     )
   }
@@ -67,6 +65,7 @@ data;
     Params = Params.append('password', this.signForm.value.password);
     Params = Params.append('num_tel', this.signForm.value.num_tel);
     Params = Params.append('num_fax', this.signForm.value.num_fax);
+    Params = Params.append('statue_compte', '0');
     console.log(Params);
 
     return this.http.post('http://127.0.0.1:8000/api/auth/signup'

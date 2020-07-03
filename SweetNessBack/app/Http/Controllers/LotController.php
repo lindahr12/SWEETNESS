@@ -98,10 +98,14 @@ class LotController extends Controller
     }
     public function search($id)
     {
+
         $Lot = Lot::with('produits')->where('id',$id)->get();
         return response()->json($Lot);
 
+
+
+
     }
-   
-   
+
+
 }

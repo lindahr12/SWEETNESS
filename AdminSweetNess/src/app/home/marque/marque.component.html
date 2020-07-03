@@ -32,7 +32,6 @@
           <tr>
             <th>Marque</th>
             <th>Réference</th>
-            <th>product </th>
             <th width="150">mis à jour à</th>
             <th width="20">Actions</th>
             <th width="55"></th>
@@ -42,7 +41,7 @@
           <tr *ngFor="let i of marque">
             <td>
               <div class="contact contact-rounded contact-bordered contact-lg" *ngFor="let k of i.images">
-                <img src='{{getSantizeUrl(k.url)}}'>
+                <img src='{{getSantizeUrl(k.url)}}' style="width:40px; height: 40px; float: left;; border-radius: 100%;">
                 <div class="contact-container"><a href="#">{{i.nom}}</a>
                   <span>{{i.ref}} </span>
                 </div>
@@ -92,19 +91,6 @@
             <div class="col-md-10">
               <input type="text" class="mask_date form-control" name="ref" ngModel>
             </div>
-          </div>
-          <div class="form-group">
-
-            <label class="col-md-2 control-label">image</label>
-            <div class="col-md-10">
-              <ngx-dropzone (change)="onSelect($event)">
-                <ngx-dropzone-label><img src="https://cdn4.iconfinder.com/data/icons/fevzicons-1/91/noun_170933-512.png" style="height: 100px; width: 100px"></ngx-dropzone-label>
-                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-                  <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-                </ngx-dropzone-preview>
-              </ngx-dropzone>
-            </div>
-            <!--        <img *ngFor='let url of images'  [src]="url" height="50px" width="50px" style="margin: 3px;"> <br/>-->
           </div>
           <div class="form-group">
 

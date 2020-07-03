@@ -28,6 +28,7 @@ export class LotComponent implements OnInit {
       'Accept': 'application/json'
     })
   };
+  data: any;
   ngOnInit() {
     this.http.get('http://127.0.0.1:8000/api/product').subscribe(data => {
 
@@ -64,9 +65,7 @@ export class LotComponent implements OnInit {
 
   }
 
-  recuperer(id: any, nom: any, url: string, parent_id: any) {
 
-  }
 
   delete(id: any) {
 
@@ -113,5 +112,18 @@ export class LotComponent implements OnInit {
 
   recupid(id: any) {
 
+    this.http.get('http://127.0.0.1:8000/api/lotid/'+ id).subscribe(data => {
+      console.log("lot cherche.",this.data=data);
+
+
+    }, error => console.error(error));
+  }
+
+  update() {
+    this.http.put('http://127.0.0.1:8000/api/lot',this.formlot.value).subscribe(data => {
+      console.log("lot update.",this.data=data);
+
+
+    }, error => console.error(error));
   }
 }
