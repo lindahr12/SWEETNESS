@@ -60,8 +60,12 @@ class AuthController extends Controller
             $societe->logo = $request->logo;
             $societe->statue = $request->statue;
             $societe->matriculation_fiscal = $request->matriculation_fiscal;
+            $user->role_id = 2;
             $societe->save();
             $user->societe_id = $societe->id;
+        }else{
+            $user->role_id = 1;
+
         }
 
        $user->save();

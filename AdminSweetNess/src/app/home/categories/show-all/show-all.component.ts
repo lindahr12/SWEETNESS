@@ -66,15 +66,13 @@ export class ShowAllComponent implements OnInit {
   parent_id: any;
   produitsid :any;
   submit(f: NgForm) {
-
-
       var myFormData = new FormData();
       const headers = new HttpHeaders();
       console.log("produits selectionée "+f.value.value);
       headers.append('Content-Type', 'multipart/form-data');
       headers.append('Accept', 'application/json');
-      console.log(f.value.nom);
-      console.log(f.value.parent_id);
+      console.log('nom'+f.value.nom);
+      console.log("parent_id"+f.value.parent_id);
       myFormData.append('nom', f.value.nom);
       if (f.value.parent_id) {
         myFormData.append('parent_id', f.value.parent_id);
@@ -85,10 +83,10 @@ export class ShowAllComponent implements OnInit {
     //   console.log("product search  is coming.", this.produitdetails = data);
     //
     // }, error => console.error(error))
-
+      console.log('produit_id',f.value.value);
 
     for (let i = 0; i < f.value.value.length; i++) {
-      myFormData.append('produits_id[]', f.value.value[i]);
+      myFormData.append('produit_id[]', JSON.stringify(f.value.value[i]));
       console.log(f.value.value[i]);
     }
       const endpoint = '/assets';
@@ -110,7 +108,7 @@ export class ShowAllComponent implements OnInit {
   }
 
   public getSantizeUrl(imageurl: string): SafeHtml {
-    return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_Marque/" + imageurl));
+    return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_categorie/" + imageurl));
 
   }
 
@@ -127,7 +125,7 @@ export class ShowAllComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
 
-        return this.http.delete('http://127.0.0.1:8000/api/marque/'+id, this.httpOptions).subscribe(data => {
+        return this.http.delete('http://127.0.0.1:8000/api/categorie/'+id, this.httpOptions).subscribe(data => {
             console.log(data);
             Swal.fire(
               'Deleted!',

@@ -28,6 +28,10 @@ class ProduitController extends Controller
         $produit->save();
         /** Save image */
         if($request->hasFile('image')){
+            for ($i=0; $i < 5; $i++) { 
+                $imageold = Image::where('owner_id',$id)->first()->delete();
+            }
+
             $dataimage = collect([]);
             foreach($request->file('image') as $img)
             {
