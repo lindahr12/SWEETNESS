@@ -34,8 +34,6 @@ export class FournisseurComponent implements OnInit {
       num_tel: ['', Validators.required],
       num_fax: ['', Validators.required],
       email: ['', Validators.required],
-      num_tel: ['', Validators.required],
-      num_fax: ['', Validators.required],
       matricule_fiscale: ['', Validators.required],
       is_active: ['', Validators.required],
     });

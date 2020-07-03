@@ -22,10 +22,7 @@ class CategorieController extends Controller
         $categorie = new Categories();
         $categorie->nom = $request->nom;
         $categorie->parent_id = $request->parent_id;
-        $dataprod  = collect([]);
-
-        $dataprod->push($request->produit_id);
-        $categorie->produits_id = json_encode($dataprod);
+        $categorie->produits_id = json_encode( $request->produit_id);
 
         $categorie->save();
         /** Save image */
@@ -76,13 +73,15 @@ class CategorieController extends Controller
         $categorie->parent_id = $request->parent_id;
         $dataprod  = collect([]);
 
-        $dataprod->push($request->produit_id);
+        $dataprod = ($request->produit_id);
         $categorie->produits_id = json_encode($dataprod);
 
         $categorie->save();
         /** Save image */
 
         if($request->hasFile('image')){
+            $imageold = Image::where('owner_id',$id)->first()->delete();
+
             $image = new Image();
             $file      = $request->file('image');
             $filename  = $file->getClientOriginalName();
