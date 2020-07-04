@@ -33,7 +33,7 @@ class AuthController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->respondWithToken($token,auth()->user()->role()->nom);
+        return $this->respondWithToken($token);
     }
       /**
      * Get the authenticated User.
@@ -68,7 +68,7 @@ class AuthController extends Controller
         }
 
        $user->save();
-        return $this->login($request,auth()->user()->role()->nom);
+        return $this->login($request);
     }
 
     /**

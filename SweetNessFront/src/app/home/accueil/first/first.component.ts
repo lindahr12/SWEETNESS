@@ -15,7 +15,7 @@ produit;
   ngOnInit() {
     this.http.get('http://127.0.0.1:8000/api/product').subscribe(data => {
       console.log("Data is coming.", this.produit = data);
-
+    console.log("prix_vente_souhaiter" + this.produit.lot);
 
     }, error => console.error(error));
   }

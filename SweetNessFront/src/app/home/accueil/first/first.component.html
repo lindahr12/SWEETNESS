@@ -74,10 +74,10 @@
                 <div class="col-md-4 col-sm-6 col-xs-12" >
                   <div class="item item-hover">
                     <div class="item-image-wrapper" *ngFor="let img of listprod.images">
-                      <figure class="item-image-container" *ngFor="let image of Parseimg(img.url)">
+                      <figure class="item-image-container" *ngFor="let image of Parseimg(img.url); index as i ">
                         <a href="product.html" >
-                          <img src='{{ getSantizeUrl( image) }}' alt="item1" class="item-image">
-                          <img src='{{ getSantizeUrl( image) }}' alt="item1  Hover" class="item-image-hover">
+                          <img *ngIf="i ==0" src='{{ getSantizeUrl( image) }}' alt="item1" class="item-image">
+                          <img *ngIf="i==1" src='{{ getSantizeUrl( image) }}' alt="item1  Hover" class="item-image-hover">
                         </a>
                       </figure>
                       <div class="item-price-container">
