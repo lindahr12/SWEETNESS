@@ -22,8 +22,6 @@ class ProduitController extends Controller
         $produit->nom = $request->nomproduit;
         $produit->description = $request->description;
         $produit->reference = $request->reference;
-        $produit->note = $request->note;
-        $produit->nbr_noted = $request->nbr_noted;
         $produit->is_active = $request->is_active;
         $produit->fournisseur_id = $request->fournisseur_id;
         $produit->save();
@@ -59,18 +57,11 @@ class ProduitController extends Controller
     public function update(Request $request,$id){
         $produit = Produit::find($id);
         $produit->nom = $request->nomproduit;
-        $produit->limite_stock_alert = $request->limite_stock_alert;
-        $produit->total_stock = $request->total_stock;
-        $produit->note = $request->note;
         $produit->description = $request->description;
-        $produit->nbr_noted = $request->nbr_noted;
-        $produit->tva = $request->tva;
-        $produit->prix_ht = $request->prix_ht;
-        $produit->prix_ttc = $request->prix_ttc;
-        $produit->marge = $request->marge;
-        $produit->reduction = $request->reduction;
+        $produit->reference = $request->reference;
+        $produit->is_active = $request->is_active;
+        $produit->fournisseur_id = $request->fournisseur_id;
         $produit->save();
-        /**delete image */
 
         /** Save image */
         if($request->hasFile('image')){

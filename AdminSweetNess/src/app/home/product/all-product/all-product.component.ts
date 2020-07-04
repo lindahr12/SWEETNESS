@@ -187,7 +187,7 @@ export class AllProductComponent implements OnInit {
     myFormData.append('fournisseur_id', '1');
 
     const endpoint = '/assets';
-    this.http.put('http://127.0.0.1:8000/api/product'+this.produit.id, myFormData, {
+    this.http.put('http://127.0.0.1:8000/api/product/'+this.produit.id, myFormData, {
       headers: headers
     }).subscribe(data => {
 
