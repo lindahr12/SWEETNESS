@@ -12,9 +12,9 @@
         <div class="row margin-bottom-30 margin-top-10">
           <div class="col-md-6 col-md-offset-3 col-sm-12">
             <div class="col-xs-5">
-              <button class="btn btn-primary btn-block btn-icon-fixed" >
+              <button class="btn btn-primary btn-block btn-icon-fixed" routerLink="/home/dashboard" >
                 <span class="fa fa-caret-left"></span>
-                categorie
+                Accueil
               </button>
             </div>
             <div class="col-xs-5">
@@ -33,41 +33,41 @@
             <thead>
             <tr>
               <th width="150">Réefernce</th>
-              <th>Produit nom</th>
-              <th>Produit nom</th>
-              <th width="250">note</th>
+              <th width="450">Produit Image</th>
+              <th width="150">Produit nom</th>
+              <th width="150">note</th>
               <th width="150">Fournisseur</th>
               <th width="150">Date</th>
               <th width="150">Status</th>
-              <th width="120"></th>
+              <th width="120">Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let i of data" >
               <td>
-                <a href="#" class="text-bolder text-primary">{{i.description}}</a>
+                <a  class="text-bolder text-primary">{{i.description}}</a>
               </td>
-              <td style="display: table">
-                <div  *ngFor="let k of i.images" style="display:table;vertical-align:auto;">
-                  <div *ngFor="let image of Parseimg(k.url)">
-                  <img src='{{ getSantizeUrl( image ) }}' style="width:40px; height: 40px; float: left;; border-radius: 100%;clear:left ;display: inline">
+              <td  >
+                <div  *ngFor="let k of i.images" >
+                  <div *ngFor="let image of Parseimg(k.url)" style="  display: inline-flex;">
+                  <img src='{{ getSantizeUrl( image ) }}'  class="avatar" >
                   </div>
                 </div>
               </td>
               <td>
-                <div class="contact contact-lg" >
+                <div  >
 
-                    <div class="contact-container">
-                      <a href="#">{{i.nom}}</a>
+                    <div class="contact-container" >
+                      <p >{{i.nom}}</p>
                       <span>{{i.description}}</span>
                     </div>
                 </div>
               </td>
               <td>
-                <div class="contact contact-lg">
+                <div >
                   <div class="contact-container">
                     <a href="#">{{i.note}}</a>
-                    <span>{{i.nbr_noted}}</span>
+<!--                    <span>:::{{i.nbr_noted}}</span>-->
                   </div>
                 </div>
               </td>
@@ -75,7 +75,8 @@
                 <span class="text-bolder">{{i.fournisseur_id}}</span>
               </td>
               <td>{{i.created_at| date}}</td>
-              <td><span class="label label-danger">Canceled</span></td>
+              <td><span  *ngIf="i.is_active==0" class="label label-danger" >Annulé</span>
+              <span *ngIf="i.is_active==1" class="label label-primary">actif</span></td>
               <td><button type="submit" (click)="recupid(i.id)" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#modal-info" ><span class="icon-pencil"></span></button>
                 <button type="submit" (click)="delete(i.id)" class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
             </tr>
@@ -147,6 +148,12 @@
               <option *ngFor="let i of fournisseur" ngValue="{{i.id}}">{{i.nom}} </option>
 
             </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label">Active</label>
+          <div class="col-md-10">
+            <input type="checkbox" class="mask_date form-control"  formControlName="is_active">
           </div>
         </div>
         <div class="modal-footer">

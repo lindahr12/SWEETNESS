@@ -53,9 +53,7 @@ class LotController extends Controller
      */
     public function show($id)
     {
-        $lot = Lot::find($id)
-        ->with('produits')
-        ->get();
+        $lot = Lot::find($id)->with('produits')->get();
         return response()->json($lot);
 
     }

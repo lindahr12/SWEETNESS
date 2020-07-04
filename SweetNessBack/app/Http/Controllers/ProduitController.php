@@ -12,6 +12,7 @@ class ProduitController extends Controller
 {
     public function index(){
         $Produit = Produit::orderBy('id', 'DESC')
+        ->with('lot')
         ->with('images')
         ->get();
         return response()->json($Produit);
@@ -28,9 +29,7 @@ class ProduitController extends Controller
         $produit->save();
         /** Save image */
         if($request->hasFile('image')){
-            for ($i=0; $i < 5; $i++) { 
-                $imageold = Image::where('owner_id',$id)->first()->delete();
-            }
+          
 
             $dataimage = collect([]);
             foreach($request->file('image') as $img)
@@ -75,8 +74,9 @@ class ProduitController extends Controller
 
         /** Save image */
         if($request->hasFile('image')){
-            $image = Image::where('owner_id',$id)->first()->delete();
-
+            for ($i=0; $i < 5; $i++) { 
+                $imageold = Image::where('owner_id',$id)->first()->delete();
+            }
             foreach($request->file('image') as $img)
             {
             $filename  = $img->getClientOriginalName();

@@ -14,13 +14,13 @@ export class HomeComponent implements OnInit
 
   }
   ngOnInit(): void {
-    if (localStorage.getItem('token') == null){
-      {
-        alert ('login');
-        this.router.navigate(['/']);
-
-
-      }}
+    // if (localStorage.getItem('token') == null){
+    //   {
+    //     alert ('login');
+    //     this.router.navigate(['/']);
+    //
+    //
+    //   }}
   }
 
 

@@ -47,33 +47,32 @@
             <tbody>
             <tr *ngFor="let i of lot" >
               <td >
-                <a href="#" class="text-bolder text-primary">{{i.id}}</a>
+                <a  class="text-bolder text-primary">{{i.id}}</a>
               </td>
               <td >
-                <a href="#" class="text-bolder text-primary">{{i.produits.nom}}</a>
+                <a  class="text-bolder text-primary">{{i.produits.nom}}</a>
               </td>
               <td >
-                <a href="#" class="text-bolder text-primary">{{i.quantite}}</a>
+                <a  class="text-bolder text-primary">{{i.quantite}}</a>
               </td>
               <td >
-                <a href="#" class="text-bolder text-primary">{{i.prix_achat}}</a>
+                <a  class="text-bolder text-primary">{{i.prix_achat}}</a>
               </td>
               <td >
-                <a href="#" class="text-bolder text-primary">{{i.date_achat}}</a>
+                <a  class="text-bolder text-primary">{{i.date_achat}}</a>
               </td>
               <td >
-                <a href="#" class="text-bolder text-primary">{{i.prix_vente_souhaiter}}</a>
+                <a  class="text-bolder text-primary">{{i.prix_vente_souhaiter}}</a>
               </td>
               <td >
-                <a href="#" class="text-bolder text-primary">{{i.priorite_de_vente}}</a>
+                <a  class="text-bolder text-primary">{{i.priorite_de_vente}}</a>
               </td>
               <td >
-                <a href="#" class="text-bolder text-primary">{{i.date_expiration}}</a>
+                <a class="text-bolder text-primary">{{i.date_expiration}}</a>
               </td>
               <td>{{i.created_at| date}}</td>
-              <td ><button type="submit" (click)="recupid(i.id)" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#modal-info" ><span class="icon-pencil"></span></button>
-                </td>
-               <td ><button type="submit" (click)="delete(i.id)" class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
+              <td ><button type="submit" (click)="recuperer(i.id)" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#modal-info" ><span class="icon-pencil"></span></button>
+               <button type="submit" (click)="delete(i.id)" class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
             </tr>
 
             </tbody>
@@ -215,7 +214,7 @@
             <label for="exampleFormControlSelect1" class="col-md-2 control-label">Produits </label>
             <div class="col-md-10">
               <select class="form-control" id="exampleFormControlSelect1" formControlName="produit_id" >
-                <option selected></option>
+                <option selected ></option>
                 <option *ngFor="let i of produit" ngValue="{{i.id}}">{{i.nom}} </option>
 
               </select>

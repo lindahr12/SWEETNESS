@@ -71,9 +71,8 @@ export class MarqueComponent implements OnInit {
     myFormData.append('nomMarque', f.value.nom);
     myFormData.append('ref', f.value.ref);
     myFormData.append('image', this.files[0]);
-    console.log(f.value.value);
     for (let i = 0; i < f.value.value.length; i++) {
-      myFormData.append('produits_id[]', f.value.value[i]);
+      myFormData.append('produit_id[]', JSON.stringify(f.value.value[i]));
       console.log(f.value.value[i]);
     }
 
@@ -82,8 +81,7 @@ export class MarqueComponent implements OnInit {
       headers: headers
     }).subscribe(data => {
       console.log(data);
-      this.router.navigate["/home/marque"];
-
+    window.location.reload();
     });
 
   }
