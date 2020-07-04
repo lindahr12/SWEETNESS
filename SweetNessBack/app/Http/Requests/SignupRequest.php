@@ -31,22 +31,10 @@ class SignupRequest extends FormRequest
             'num_tel'=>'required|numeric',
             'num_fax'=>'required|numeric',
             'is_actif' => 'required',
-            'role_id'=> 'required',
+            'token_validation'=> 'required',
             'societe_id'=> 'required',
 
         ];
     }
-    /**
-     * Get custom messages for validator errors.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            'numeric'=>' Entre un nombre',
-            'required'=> 'le champ est vide',
-            'unique' => 'Ce mail est deja utilisé'
-        ];
-    }
+  
 }
