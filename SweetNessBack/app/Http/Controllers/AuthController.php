@@ -48,7 +48,7 @@ class AuthController extends Controller
        $user->password = bcrypt($request->password);
        $user->num_tel = $request->num_tel;
        $user->num_fax = $request->num_fax;
-       $user->token_validation = $request->token_validation;
+       $user->token_validation = 0;
         if($request->societe){
             $societe = new Societe();
             $societe->raison_sociale = $request->raison_sociale;
