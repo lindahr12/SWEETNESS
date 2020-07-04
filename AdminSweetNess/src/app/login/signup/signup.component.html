@@ -42,6 +42,13 @@
             </div>
           </div>
           <div class="form-group">
+            <!--            <input type="password" class="form-control" name="password" placeholder="Password">-->
+                        <input type="password" placeholder="confirme Password" formControlName="password_confirmation" class="form-control" [ngClass]="{ 'is-invalid': submitted && m.password.errors }" />
+                        <div *ngIf="submitted && m.password.errors" class="invalid-feedback">
+                          <div *ngIf="m.password.errors.required">Le mot de passe est requis</div>
+                        </div>
+                      </div>
+          <div class="form-group">
             <div class="row">
               <div class="col-md-6">
                 <input type="text" placeholder="Numéro Telephone" formControlName="num_tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && m.num_tel.errors }" />

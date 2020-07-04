@@ -30,8 +30,6 @@ class SignupRequest extends FormRequest
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'num_tel'=>'required|numeric',
             'num_fax'=>'required|numeric',
-            'is_actif' => 'required',
-            'token_validation'=> 'required',
 
         ];
     }

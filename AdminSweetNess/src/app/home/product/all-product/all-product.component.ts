@@ -178,18 +178,15 @@ window.location.reload();
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
-    console.log(this.formupdate.value);
+    console.log(this.formupdate.value.nom);
     console.log(this.files[0]);
-    myFormData.append('nomproduit', this.formupdate.value.nomproduit);
+    myFormData.append('nomproduit', this.formupdate.value.nom);
     myFormData.append('reference', this.formupdate.value.reference);
     myFormData.append('description', this.formupdate.value.description);
     for (let i = 0; i < 5; i++) {
       myFormData.append('image[]', this.files[i]);
     }
-    myFormData.append('note', '0');
-    myFormData.append('nbr_noted', '0');
-    myFormData.append('is_active', '5');
-    myFormData.append('fournisseur_id', '1');
+    myFormData.append('is_active', '1');
 
     const endpoint = '/assets';
     this.http.put('http://127.0.0.1:8000/api/product/'+this.produit.id, myFormData, {
