@@ -56,6 +56,8 @@ class ProduitController extends Controller
     }
     public function update(Request $request,$id){
         $produit = Produit::find($id);
+        $toArray = $request->getContent() ;
+        return response(json_encode($toArray));
         $produit->nom = $request->nomproduit;
         $produit->description = $request->description;
         $produit->reference = $request->reference;

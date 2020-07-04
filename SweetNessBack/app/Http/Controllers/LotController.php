@@ -69,7 +69,6 @@ class LotController extends Controller
     public function update(Request $request, $id)
     {
         $lot = Lot::find($id);
-        return ($request->all());
         $lot->date_expiration = $request->date_expiration;
         $lot->date_achat = $request->date_achat;
         $lot->quantite = $request->quantite;
