@@ -6,7 +6,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-use App\Role;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -60,9 +59,9 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
     public function role(){
-        return $this->hasOne(Role::class, 'role_id', 'id');
-    }
+        return $this->hasOne(Role::class,'id','role_id');
+    }   
     public function societe(){
-        return $this->hasOne(Societe::class);
+        return $this->hasOne(Societe::class,'id','societe_id');
     }
 }

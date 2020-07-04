@@ -13,7 +13,7 @@ class SignupRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -32,7 +32,6 @@ class SignupRequest extends FormRequest
             'num_fax'=>'required|numeric',
             'is_actif' => 'required',
             'token_validation'=> 'required',
-            'societe_id'=> 'required',
 
         ];
     }

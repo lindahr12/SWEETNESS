@@ -18,8 +18,6 @@ class CreateproduitsTable extends Migration
             $table->string('nom');
             $table->string('description');
             $table->string('reference');
-            $table->double('note');
-            $table->integer('nbr_noted');
             $table->boolean('is_active');
             $table->bigInteger('fournisseur_id');
 

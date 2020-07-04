@@ -65,6 +65,8 @@ data;
     Params = Params.append('password', this.signForm.value.password);
     Params = Params.append('num_tel', this.signForm.value.num_tel);
     Params = Params.append('num_fax', this.signForm.value.num_fax);
+    Params = Params.append('societe_id', '1');
+
     Params = Params.append('is_actif', '0');
 
     console.log(Params);

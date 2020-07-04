@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
 //    console.log(this.loginForm);
     return this.http.post('http://127.0.0.1:8000/api/auth/login'
       , this.loginForm.value).subscribe((res: Response) => {
-
+        console.log('role' , res);
        console.log("looooooooog");
 
         this.token = res['access_token'];
