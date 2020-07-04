@@ -59,30 +59,31 @@
         <div class="row">
           <div class="col-md-9 col-sm-8 col-xs-12 main-content">
             <header class="content-title">
-              <h2 class="title">Our Products</h2>
-              <p class="title-desc">Save your money and time with our store. Here's the best part of our impressive assortment.</p>
+              <h2 class="title">Notre Produits</h2>
+              <p class="title-desc">Économisez votre argent et votre temps avec notre magasin. Voici la meilleure partie de notre assortiment impressionnant.</p>
             </header>
             <ul id="products-tabs-list" class="tab-style-1 clearfix">
-              <li class="active"><a href="#all" data-toggle="tab">All</a></li>
-              <li><a href="#latest" data-toggle="tab">Latest</a></li>
-              <li><a href="#featured" data-toggle="tab">Featured</a></li>
-              <li><a href="#bestsellers" data-toggle="tab">Bestsellers</a></li>
-              <li><a href="#special" data-toggle="tab">Special</a></li>
+              <li class="active"><a href="#all" data-toggle="tab">Tout</a></li>
+              <li><a href="#latest" data-toggle="tab">Dernier</a></li>
+              <li><a href="#featured" data-toggle="tab">En vedette</a></li>
+              <li><a href="#bestsellers" data-toggle="tab"> Meilleures ventes </a></li>
+              <li><a href="#special" data-toggle="tab">Spéciale</a></li>
             </ul>
             <div id="products-tabs-content" class="row tab-content">
-              <div class="tab-pane active" id="all" *ngFor="let listprod of produit">
-                <div class="col-md-4 col-sm-6 col-xs-12" >
+              <div class="tab-pane active" id="all" >
+                <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let listprod of produit">
                   <div class="item item-hover">
                     <div class="item-image-wrapper" *ngFor="let img of listprod.images">
                       <figure class="item-image-container" *ngFor="let image of Parseimg(img.url); index as i ">
                         <a href="product.html" >
                           <img *ngIf="i ==0" src='{{ getSantizeUrl( image) }}' alt="item1" class="item-image">
-                          <img *ngIf="i==1" src='{{ getSantizeUrl( image) }}' alt="item1  Hover" class="item-image-hover">
+                         <!--- <img *ngIf="i==1" src='{{ getSantizeUrl( image) }}' alt="item1  Hover" class="item-image-hover">-->
+
                         </a>
                       </figure>
-                      <div class="item-price-container">
-                        <span class="old-price">{{listprod.lot.prix_vente_souhaiter}} dt<span class="sub-price">.{{listprod.lot.prix_vente_souhaiter}}</span></span>
-                        <span class="item-price">{{listprod.lot.prix_vente_souhaiter}} dt<span class="sub-price">.{{listprod.lot.prix_vente_souhaiter}}</span></span>
+                      <div class="item-price-container"*ngFor="let listlot of listprod.lot" >
+                        <span class="old-price">{{listlot.lot.prix_vente_souhaiter}} dt<span class="sub-price">.{{listlot.lot.prix_vente_souhaiter}}</span></span>
+                        <span class="item-price">{{listlot.lot.prix_vente_souhaiter}} dt<span class="sub-price">.{{listlot.lot.prix_vente_souhaiter}}</span></span>
                       </div>
                       <span class="new-rect">New</span>
                       <span class="discount-rect">-15%</span>
@@ -94,15 +95,15 @@
 
                           </div>
                         </div>
-                        <span class="ratings-amount">5 Reviews</span>
+                        <span class="ratings-amount">5 Etoiles</span>
                       </div>
-                      <h3 class="item-name"><a href="product.html">Phasellus consequat</a></h3>
+                      <h3 class="item-name"><a href="product.html">{{listprod.description}}</a></h3>
                       <div class="item-action">
                         <a href="#" class="item-add-btn">
-                          <span class="icon-cart-text">Add to Cart</span>
+                          <span class="icon-cart-text">ajouter au panier </span>
                         </a><div class="item-action-inner">
-                        <a href="#" class="icon-button icon-like">Favourite</a>
-                        <a href="#" class="icon-button icon-compare">Checkout</a>
+                        <a href="#" class="icon-button icon-like">Favourit</a>
+                        <a href="#" class="icon-button icon-compare">Check-out</a>
                       </div>
                       </div>
                     </div>
@@ -317,11 +318,12 @@
           </div>
           <div class="col-md-3 col-sm-4 col-xs-12 sidebar">
             <div class="widget subscribe">
-              <h3>BE THE FIRST TO KNOW</h3>
-              <p>Get all the latest information on Events, Sales and Offers. Sign up for the Venedor store newsletter today.</p>
+              <h3>                SOYEZ LE PREMIER À SAVOIR              </h3>
+              <p>
+                Obtenez toutes les dernières informations sur les événements, les ventes et les offres. Inscrivez-vous à la newsletter de la boutique Venedor dès aujourd'hui.              </p>
               <form action="#" id="subscribe-form">
                 <div class="form-group">
-                  <input type="email" class="form-control" id="subscribe-email" placeholder="Enter your email address">
+                  <input type="email" class="form-control" id="subscribe-email" placeholder="Entrer votre email addresse">
                 </div>
                 <input type="submit" value="SUBMIT" class="btn btn-custom">
               </form>
@@ -332,7 +334,7 @@
                 <ul class="testimonials-list clearfix">
                   <li>
                     <div class="testimonial-details">
-                      <header>Best Service!</header>
+                      <header>Meilleure Service!</header>
                       Maecenas semper aliquam massa. Praesent pharetra sem vitae nisi eleifend molestie. Aliquam molestie scelerisque ultricies. Suspendisse potenti.
                     </div>
                     <figure class="clearfix">

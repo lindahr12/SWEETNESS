@@ -177,24 +177,24 @@
         <h4 class="modal-title" id="modal-info-header">Info Modal</h4>
       </div><div class="modal-body">
       <form [formGroup]="formupdate" (ngSubmit)="update()">
-        <div class="modal-body" *ngFor="let p of produit">
+        <div class="modal-body" >
           <div class="form-group">
             <label class="col-md-2 control-label">Nom</label>
             <div class="col-md-10">
-              <input type="text" class="mask_date form-control" value="{{p.nom}}"  name="nomproduit" formControlName="nom">
+              <input type="text" class="mask_date form-control"  name="nomproduit" formControlName="nom">
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Réference</label>
             <div class="col-md-10">
-              <input type="text" class="mask_date form-control" value="{{p.reference}}" id="reference2" name="reference" formControlName="reference">
+              <input type="text" class="mask_date form-control" id="reference2" name="reference" formControlName="reference">
             </div>
           </div>
           <div class="form-group">
 
             <label class="col-md-2 control-label">Description</label>
             <div class="col-md-10">
-              <input type="text" class="form-control" rows="5" class="mask_date form-control" value="{{p.description}" name="description" formControlName="description">
+              <input type="text" class="form-control" rows="5" class="mask_date form-control" name="description" formControlName="description">
               <span class="help-block"></span>
             </div>
 
@@ -207,11 +207,6 @@
                 <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
                   <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
 
-                    <div  *ngFor="let k of p.images" style="display:table;vertical-align:auto;">
-                      <div *ngFor="let image of Parseimg(k.url)">
-                        <ngx-dropzone-image-preview><img src='{{ getSantizeUrl( image ) }}' style="width:40px; height: 40px; float: left;; border-radius: 100%;clear:left ;"> </ngx-dropzone-image-preview>
-                      </div>
-                    </div>
 
                 </ngx-dropzone-preview>
               </ngx-dropzone>
