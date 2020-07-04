@@ -155,8 +155,14 @@ export class AllProductComponent implements OnInit {
   recupid(id: any) {
 
     this.http.get('http://127.0.0.1:8000/api/productid/'+ id).subscribe(data => {
-      console.log("produittttttttttttt is coming.", this.produit = data);
-
+      console.log("produittttttttttttt is coming.", this.produit = data[0]);
+      this.formupdate.patchValue({
+        nom: this.produit.nom,
+        reference: this.produit.reference,
+        description:this.produit.description,
+        fournisseur_id:this.produit.fournisseur_id
+  
+      });
 
     }, error => console.error(error));
   }
@@ -181,7 +187,7 @@ export class AllProductComponent implements OnInit {
     myFormData.append('fournisseur_id', '1');
 
     const endpoint = '/assets';
-    this.http.put('http://127.0.0.1:8000/api/product', myFormData, {
+    this.http.put('http://127.0.0.1:8000/api/product'+this.produit.id, myFormData, {
       headers: headers
     }).subscribe(data => {
 
