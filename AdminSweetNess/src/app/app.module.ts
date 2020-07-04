@@ -16,6 +16,8 @@ import { LotComponent } from './home/lot/lot.component';
 import { MarqueComponent } from './home/marque/marque.component';
 import {MultiSelectAllModule} from "@syncfusion/ej2-angular-dropdowns";
 import { FournisseurComponent } from './home/fournisseur/fournisseur.component';
+import { CommandeComponent } from './home/commande/commande.component';
+import { FactureComponent } from './home/facture/facture.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { FournisseurComponent } from './home/fournisseur/fournisseur.component';
     LotComponent,
     MarqueComponent,
     FournisseurComponent,
+    CommandeComponent,
+    FactureComponent,
 
 
   ],

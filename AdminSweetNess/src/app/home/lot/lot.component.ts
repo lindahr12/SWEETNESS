@@ -123,8 +123,7 @@ export class LotComponent implements OnInit {
         priorite_de_vente: this.lotdata.priorite_de_vente,
         produit_id: this.lotdata.produit_id,
         prix_achat: this.lotdata.prix_achat
-  
-  
+
       })
     }, error => console.error(error));
   }
