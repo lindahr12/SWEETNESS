@@ -11,12 +11,12 @@ user:any;
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('http://127.0.0.1:8000/api/user').subscribe(data => {
+    this.http.get('http://127.0.0.1:8000/api/auth/allusers').subscribe(data => {
       console.log("Data is coming.", this.user = data);
 
     }, error => console.error(error));
   }
   /**Delete user */
-  
+
 
 }

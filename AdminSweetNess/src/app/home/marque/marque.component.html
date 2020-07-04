@@ -94,7 +94,7 @@
           </div>
           <div class="form-group">
             <label class="col-md-2 control-label">image</label>
-            <div class="col-md-10">
+            <div class="col-md-5">
               <ngx-dropzone (change)="onSelect($event)">
                 <ngx-dropzone-label><img src="https://cdn4.iconfinder.com/data/icons/fevzicons-1/91/noun_170933-512.png" style="height: 100px; width: 100px"></ngx-dropzone-label>
                 <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">

@@ -5,12 +5,13 @@ import {HomeComponent} from './home/home.component';
 import {LoginComponent} from "./login/login.component";
 import {AppComponent} from './app.component';
 import {SignupComponent} from "./login/signup/signup.component";
-import {AddCategorieComponent} from "./home/categories/add-categorie/add-categorie.component";
 import {BaseLayoutComponent} from "./home/base-layout/base-layout.component";
 import {DashboardRoutingModule} from "./home/dashboard/dashboard-routing.module";
 import {MainComponent} from "./home/dashboard/main/main.component";
 import {LotComponent} from "./home/lot/lot.component";
 import {MarqueComponent} from "./home/marque/marque.component";
+import {CommandeComponent} from "./home/commande/commande.component";
+import {FactureComponent} from "./home/facture/facture.component";
 
 
 const routes: Routes = [
@@ -47,9 +48,14 @@ const routes: Routes = [
         path:'fournisseur',
         component:FournisseurComponent
       },
-
-
-
+      {
+        path:'commandes',
+        component:CommandeComponent
+      },
+      {
+        path:'facture',
+        component:FactureComponent
+      },
 
     ]
 

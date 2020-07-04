@@ -82,7 +82,13 @@ export class AllProductComponent implements OnInit {
     }
     myFormData.append('note', '0');
     myFormData.append('nbr_noted', '0');
-    myFormData.append('is_active', '5');
+    if(f.value.is_active) {
+      myFormData.append('is_active', '0');
+    }
+    else {
+      myFormData.append('is_active', '1');
+    }
+
     myFormData.append('fournisseur_id', f.value.fournisseur_id);
 
     const endpoint = '/assets';
@@ -91,8 +97,7 @@ export class AllProductComponent implements OnInit {
     }).subscribe(data => {
 
       console.log(data);
-      this.router.navigate["/home/product"];
-
+window.location.reload();
     });
 
   }

@@ -54,11 +54,11 @@ export class LotComponent implements OnInit {
     });
   }
   submit() {
-     console.log(this.formlot.value);
+    console.log(this.formlot.value);
     this.http.post('http://127.0.0.1:8000/api/lot', this.formlot.value
-   ).subscribe(data => {
+    ).subscribe(data => {
       console.log("lot ajoutée");
-
+       window.location.reload();
     });
   }
 
@@ -87,7 +87,7 @@ export class LotComponent implements OnInit {
               'produit a été supprimé.',
               'success'
             )
-              window.location.reload();
+            window.location.reload();
             //this.router.navigate["/home"];
 
 
@@ -111,11 +111,11 @@ export class LotComponent implements OnInit {
   }
 
 
-  
+
   recuperer(id: any) {
 
     this.http.get('http://127.0.0.1:8000/api/lot/'+id).subscribe(data => {
-  
+
       console.log("fournisseur recuperer.",this.lotdata = data[0]);
       console.log("Lot date.",this.lotdata.produits.nom);
 
@@ -127,17 +127,17 @@ export class LotComponent implements OnInit {
         priorite_de_vente: this.lotdata.priorite_de_vente,
         produit_id: this.lotdata.produit_id,
         prix_achat: this.lotdata.prix_achat
-  
-  
+
+
       });
-  
+
     }, error => console.error(error))
     console.log(this.lotdata);
   }
   update() {
     this.http.put('http://127.0.0.1:8000/api/lot/'+this.lotdata.id,this.formlot.value).subscribe(data => {
       console.log("lot update.",this.data=data);
-
+     window.location.reload();
 
     }, error => console.error(error));
   }

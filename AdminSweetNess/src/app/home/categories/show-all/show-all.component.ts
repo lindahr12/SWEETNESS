@@ -90,7 +90,6 @@ export class ShowAllComponent implements OnInit {
       console.log(f.value.value[i]);
     }
       const endpoint = '/assets';
-
       this.http.post('http://127.0.0.1:8000/api/categorie', myFormData, {
         headers: headers
       }).subscribe(data => {
