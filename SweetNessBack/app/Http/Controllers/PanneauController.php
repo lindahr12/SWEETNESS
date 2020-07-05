@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Pannier;
+use App\Image;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -74,8 +76,14 @@ class PanneauController extends Controller
     {
         $article = Pannier::where('user_id',$id)
         ->wherenull('commande_id')
+        ->with('produits')
         ->get();
-        return response()->json($article);
+        for ($i=0; $i < count($article); $i++) { 
+            # code...
+            $image = Image::where('owner_id',$article[$i]->id)->get();
+
+        }
+        return response()->json(compact('article','image'));
     }
 
     /**

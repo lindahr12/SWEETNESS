@@ -17,10 +17,7 @@ class SocieteTable extends Migration
             $table->bigIncrements('id');
             $table->string('raison_sociale');
             $table->string('description');
-            $table->string('rue');
-            $table->string('ville');
             $table->string('email')->unique();
-            $table->string('logo');
             $table->string('statue');
             $table->string('matriculation_fiscal');
 

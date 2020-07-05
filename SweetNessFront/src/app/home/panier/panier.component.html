@@ -5,18 +5,32 @@
             <p class="title-desc">Just this week, you can use the free premium delivery.</p></header>
             <div class="xs-margin"></div><div class="row">
                 <div class="col-md-12 table-responsive">
-                <table class="table cart-table"><thead>
+                <table class="table cart-table">
+                    <thead>
                     <tr>
                         <th class="table-title">Product Name</th>
-                        <th class="table-title">Product Code</th>
                         <th class="table-title">Unit Price</th>
                         <th class="table-title">Quantity</th>
-                        <th class="table-title">SubTotal</th></tr>
-                    </thead><tbody><tr><td class="item-name-col">
-                        <figure><a href="#"><img src="images\products\compare1.jpg" alt="Lowlands Lace Blouse">
-                        </a></figure><header class="item-name"><a href="#">Lowlands Lace Blouse</a>
-                        </header><ul><li>Color: White</li><li>Size: SM</li></ul></td>
-                        <td class="item-code">MP125984154</td><td class="item-price-col">
+                        <th class="table-title">SubTotal</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let itemarticle of pannier">
+                        <td class="item-name-col" *ngFor="let itemimage of image">
+                    <figure *ngIf="itemarticle.produits_id == itemimage.owner_id">
+                        <a href="#">
+                        <img src="" alt="Lowlands Lace Blouse">
+                        </a>
+                    </figure>
+                    <header class="item-name">
+                        <a href="#">Lowlands Lace Blouse</a>
+                    </header>
+                        <ul>
+                            <li>Color: White</li>
+                            <li>Size: SM</li>
+                        </ul>
+                    </td>
+                        <td class="item-price-col">
                             <span class="item-price-special">$1175</span></td>
                             <td><div class="custom-quantity-input">
                                 <input type="text" name="quantity" value="1"> 
@@ -26,18 +40,10 @@
                                     <i class="fa fa-angle-down"></i></a></div></td><td class="item-total-col">
                                     <span class="item-price-special">$1175</span>
                                     <a href="#" class="close-button"></a></td>
-                                </tr>
-                                <tr>
-                                <td class="item-name-col">
-                                    <figure><a href="#"><img src="images\products\compare2.jpg" alt="Samsung Galaxy Ace"></a>
-                                    </figure><header class="item-name"><a href="#">Samsung Galaxy Ace</a></header>
-                                    <ul><li>Color: Black</li><li>Size: XL</li></ul></td><td class="item-code">MP125984154</td>
-                                    <td class="item-price-col"><span class="item-price-special">$1475</span></td>
-                                    <td><div class="custom-quantity-input">
-                                        <input type="text" name="quantity" value="1">
-                                        <a href="#" onclick="return!1" class="quantity-btn quantity-input-up">
-                                        <i class="fa fa-angle-up"></i></a> <a href="#" onclick="return!1" class="quantity-btn quantity-input-down"><i class="fa fa-angle-down"></i></a></div></td>
-                                        <td class="item-total-col"><span class="item-price-special">$1475</span> <a href="#" class="close-button"></a></td></tr><tr><td class="item-name-col"><figure><a href="#"><img src="images\products\compare3.jpg" alt="Iphone Case Cover Original"></a></figure><header class="item-name"><a href="#">Iphone Case Cover Original</a></header><ul><li>Color: White</li><li>Size: SM</li></ul></td><td class="item-code">MP125984154</td><td class="item-price-col"><span class="item-price-special">$399</span></td><td><div class="custom-quantity-input"><input type="text" name="quantity" value="3"> <a href="#" onclick="return!1" class="quantity-btn quantity-input-up"><i class="fa fa-angle-up"></i></a> <a href="#" onclick="return!1" class="quantity-btn quantity-input-down"><i class="fa fa-angle-down"></i></a></div></td><td class="item-total-col"><span class="item-price-special">$1197</span> <a href="#" class="close-button"></a></td></tr></tbody></table></div></div><div class="lg-margin"></div><div class="row"><div class="col-md-8 col-sm-12 col-xs-12 lg-margin"><div class="tab-container left clearfix"><ul class="nav-tabs"><li class="active"><a href="#shipping" data-toggle="tab">Shipping &amp; Taxes</a></li>
+                    </tr>
+                                    </tbody>
+                                </table>
+                                </div></div><div class="lg-margin"></div><div class="row"><div class="col-md-8 col-sm-12 col-xs-12 lg-margin"><div class="tab-container left clearfix"><ul class="nav-tabs"><li class="active"><a href="#shipping" data-toggle="tab">Shipping &amp; Taxes</a></li>
                                         <li><a href="#discount" data-toggle="tab">Discount Code</a></li>
                                         <li><a href="#gift" data-toggle="tab">Gift voucher</a></li>
                                     </ul>
@@ -93,7 +99,7 @@
                                 <a href="#" class="btn btn-custom">CHECKOUT</a></div>
                             </div>
                             <div class="md-margin2x">
-                                
+
                             </div>
       </div>
       </div>

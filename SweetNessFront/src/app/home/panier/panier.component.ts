@@ -11,13 +11,16 @@ import { Component, OnInit, SecurityContext } from '@angular/core';
 export class PanierComponent implements OnInit {
 
   pannier;
+  image;
   userid = localStorage.getItem('user_id');
 
   constructor(private http: HttpClient,private _sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.http.get('http://127.0.0.1:8000/api/pannier/'+this.userid).subscribe(data => {
-      console.log("Data is coming.", this.pannier = data);
+      console.log("article is coming.", this.pannier = data['article']);
+      console.log("image is coming.", this.image = data['image']);
+
 
     }, error => console.error(error));
   }

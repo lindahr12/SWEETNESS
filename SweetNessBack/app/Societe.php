@@ -8,7 +8,7 @@ class Societe extends Model
 {
     protected $table='societe';
     protected $fillable=[
-        'raison_sociale','description','rue','ville','email','logo','statue','matriculation_fiscal'
+        'raison_sociale','description','email','statue','matriculation_fiscal'
     ];
     
 }

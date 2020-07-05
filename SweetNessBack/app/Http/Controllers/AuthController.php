@@ -53,10 +53,7 @@ class AuthController extends Controller
             $societe = new Societe();
             $societe->raison_sociale = $request->raison_sociale;
             $societe->description = $request->description;
-            $societe->rue = $request->rue;
-            $societe->ville = $request->ville;
-            $societe->email = $request->email;
-            $societe->logo = $request->logo;
+            $societe->email = $request->emailsociete;
             $societe->statue = $request->statue;
             $societe->matriculation_fiscal = $request->matriculation_fiscal;
             $user->role_id = 2;
@@ -68,6 +65,12 @@ class AuthController extends Controller
         }
 
        $user->save();
+       $adress = new Adresse();
+       $adress->rue = $request->rue;
+       $adress->regrion = $request->regrion;
+       $adress->code_postale = $request->code_postale;
+       $adress->user_id = $user->id;
+       $adress->save();
         return $this->login($request);
     }
 
@@ -126,6 +129,7 @@ class AuthController extends Controller
         # code...
         $users = User::orderBy('id','DESC')
         ->with('role')
+        ->with('adresse')
         ->with('societe')->get();
         return response()->json($users);
     }
