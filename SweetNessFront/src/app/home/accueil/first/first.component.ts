@@ -27,12 +27,14 @@ produit;
   }
 
   public getSantizeUrl(imageurl: string): SafeHtml {
-    console.log(imageurl);
     return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_article/" + imageurl));
 
   }
   public addpannier(id:any) {
     console.log('id article ',id);
-    
+    this.http.get('http://127.0.0.1:8000/api/pannieradd/'+id).subscribe(data => {
+      console.log("pannier is coming.", data);
+    }, error => console.error(error));
+
   }
 }

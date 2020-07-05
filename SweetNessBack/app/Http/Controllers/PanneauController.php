@@ -48,7 +48,7 @@ class PanneauController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store($id)
     {
         if(Auth::check()){
             $idauth = Auth::user()->id;
@@ -61,19 +61,19 @@ class PanneauController extends Controller
                 $cart->user_id = $idauth;
                 $cart->quantite =1;
                 $cart->save();
-                return response('Produit Selectionner');
+                return response()->json('Produit Selectionner');
 
                // return redirect('/')->with('toast_success','Produit selectioner');
             }
             else{
                 if(count($checkitem )> 0){
-                    return response('Produit déja Selectionner');
+                    return response()->json('Produit déja Selectionner');
                    // return redirect('/')->with('toast_info','Produit déja Selectionner');
                 }
             }
         }
         else{
-            return redirect('/login');
+            return response()->json('il faut authentifier');
 
         }
     }
@@ -86,7 +86,8 @@ class PanneauController extends Controller
      */
     public function show($id)
     {
-        //
+        $article = Pannier::find($id);
+        return response()->json($article);
     }
 
     /**

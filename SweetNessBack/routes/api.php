@@ -1,5 +1,10 @@
 <?php
 
+/**Pannier */
+Route::post('/pannieradd/{id}','PanneauController@store');
+Route::resource('/pannier','PanneauController');
+
+
 /** Marque Route */
 Route::resource('/marque','MarqueController');
 Route::get('/marqueid/{id}','MarqueController@search');
