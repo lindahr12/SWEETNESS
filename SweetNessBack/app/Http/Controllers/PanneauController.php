@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Pannier;
 use App\Image;
+use App\Lot;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -80,10 +82,14 @@ class PanneauController extends Controller
         ->get();
         for ($i=0; $i < count($article); $i++) { 
             # code...
-            $image = Image::where('owner_id',$article[$i]->id)->get();
+            $lot = Lot::where('produits_id',$article[$i]->produits_id)->get();
+
+        }        for ($i=0; $i < count($article); $i++) { 
+            # code...
+            $image = Image::where('owner_id',$article[$i]->produits_id)->get();
 
         }
-        return response()->json(compact('article','image'));
+        return response()->json(compact('article','image','lot'));
     }
 
     /**

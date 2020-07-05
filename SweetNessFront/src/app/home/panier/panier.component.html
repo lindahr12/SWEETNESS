@@ -18,26 +18,27 @@
                     <tr *ngFor="let itemarticle of pannier">
                         <td class="item-name-col" *ngFor="let itemimage of image">
                     <figure *ngIf="itemarticle.produits_id == itemimage.owner_id">
-                        <a href="#">
-                        <img src="" alt="Lowlands Lace Blouse">
+                        <a href="#" *ngFor="let image of Parseimg(itemimage.url) ; index as i">
+                        <img *ngIf="i==0"src='{{ getSantizeUrl( image) }}' alt="{{itemarticle.description}}">
                         </a>
                     </figure>
-                    <header class="item-name">
-                        <a href="#">Lowlands Lace Blouse</a>
+                    <header class="item-name" *ngFor="let prod of itemarticle.produits">
+                        <a href="#">{{prod.nom}}</a>
                     </header>
-                        <ul>
-                            <li>Color: White</li>
-                            <li>Size: SM</li>
-                        </ul>
+                      
                     </td>
-                        <td class="item-price-col">
-                            <span class="item-price-special">$1175</span></td>
+                        <td class="item-price-col" *ngFor="let itemlot of lot">
+                            <span class="item-price-special"*ngIf="itemlot.produits_id == itemarticle.produits_id ">{{itemlot.prix_vente_souhaiter}}</span></td>
                             <td><div class="custom-quantity-input">
-                                <input type="text" name="quantity" value="1"> 
+                                <input type="number" name="quantity" value="{{itemarticle.quantite}}"> 
                                 <a href="#" onclick="return!1" class="quantity-btn quantity-input-up">
                                     <i class="fa fa-angle-up"></i></a> 
                                     <a href="#" onclick="return!1" class="quantity-btn quantity-input-down">
-                                    <i class="fa fa-angle-down"></i></a></div></td><td class="item-total-col">
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                </div>
+                                </td>
+                                    <td class="item-total-col">
                                     <span class="item-price-special">$1175</span>
                                     <a href="#" class="close-button"></a></td>
                     </tr>

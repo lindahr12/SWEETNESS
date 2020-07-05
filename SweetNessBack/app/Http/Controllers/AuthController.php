@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SignupRequest;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use App\Adresse;
 
 class AuthController extends Controller
 {
@@ -67,9 +68,9 @@ class AuthController extends Controller
        $user->save();
        $adress = new Adresse();
        $adress->rue = $request->rue;
-       $adress->regrion = $request->regrion;
+       $adress->region = $request->region;
        $adress->code_postale = $request->code_postale;
-       $adress->user_id = $user->id;
+       $adress->users_id = $user->id;
        $adress->save();
         return $this->login($request);
     }

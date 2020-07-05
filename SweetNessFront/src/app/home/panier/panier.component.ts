@@ -12,6 +12,7 @@ export class PanierComponent implements OnInit {
 
   pannier;
   image;
+  lot;
   userid = localStorage.getItem('user_id');
 
   constructor(private http: HttpClient,private _sanitizer: DomSanitizer) { }
@@ -20,6 +21,8 @@ export class PanierComponent implements OnInit {
     this.http.get('http://127.0.0.1:8000/api/pannier/'+this.userid).subscribe(data => {
       console.log("article is coming.", this.pannier = data['article']);
       console.log("image is coming.", this.image = data['image']);
+      console.log("lot is coming.", this.lot = data['lot']);
+
 
 
     }, error => console.error(error));
