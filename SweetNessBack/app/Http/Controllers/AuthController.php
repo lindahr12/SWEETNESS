@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SignupRequest;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
-
+use App\Adresse;
+use App\Societe;
 class AuthController extends Controller
 {
     /**
@@ -53,7 +54,7 @@ class AuthController extends Controller
             $societe = new Societe();
             $societe->raison_sociale = $request->raison_sociale;
             $societe->description = $request->description;
-            $societe->email = $request->emailsociete;
+            $societe->email = $request->email_societe;
             $societe->statue = $request->statue;
             $societe->matriculation_fiscal = $request->matriculation_fiscal;
             $user->role_id = 2;
@@ -67,9 +68,9 @@ class AuthController extends Controller
        $user->save();
        $adress = new Adresse();
        $adress->rue = $request->rue;
-       $adress->regrion = $request->regrion;
+       $adress->region = $request->region;
        $adress->code_postale = $request->code_postale;
-       $adress->user_id = $user->id;
+       $adress->users_id = $user->id;
        $adress->save();
         return $this->login($request);
     }
