@@ -53,13 +53,13 @@ class PanneauController extends Controller
         if(Auth::check()){
             $idauth = Auth::user()->id;
             $checkDB = Pannier::where('user_id',$idauth)->get();
-            $checkitem= Pannier::where(['user_id'=>$idauth,'article_id'=>$id])->wherenull('commande_id')->get();
+            $checkitem= Pannier::where(['user_id'=>$idauth,'produits_id'=>$id])->wherenull('commande_id')->get();
 
             if(count($checkDB) == 0 || count($checkitem) == 0){
                 $cart = new Pannier();
                 $cart->posts_id = $id;
                 $cart->user_id = $idauth;
-                $cart->quantite =$request->input('quantite');
+                $cart->quantite =1;
                 $cart->save();
                 return response('Produit Selectionner');
 

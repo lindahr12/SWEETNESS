@@ -16,10 +16,9 @@ class CreatePanniersTable extends Migration
         Schema::create('panniers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
-            $table->bigInteger('article_id');
+            $table->bigInteger('produits_id');
             $table->bigInteger('commande_id')->nullable();
             $table->integer('quantite');
-            $table->double('total_cout');
             $table->timestamps();
         });
     }

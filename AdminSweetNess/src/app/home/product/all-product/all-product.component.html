@@ -50,7 +50,7 @@
               <td style="display: table">
                 <div  *ngFor="let k of i.images" style="display:table;vertical-align:auto;">
                   <div *ngFor="let image of Parseimg(k.url)">
-                  <img src='{{ getSantizeUrl( image ) }}' style="width:40px; height: 40px; float: left;; border-radius: 100%;clear:left ;display: inline">
+                  <img src='{{ getSantizeUrl( image ) }}' style="width:40px; height: 40px; float:left; border-radius: 100%;clear:left ;display: inline">
                   </div>
                 </div>
               </td>

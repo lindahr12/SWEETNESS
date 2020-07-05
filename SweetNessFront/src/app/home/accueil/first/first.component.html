@@ -81,9 +81,10 @@
 
                         </a>
                       </figure>
-                      <div class="item-price-container"*ngFor="let listlot of listprod.lot" >
-                        <span class="old-price">{{listlot.lot.prix_vente_souhaiter}} dt<span class="sub-price">.{{listlot.lot.prix_vente_souhaiter}}</span></span>
-                        <span class="item-price">{{listlot.lot.prix_vente_souhaiter}} dt<span class="sub-price">.{{listlot.lot.prix_vente_souhaiter}}</span></span>
+
+                      <div class="item-price-container"  *ngIf="listprod.lot">
+                        <span class="old-price">{{listprod.lot.prix_vente_souhaiter}} dt<span class="sub-price">{{listprod.lot.prix_vente_souhaiter}}</span></span>
+                        <span class="item-price">{{listprod.lot.prix_vente_souhaiter}} dt<span class="sub-price">{{listprod.lot.prix_vente_souhaiter}}</span></span>
                       </div>
                       <span class="new-rect">New</span>
                       <span class="discount-rect">-15%</span>
@@ -97,10 +98,10 @@
                         </div>
                         <span class="ratings-amount">5 Etoiles</span>
                       </div>
-                      <h3 class="item-name"><a href="product.html">{{listprod.description}}</a></h3>
+                      <h3 class="item-name"><a href="product.html">{{listprod.nom}}</a></h3>
                       <div class="item-action">
-                        <a href="#" class="item-add-btn">
-                          <span class="icon-cart-text">ajouter au panier </span>
+                        <a class="item-add-btn">
+                          <span class="icon-cart-text" (click)=addpannier(listprod.id)>ajouter au panier </span>
                         </a><div class="item-action-inner">
                         <a href="#" class="icon-button icon-like">Favourit</a>
                         <a href="#" class="icon-button icon-compare">Check-out</a>
@@ -118,7 +119,7 @@
             <div class="row">
               <div class="col-md-7 col-sm-7 col-xs-12">
                 <header class="content-title">
-                  <h2 class="title">Welcome to Venedor</h2>
+                  <h2 class="title">Bienvenue Chez SweetNess</h2>
                 </header>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Venedor is a fully responsive Magento theme with advanced admin module. Based on Bootstrap’s 12 column 1200px responsive grid Theme. Great looks on desktops, tablets and mobiles.<br>&nbsp;&nbsp;&nbsp;
                   &nbsp;&nbsp;Venedor is extremely customizable, easy to use and fully responsive. Suitable for every type of store. Great as a starting point for your custom projects. This theme includes several extensions including ajax price slider that will help you improve your sales. We supply a full help with our products and after purchase support to all our customers.
@@ -134,10 +135,11 @@
             <div class="hot-items carousel-wrapper">
               <header class="content-title">
                 <div class="title-bg">
-                  <h2 class="title">On Sale</h2>
+                  <h2 class="title">En Soldes</h2>
 
                 </div>
-                <p class="title-desc">Only with us you can get a new model with a discount.</p>
+                <p class="title-desc">Seulement avec nous, vous pouvez obtenir un nouveau modèle avec une remise.
+                </p>
               </header>
               <div class="carousel-controls">
                 <div id="hot-items-slider-prev" class="carousel-btn carousel-btn-prev"></div>

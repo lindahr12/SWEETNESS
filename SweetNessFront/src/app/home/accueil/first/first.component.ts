@@ -15,7 +15,7 @@ produit;
   ngOnInit() {
     this.http.get('http://127.0.0.1:8000/api/product').subscribe(data => {
       console.log("Data is coming.", this.produit = data);
-    console.log("prix_vente_souhaiter" + this.produit.lot);
+    console.log("prix_vente_souhaiter" + this.produit[1].lot.prix_vente_souhaiter);
 
     }, error => console.error(error));
   }
@@ -30,5 +30,9 @@ produit;
     console.log(imageurl);
     return this._sanitizer.sanitize(SecurityContext.HTML, this._sanitizer.bypassSecurityTrustHtml("http://127.0.0.1:8000/img_article/" + imageurl));
 
+  }
+  public addpannier(id:any) {
+    console.log('id article ',id);
+    
   }
 }
