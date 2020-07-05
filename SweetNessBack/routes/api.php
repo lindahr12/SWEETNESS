@@ -1,7 +1,7 @@
 <?php
 
 /**Pannier */
-Route::post('/pannieradd/{id}','PanneauController@store');
+Route::get('/pannieradd/{id}/{userid}','PanneauController@store');
 Route::resource('/pannier','PanneauController');
 
 

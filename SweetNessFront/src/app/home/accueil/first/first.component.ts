@@ -32,7 +32,9 @@ produit;
   }
   public addpannier(id:any) {
     console.log('id article ',id);
-    this.http.get('http://127.0.0.1:8000/api/pannieradd/'+id).subscribe(data => {
+    let userid = localStorage.getItem('user_id');
+
+    this.http.get('http://127.0.0.1:8000/api/pannieradd/'+id+'/'+userid).subscribe(data => {
       console.log("pannier is coming.", data);
     }, error => console.error(error));
 

@@ -15,21 +15,7 @@ class PanneauController extends Controller
      */
     public function index()
     {
-        if (Auth::check()){
-            $panniers = Pannier::orderBy('id', 'DESC')
-            ->with('article')
-            ->where('user_id', Auth::user()->id)
-            ->wherenull('order_id')
-            ->get()
-            ->map(function ($pannier){
-                return[
-                    'pannier_id'=> $pannier->id,
-                ];
-            }); 
-            return response($panniers);
-        }else{
-            return response('Authentifier Vous et ajouter des articles');
-        }
+      
     }
 
     /**
@@ -48,16 +34,16 @@ class PanneauController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id)
+    public function store($id ,$userid)
     {
-        if(Auth::check()){
-            $idauth = Auth::user()->id;
+        if($userid){
+            $idauth = $userid;
             $checkDB = Pannier::where('user_id',$idauth)->get();
             $checkitem= Pannier::where(['user_id'=>$idauth,'produits_id'=>$id])->wherenull('commande_id')->get();
 
             if(count($checkDB) == 0 || count($checkitem) == 0){
                 $cart = new Pannier();
-                $cart->posts_id = $id;
+                $cart->produits_id = $id;
                 $cart->user_id = $idauth;
                 $cart->quantite =1;
                 $cart->save();
@@ -86,7 +72,9 @@ class PanneauController extends Controller
      */
     public function show($id)
     {
-        $article = Pannier::find($id);
+        $article = Pannier::where('user_id',$id)
+        ->wherenull('commande_id')
+        ->get();
         return response()->json($article);
     }
 

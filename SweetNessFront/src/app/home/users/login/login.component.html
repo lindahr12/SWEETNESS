@@ -26,10 +26,10 @@
             <form id="login-form" [formGroup]="signForm" (ngSubmit)="onSubmit()" >
             <div class="input-group"><span class="input-group-addon"><span class="input-icon input-icon-email"></span>
               <span class="input-text">Email&#42;</span></span>
-              <input type="text" required="" class="form-control input-lg" placeholder="Votre email"></div>
+              <input type="text" required="" class="form-control input-lg" placeholder="Votre email" formControlName="email"></div>
             <div class="input-group xs-margin">
               <span class="input-group-addon"><span class="input-icon input-icon-password"></span>
-                <span class="input-text">Mot de passe&#42;</span></span> <input type="password" required="" class="form-control input-lg" placeholder="Votre mot de passe">
+                <span class="input-text">Mot de passe&#42;</span></span> <input type="password" formControlName="password" required="" class="form-control input-lg" placeholder="Votre mot de passe">
             </div><span class="help-block text-right">
             <a href="#">
 Mot de passe oublié?</a></span> <button class="btn btn-custom-2">Connexion</button></form><div class="sm-margin"></div></div></div></div></div></div>
