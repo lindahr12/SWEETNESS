@@ -17,23 +17,20 @@ export class UserComponent implements OnInit {
   constructor(private http: HttpClient,private formBuilder: FormBuilder,private router: Router) { }
 
   ngOnInit() {
-    // this.userform =this.formBuilder.group({
-    //   prenom: ['', Validators.required],
-    //   nom: ['', Validators.required],
-    //   email: ['', Validators.required],
-    //   password: ['', Validators.required],
-    //   num_tel: ['', Validators.required],
-    //   num_fax: ['', Validators.required],
-    //   region: ['', Validators.required],
-    //   rue: ['', Validators.required],
-    //   code_postale: ['', Validators.required],
-    //
-    //
-    // });
+    this.userform =this.formBuilder.group({
+      prenom: ['', Validators.required],
+      nom: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      num_tel: ['', Validators.required],
+      num_fax: ['', Validators.required],
+      region: ['', Validators.required],
+      rue: ['', Validators.required],
+      code_postale: ['', Validators.required],
+    });
 
   }
 
   adduser() {
-
-  }
+    this.http.post()  }
 }
