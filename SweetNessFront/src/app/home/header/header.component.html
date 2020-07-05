@@ -11,7 +11,7 @@
               </a>
               </li>
               <li>
-                <a href="#" title="My Account">
+                <a routerLink="/user" title="My Account">
                   <span class="top-icon top-icon-user"></span>
                   <span class="hide-for-xs">Mon compte</span>
                 </a>
@@ -42,28 +42,20 @@
                 </a></li><li><a href="#"><span class="hide-for-xs">Dollar</span><span class="hide-for-lg">&pound;
     </span>
                 </a>
-                </li></ul></div><div class="btn-group dropdown-language">
+                </li></ul>
+              </div>
+              <div class="btn-group dropdown-language">
               <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
                 <span class="flag-container"><img src="assets\images\england-flag.png" alt="flag of england"></span>
                 <span class="hide-for-xs">Francais</span>
               </button>
               <ul class="dropdown-menu pull-right" role="menu">
-
-
-                <li>
-                  <a href="#">
-<span class="flag-container">
-<img src="assets\images\france-flag.png" alt="flag of france">
-    </span><span class="hide-for-xs">French</span>
-                  </a>
-                </li>
-
               </ul>
             </div>
             </div>
             <div class="header-text-container pull-right"><p class="header-text">Bienvenue chez Sweetness</p>
-              <p class="header-link"><a href="#">Se connecter</a>&nbsp;or&nbsp;<a href="#">
-                créer un compte</a>
+              <p class="header-link"><a routerLink="/users" >Se connecter</a>&nbsp;or&nbsp;
+                <a routerLink="/users/*/user">créer un compte</a>
               </p>
             </div>
           </div>
@@ -118,13 +110,11 @@
               </div>
               <ul class="menu clearfix">
                 <li>
-                  <a class="active" href="index.html">ACCUEIL</a>
-                  <ul><li><a href="index.html">Home 1</a></li><li><a href="../blue/index.html">Home 2</a></li><li><a href="../orange/index.html">Home 3</a></li><li><a href="../pink/index.html">Home 4</a></li><li><a href="../brown/index.html">Home 5</a></li><li><a href="../green2/index.html">Home 6</a></li><li><a href="../blueorange/index.html">Home 7</a></li><li><a href="../blueorange2/index.html">Home 8</a></li><li><a href="../browngreen/index.html">Home 9</a></li></ul>
+                  <a class="active" routerLink="/accueil" >ACCUEIL</a>
                 </li>
                 <li class="mega-menu-container">
-                  <a href="#">SHOP</a>
+                  <a  routerLink="/shop">SHOP</a>
                   <div class="mega-menu clearfix"><div class="col-5"><a href="category.html" class="mega-menu-title">Clothing</a><ul class="mega-menu-list clearfix"><li><a href="#">Dresses</a></li><li><a href="#">Jeans &amp; Trousers</a></li><li><a href="#">Blouses &amp; Shirts</a></li><li><a href="#">Tops &amp; T-Shirts</a></li><li><a href="#">Jackets &amp; Coats</a></li><li><a href="#">Skirts</a></li></ul></div><div class="col-5"><a href="category.html" class="mega-menu-title">Shoes</a><ul class="mega-menu-list clearfix"><li><a href="#">Formal Shoes</a></li><li><a href="#">Casual Shoes</a></li><li><a href="#">Sandals</a></li><li><a href="#">Boots</a></li><li><a href="#">Wide Fit</a></li><li><a href="#">Slippers</a></li></ul></div><div class="col-5"><a href="category.html" class="mega-menu-title">Accessories</a><ul class="mega-menu-list clearfix"><li><a href="#">Bags &amp; Purses</a></li><li><a href="#">Belts</a></li><li><a href="#">Gloves</a></li><li><a href="#">Jewellery</a></li><li><a href="#">Sunglasses</a></li><li><a href="#">Hair Accessories</a></li></ul></div><div class="col-5"><a href="category.html" class="mega-menu-title">Sports</a><ul class="mega-menu-list clearfix"><li><a href="#">Sport Tops &amp; Vests</a></li><li><a href="#">Swimwear</a></li><li><a href="#">Footwear</a></li><li><a href="#">Sports Underwear</a></li><li><a href="#">Bags</a></li></ul></div><div class="col-5"><a href="category.html" class="mega-menu-title">Maternity</a><ul class="mega-menu-list clearfix"><li><a href="#">Tops &amp; Skirts</a></li><li><a href="#">Dresses</a></li><li><a href="#">Trousers &amp; Shorts</a></li><li><a href="#">Knitwear</a></li><li><a href="#">Jackets &amp; Coats</a></li></ul></div></div></li>
-                <li><a href="#">Elements</a><ul><li><a href="elements\tabs.html">Tabs</a></li><li><a href="elements\titles.html">Titles</a></li><li><a href="elements\typography.html">Typography</a></li><li><a href="elements\collapses.html">collapses</a></li><li><a href="elements\animations.html">animations</a></li><li><a href="elements\grids.html">Grid System</a></li><li><a href="elements\alerts.html">Alert Boxes</a></li><li><a href="elements\buttons.html">Buttons</a></li><li><a href="elements\medias.html">Media</a></li><li><a href="elements\forms.html">Forms</a></li><li><a href="elements\icons.html">Icons</a></li><li><a href="elements\lists.html">Lists</a></li><li><a href="elements\more.html">More</a></li></ul></li>
                 <li><a routerLink="/contact">Contacter-nous</a></li>
                 <li><a routerLink="/apropos">à propos de nous</a></li>
               </ul>
@@ -134,7 +124,8 @@
                 <div class="btn-group dropdown-cart">
                   <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
                     <span class="cart-menu-icon"></span> 0 item(s) <span class="drop-price">- $0.00</span>
-                  </button><div class="dropdown-menu dropdown-cart-menu pull-right clearfix" role="menu">
+                  </button>
+                  <div class="dropdown-menu dropdown-cart-menu pull-right clearfix" role="menu">
                   <p class="dropdown-cart-description">Recently added item(s).</p>
                   <ul class="dropdown-cart-product-list"><li class="item clearfix">
                     <a href="#" title="Delete item" class="delete-item"><i class="fa fa-times"></i></a>
