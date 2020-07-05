@@ -1,1 +1,125 @@
-hello
+<button type="button" class="btn btn-custom dropdown-toggle" routerLink="/users/*/user" data-toggle="dropdown" style="position: center ; margin-bottom: 20px; margin-left: 10px ">
+  <span class="cart-menu-icon" ></span> Créer compte client <span class="drop-price"></span>
+</button>
+
+<form [formGroup]="societeform" (ngSubmit)="addsociete()" >
+  <div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <fieldset>
+        <h2 class="sub-title">VOS INFORMATIONS PERSONNELLES</h2>
+
+        <div class="input-group">
+                  <span class="input-group-addon">
+                    <span class="input-icon input-icon-user"></span>
+                    <span class="input-text">Prénom&#42;</span>
+                  </span>
+          <input type="text" required="" class="form-control input-lg" placeholder="Prenom" required formControlName="prenom">
+        </div>
+        <div class="input-group">
+                  <span class="input-group-addon">
+                    <span class="input-icon input-icon-user"></span>
+                    <span class="input-text">Nom&#42;</span>
+                  </span>
+          <input type="text" required="" class="form-control input-lg" placeholder="Nom" required formControlName="nom">
+        </div>
+        <div class="input-group">
+                  <span class="input-group-addon">
+                    <span class="input-icon input-icon-email"></span>
+                    <span class="input-text">Email&#42;</span>
+                  </span>
+          <input type="text" required="" class="form-control input-lg" placeholder="Email" required formControlName="email">
+        </div>
+        <div class="input-group">
+                  <span class="input-group-addon">
+                    <span class="input-icon input-icon-email"></span>
+                    <span class="input-text">Email Sociéte&#42;</span>
+                  </span>
+          <input type="text" required="" class="form-control input-lg" placeholder="Email" required formControlName="email_societe">
+        </div>
+        <div class="input-group">
+                  <span class="input-group-addon">
+                    <span class="input-icon input-icon-email"></span>
+                    <span class="input-text">Mot de passe&#42;</span>
+                  </span>
+          <input type="text" required="" class="form-control input-lg" placeholder="Mot de passe" required formControlName="password">
+        </div>
+        <div class="input-group">
+                  <span class="input-group-addon">
+                    <span class="input-icon input-icon-email"></span>
+                    <span class="input-text">Confirm Mot de passe&#42;</span>
+                  </span>
+          <input type="text" required="" class="form-control input-lg" placeholder="Mot de passe" required formControlName="confirm_password">
+        </div>
+        <div class="input-group">
+                  <span class="input-group-addon"><span class="input-icon input-icon-phone">
+
+                  </span>
+                    <span class="input-text">Telephone&#42;</span>
+                  </span>
+          <input type="text" required="" class="form-control input-lg" placeholder="Numéro Telephone" required formControlName="num_tel">
+        </div>
+        <div class="input-group">
+                  <span class="input-group-addon">
+                    <span class="input-icon input-icon-fax">
+
+                    </span><span class="input-text">Fax</span>
+                  </span>
+          <input type="text" class="form-control input-lg" placeholder="Numéro Fax" required formControlName="num_fax">
+        </div>
+      </fieldset>
+
+      <input type="submit" value="CREATE MY ACCCOUNT" class="btn btn-custom-2 md-margin"></div>
+    <fieldset>
+      <h2 class="sub-title">VOS ADRESSES</h2>
+      <div class="input-group">
+                  <span class="input-group-addon">
+                    <span class="input-icon input-icon-city"></span>
+                    <span class="input-text">Région&#42;</span>
+                  </span>
+        <input type="text" required="" class="form-control input-lg" placeholder="région" formControlName="region">
+      </div>
+      <div class="input-group">
+                  <span class="input-group-addon">
+                    <span class="input-icon input-icon-address"></span>
+                    <span class="input-text">Rue &#42;</span>
+                  </span>
+        <input type="text" required="" class="form-control input-lg" placeholder="Rue" formControlName="rue">
+      </div>
+      <div class="input-group"><span class="input-group-addon">
+                  <span class="input-icon input-icon-postcode"></span>
+                  <span class="input-text">Code Postale&#42;</span>
+                </span>
+        <input type="text" required="" class="form-control input-lg" placeholder="Code postale" formControlName="code_postale">
+      </div>
+      <div class="input-group"><span class="input-group-addon">
+                  <span class="input-icon input-icon-postcode"></span>
+                  <span class="input-text">Raison sociale&#42;</span>
+                </span>
+        <input type="text" required="" class="form-control input-lg" placeholder="Code postale" formControlName="raison_sociale">
+      </div>
+      <div class="input-group">
+                  <span class="input-group-addon">
+                    <span class="input-icon input-icon-city"></span>
+                    <span class="input-text">Déscription&#42;</span>
+                  </span>
+        <input type="text" required="" class="form-control input-lg" placeholder="région" formControlName="description">
+      </div>
+      <div class="input-group">
+                  <span class="input-group-addon">
+                    <span class="input-icon input-icon-city"></span>
+                    <span class="input-text">Statue&#42;</span>
+                  </span>
+        <input type="text" required="" class="form-control input-lg" placeholder="région" formControlName="statue">
+      </div>
+      <div class="input-group">
+                  <span class="input-group-addon">
+                    <span class="input-icon input-icon-city"></span>
+                    <span class="input-text">Matriculation fiscal&#42;</span>
+                  </span>
+        <input type="text" required="" class="form-control input-lg" placeholder="région" formControlName="matriculation_fiscal">
+      </div>
+    </fieldset>
+  </div>
+
+
+</form>
