@@ -32,14 +32,14 @@
           <table class="table table-head-light table-striped">
             <thead>
             <tr>
-              <th width="150">Réefernce</th>
+              <th>Réefernce</th>
+              <th>Image produit</th>
               <th>Produit nom</th>
-              <th>Produit nom</th>
-              <th width="250">note</th>
-              <th width="150">Fournisseur</th>
-              <th width="150">Date</th>
-              <th width="150">Status</th>
-              <th width="120"></th>
+              <th >note</th>
+              <th >Fournisseur</th>
+              <th>Date</th>
+              <th >Status</th>
+              <th ></th>
             </tr>
             </thead>
             <tbody>
@@ -47,15 +47,15 @@
               <td>
                 <a href="#" class="text-bolder text-primary">{{i.description}}</a>
               </td>
-              <td style="display: table">
-                <div  *ngFor="let k of i.images" style="display:table;vertical-align:auto;">
+              <td >
+                <div  *ngFor="let k of i.images" style="display: inline">
                   <div *ngFor="let image of Parseimg(k.url)">
-                  <img src='{{ getSantizeUrl( image ) }}' style="width:40px; height: 40px; float:left; border-radius: 100%;clear:left ;display: inline">
+                  <img src='{{ getSantizeUrl( image ) }}' style="width:40px; height: 40px; float: left;; border-radius: 100%;">
                   </div>
                 </div>
               </td>
               <td>
-                <div class="contact contact-lg" >
+                <div  >
 
                     <div class="contact-container">
                       <a href="#">{{i.nom}}</a>
@@ -64,7 +64,7 @@
                 </div>
               </td>
               <td>
-                <div class="contact contact-lg">
+                <div >
                   <div class="contact-container">
                     <a href="#">{{i.note}}</a>
                     <span>{{i.nbr_noted}}</span>
@@ -224,7 +224,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" data-dismiss="modal" class="btn btn-link" >Close</button>
-            <button type="submit"  class="btn btn-primary" onclick="$('.modal').modal('hide')">Submit</button>
+            <button type="submit"  class="btn btn-primary" >Submit</button>
           </div>
         </div>
       </form>

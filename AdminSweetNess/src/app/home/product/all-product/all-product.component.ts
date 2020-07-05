@@ -166,7 +166,7 @@ window.location.reload();
         reference: this.produit.reference,
         description:this.produit.description,
         fournisseur_id:this.produit.fournisseur_id
-  
+
       });
 
     }, error => console.error(error));
@@ -179,7 +179,6 @@ window.location.reload();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
     console.log(this.formupdate.value.nom);
-    console.log(this.files[0]);
     myFormData.append('nomproduit', this.formupdate.value.nom);
     myFormData.append('reference', this.formupdate.value.reference);
     myFormData.append('description', this.formupdate.value.description);
@@ -187,7 +186,8 @@ window.location.reload();
       myFormData.append('image[]', this.files[i]);
     }
     myFormData.append('is_active', '1');
-
+    for (let k in myFormData)
+      console.log("myyyyyyy form"+k.indexOf('0'));
     const endpoint = '/assets';
     this.http.put('http://127.0.0.1:8000/api/product/'+this.produit.id, myFormData, {
       headers: headers

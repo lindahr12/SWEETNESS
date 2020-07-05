@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './home/header/header.component';
 import { FooterComponent } from './home/footer/footer.component';
 import {LayoutComponent} from "./home/layout/layout.component";
+import { AproposComponent } from './home/apropos/apropos.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {LayoutComponent} from "./home/layout/layout.component";
     HeaderComponent,
     FooterComponent,
     LayoutComponent,
+    AproposComponent,
 
 
 
