@@ -1,4 +1,4 @@
-  <form [formGroup]="userform" >
+  <form [formGroup]="userform" (ngSubmit)="adduser()" >
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-12">
         <fieldset>
@@ -31,6 +31,13 @@
                     <span class="input-text">Mot de passe&#42;</span>
                   </span>
             <input type="text" required="" class="form-control input-lg" placeholder="Mot de passe" required formControlName="password">
+          </div>
+          <div class="input-group">
+                  <span class="input-group-addon">
+                    <span class="input-icon input-icon-email"></span>
+                    <span class="input-text">Confirm Mot de passe&#42;</span>
+                  </span>
+            <input type="text" required="" class="form-control input-lg" placeholder="Mot de passe" required formControlName="confirm_password">
           </div>
           <div class="input-group">
                   <span class="input-group-addon"><span class="input-icon input-icon-phone">

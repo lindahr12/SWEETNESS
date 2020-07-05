@@ -22,6 +22,7 @@ export class UserComponent implements OnInit {
       nom: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
+      confirm_password: ['', Validators.required],
       num_tel: ['', Validators.required],
       num_fax: ['', Validators.required],
       region: ['', Validators.required],
@@ -32,5 +33,13 @@ export class UserComponent implements OnInit {
   }
 
   adduser() {
-    this.http.post()  }
+    console.log("adddddddddddddd");
+    console.log(this.userform.value)
+    return this.http.post('http://127.0.0.1:8000/api/auth/signup'
+      , this.userform.value).subscribe((res: Response) => {
+      console.log("looooooooog");
+    },error => {
+        console.log(error);
+    });
+  }
 }
