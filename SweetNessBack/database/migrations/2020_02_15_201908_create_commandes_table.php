@@ -20,22 +20,7 @@ class CreateCommandesTable extends Migration
             $table->integer('user_id');
             $table->float('prix_total');
             $table->integer('quantite_total');
-            $table->string('rue_liv');
-            $table->string('region_liv');
-            $table->string('code_postale_liv');
-            
-            $table->string('rue_fac');
-            $table->string('region_fac');
-            $table->string('code_postale_fac');
-
-            $table->string('lat_liv');
-            $table->string('lg_liv');
-            
-            $table->string('lat_fac');
-            $table->string('lg_fac');
-
-            $table->date('date_creation');
-            $table->date('date_livraison');
+            $table->date('date_livraison')->nullable();
             $table->timestamps();
         });
     }

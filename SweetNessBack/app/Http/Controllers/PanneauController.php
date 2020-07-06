@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pannier;
 use App\Image;
 use App\Lot;
+use App\Produit;
 
 
 use Illuminate\Http\Request;
@@ -78,18 +79,27 @@ class PanneauController extends Controller
     {
         $article = Pannier::where('user_id',$id)
         ->wherenull('commande_id')
-        ->with('produits')
         ->get();
         for ($i=0; $i < count($article); $i++) { 
-            # code...
-            $lot = Lot::where('produits_id',$article[$i]->produits_id)->get();
-
-        }        for ($i=0; $i < count($article); $i++) { 
-            # code...
-            $image = Image::where('owner_id',$article[$i]->produits_id)->get();
+            $produit = Produit::where('id',$article[$i]->produits_id)
+            ->with('lot')
+            ->with('images')
+            ->get();
+            $produits[] = $produit;
 
         }
-        return response()->json(compact('article','image','lot'));
+
+        for ($i=0; $i < count($article); $i++) { 
+            # code...
+            $lott = Lot::where('produits_id',$article[$i]->produits_id)->get();
+            $lot[] = $lott;
+        } 
+        for ($i=0; $i < count($article); $i++) { 
+            # code...
+            $images = Image::where('owner_id',$article[$i]->produits_id)->get();
+            $image[]=$images;
+        }
+        return response()->json(compact('article','lot','image','produits'));
     }
 
     /**

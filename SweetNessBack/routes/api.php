@@ -3,6 +3,9 @@
 /**Pannier */
 Route::get('/pannieradd/{id}/{userid}','PanneauController@store');
 Route::resource('/pannier','PanneauController');
+/**Commande */
+Route::resource('/commande','CommandeController');
+
 
 
 /** Marque Route */
