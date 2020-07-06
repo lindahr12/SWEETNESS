@@ -14,10 +14,9 @@
                         <th class="table-title">SubTotal</th>
                     </tr>
                     </thead>
-                    <div *ngFor="let i of list">
-                    <tbody *ngFor="let itemarticle of produits[1] ; index as i">
-                    <tr *ngFor="let itemimage of itemarticle.images">
-                        <td class="item-name-col">
+                    <tbody *ngFor="let l of length">
+                    <tr *ngFor="let itemarticle of produits[l] ; index as i" >
+                        <td class="item-name-col" *ngFor="let itemimage of itemarticle.images">
                     <figure *ngFor="let image of Parseimg(itemimage.url) ; index as i">
                         <a>
                         <img *ngIf="i==0"src='{{ getSantizeUrl( image) }}' alt="{{itemarticle.description}}">
@@ -51,7 +50,6 @@
                                 </td>
                     </tr>
                     </tbody>
-                </div>  
                     </table>
                                 </div></div><div class="lg-margin"></div><div class="row"><div class="col-md-8 col-sm-12 col-xs-12 lg-margin"><div class="tab-container left clearfix"><ul class="nav-tabs"><li class="active"><a href="#shipping" data-toggle="tab">Shipping &amp; Taxes</a></li>
                                         <li><a href="#discount" data-toggle="tab">Discount Code</a></li>

@@ -15,15 +15,21 @@ export class PanierComponent implements OnInit {
   image;
   lot;
   produits;
+  length=[];
   userid = localStorage.getItem('user_id');
 
   constructor(private http: HttpClient,private _sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    
     this.http.get('http://127.0.0.1:8000/api/pannier/'+this.userid).subscribe(data => {
       console.log('kol',data)
       console.log("produits is coming.", this.produits = data['produits']);
       console.log("nom is coming.", this.produits[1][0]['lot']['prix_vente_souhaiter']);
+      for (let index = 0; index < this.produits.length; index++) {
+        this.length.push(index)      ; 
+      }
+      console.log('lenght',this.length);
 
 
     }, error => console.error(error));
@@ -40,13 +46,12 @@ export class PanierComponent implements OnInit {
   somme(){
 
     let somme=0 
-    let lott;
-    lott= this.produits[0].lot.prix_vente_souhaiter;
+   
 
     for (let index = 0; index < this.produits.length; index++) {
-      //somme= lott.prix_vente_souhaiter * this.quantity;
+      somme=  this.produits[index][0].lot.prix_vente_souhaiter;
     }
-    console.log("lot",lott);
+    console.log("lot",somme);
     return somme;
   }
 
