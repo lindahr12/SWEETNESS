@@ -74,7 +74,9 @@
                 <td >
                   <a href="#" class="text-bolder text-primary">{{i.matricule_fiscale}}</a>
                 </td>
-                <td *ngIf="i.is_active">Active</td>
+
+                <td *ngIf="i.is_active"><span class="label label-info">Actif</span></td>
+                <td *ngIf="!i.is_active"><span class="label label-danger">Inactif</span></td>
                 <td ><button type="submit" (click)="recuperer(i.id)" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#modal-info" ><span class="icon-pencil"></span></button>
                   </td>
                  <td ><button type="submit" (click)="delete(i.id)" class="btn btn-danger btn-icon"><span class="icon-cross"></span></button></td>
@@ -108,7 +110,10 @@
             <div class="form-group">
               <label class="col-md-2 control-label">Nom</label>
               <div class="col-md-10">
-                <input type="text" class="mask_date form-control"  name="nom" formControlName="nom">
+                <input type="text" class="mask_date form-control"  formControlName="nom"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }"  />
+                <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                  <div *ngIf="f.nom.errors.required">Le nom est requis</div>
+                </div>
               </div>
             </div>
             <div class="form-group">

@@ -13,7 +13,6 @@ import {MarqueComponent} from "./home/marque/marque.component";
 import {CommandeComponent} from "./home/commande/commande.component";
 import {FactureComponent} from "./home/facture/facture.component";
 
-
 const routes: Routes = [
 
   {
@@ -60,7 +59,6 @@ const routes: Routes = [
     ]
 
   },
-
 
 
   {

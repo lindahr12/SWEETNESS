@@ -1,16 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignupRequest;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use App\Adresse;
-
 use App\Societe;
-
 class AuthController extends Controller
 {
     /**

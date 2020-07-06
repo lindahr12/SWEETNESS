@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-user',
@@ -39,6 +40,15 @@ export class UserComponent implements OnInit {
       , this.userform.value).subscribe((res: Response) => {
         console.log("user");
       console.log("looooooooog");
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      this.router.navigate(['/users']);
+
     },error => {
         console.log(error);
     });

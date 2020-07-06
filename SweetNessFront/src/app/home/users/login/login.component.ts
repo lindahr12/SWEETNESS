@@ -49,15 +49,9 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('user_id', res['user_id']);
         localStorage.setItem('role', res['role']);
 
-        if(res['role'] == 'admin'){
-          this.router.navigate(["http://localhost:4000"]);
+        this.router.navigate(['/accueil']);
 
 
-          console.log('heey')
-        }else{
-          this.router.navigate(['/accueil']);
-
-        }
       },
       (error) => {
            console.log(error);

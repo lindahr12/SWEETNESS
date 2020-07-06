@@ -93,8 +93,8 @@ export class ShowAllComponent implements OnInit {
       this.http.post('http://127.0.0.1:8000/api/categorie', myFormData, {
         headers: headers
       }).subscribe(data => {
-        console.log(data);
-
+        console.log(data)
+       window.location.reload();
       });
 
     }

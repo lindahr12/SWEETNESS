@@ -30,6 +30,7 @@ export class AllProductComponent implements OnInit {
   };
   formupdate: FormGroup;
   fournisseur: any;
+  private att: string;
 
   constructor(private http: HttpClient, private _sanitizer: DomSanitizer,private formBuilder: FormBuilder,private router: Router) {
   }
@@ -96,10 +97,32 @@ export class AllProductComponent implements OnInit {
       headers: headers
     }).subscribe(data => {
 
-      console.log(data);
-window.location.reload();
-    });
+      Swal.fire({
+        title: '\n' +
+          'produit ajouté avec succès',
+        text: "ajouter avec sucés !",
+        showCancelButton: true,
+        confirmButtonColor: '#298fca',
+        cancelButtonColor: '#d33',
+      }).then((result) => {
+        if(!result.value)
+          window.location.reload();
 
+      });
+      window.location.reload();
+
+
+    },error =>
+    {
+      Swal.fire({
+        title: '\n' +
+          'OPS !!',
+        text: "Verifier les champs!",
+        showCancelButton: true,
+
+      })
+
+    });
   }
 
   public Parseimg(url: string) {

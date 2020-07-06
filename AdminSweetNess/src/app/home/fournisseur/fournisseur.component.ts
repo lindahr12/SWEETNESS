@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import Swal from "sweetalert2";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -13,17 +14,21 @@ import Swal from "sweetalert2";
 export class FournisseurComponent implements OnInit {
   private formfour: FormGroup;
 
-  
+
   fournisseur:any;
   fournisseurupdated:any;
+  submitted = false;
 
-  constructor(private http: HttpClient,private formBuilder: FormBuilder) { }
+
+  constructor(private http: HttpClient,private formBuilder: FormBuilder,private router:Router ) { }
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     })
   };
+  nom: any;
+
   ngOnInit() {
     /**Form Group store */
     this.formfour =this.formBuilder.group({
@@ -46,14 +51,41 @@ export class FournisseurComponent implements OnInit {
     }, error => console.error(error))
 
   }
+
+  get f() { return this.formfour.controls; }
+
   /**submitt */
   submit() {
     console.log(this.formfour.value);
    this.http.post('http://127.0.0.1:8000/api/fournisseur', this.formfour.value
   ).subscribe(data => {
      console.log("four ajoutée");
-     window.location.reload();
+     Swal.fire({
+       title: '\n' +
+         'utilisateur ajouté avec succès',
+       text: "ajouter un nouveau !",
+       showCancelButton: true,
+       confirmButtonColor: '#298fca',
+       cancelButtonColor: '#d33',
+     }).then((result) => {
+       if(!result.value)
+       window.location.reload();
+       else {
+         this.formfour.reset();
 
+       }
+     });
+
+
+   },error =>
+   {
+     Swal.fire({
+       title: '\n' +
+         'OPS !!',
+       text: "Verifier les champs!",
+       showCancelButton: true,
+
+     })
 
    });
  }
