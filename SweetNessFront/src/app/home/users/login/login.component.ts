@@ -50,7 +50,9 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('role', res['role']);
 
         if(res['role'] == 'admin'){
-          this.router.navigate['http://localhost:62183/home'];
+          this.router.navigate(["http://localhost:4000"]);
+
+
           console.log('heey')
         }else{
           this.router.navigate(['/accueil']);

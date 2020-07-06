@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use App\Adresse;
 
+use App\Societe;
+
 class AuthController extends Controller
 {
     /**
@@ -54,7 +56,7 @@ class AuthController extends Controller
             $societe = new Societe();
             $societe->raison_sociale = $request->raison_sociale;
             $societe->description = $request->description;
-            $societe->email = $request->emailsociete;
+            $societe->email = $request->email_societe;
             $societe->statue = $request->statue;
             $societe->matriculation_fiscal = $request->matriculation_fiscal;
             $user->role_id = 2;

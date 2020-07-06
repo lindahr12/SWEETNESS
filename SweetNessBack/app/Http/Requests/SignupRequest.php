@@ -23,15 +23,15 @@ class SignupRequest extends FormRequest
      */
     public function rules()
     {
-        return [      
+        return [
             'nom' => ['required', 'string', 'max:255'],
             'prenom'=> ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8'],
             'num_tel'=>'required|numeric',
             'num_fax'=>'required|numeric',
 
         ];
     }
-  
+
 }
