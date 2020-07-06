@@ -35,9 +35,10 @@ export class SocieteComponent implements OnInit {
       rue: ['', Validators.required],
       code_postale: ['', Validators.required],
      raison_sociale: ['', Validators.required],
-     Description: ['', Validators.required],
+      description: ['', Validators.required],
      statue: ['', Validators.required],
-     matriculation_fiscale: ['', Validators.required],
+      matriculation_fiscal: ['', Validators.required],
+      societe:['1']
     });
 
   }
@@ -56,16 +57,13 @@ export class SocieteComponent implements OnInit {
     Params = Params.append('region', this.societeform.value.region);
     Params = Params.append('code_postale', this.societeform.value.code_postale);
     Params = Params.append('raison_sociale', this.societeform.value.raison_sociale);
-    Params = Params.append('Description', this.societeform.value.Description);
+    Params = Params.append('description', this.societeform.value.description);
     Params = Params.append('statue', this.societeform.value.statue);
-    Params = Params.append('matriculation_fiscale', this.societeform.value.matriculation_fiscale);
-
-    Params = Params.append('token_validation', '1');
-
-
+    Params = Params.append('matricule_fiscale', this.societeform.value.matricule_fiscal);
+    Params = Params.append('societe', '1');
     return this.http.post('http://127.0.0.1:8000/api/auth/signup'
       , this.societeform.value,this.httpOptions).subscribe((res: Response) => {
-      console.log("looooooooog");
+      console.log("societe");
     },error => {
       console.log(error);
     });

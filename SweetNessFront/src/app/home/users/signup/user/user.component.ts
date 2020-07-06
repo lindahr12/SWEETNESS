@@ -37,6 +37,7 @@ export class UserComponent implements OnInit {
     console.log(this.userform.value)
     return this.http.post('http://127.0.0.1:8000/api/auth/signup'
       , this.userform.value).subscribe((res: Response) => {
+        console.log("user");
       console.log("looooooooog");
     },error => {
         console.log(error);
